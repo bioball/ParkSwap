@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.2.6-build.2005+sha.8f329ff
+ * @license AngularJS v1.2.5
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -68,7 +68,7 @@ function minErr(module) {
       return match;
     });
 
-    message = message + '\nhttp://errors.angularjs.org/1.2.6-build.2005+sha.8f329ff/' +
+    message = message + '\nhttp://errors.angularjs.org/1.2.5/' +
       (module ? module + '/' : '') + code;
     for (i = 2; i < arguments.length; i++) {
       message = message + (i == 2 ? '?' : '&') + 'p' + (i-2) + '=' +
@@ -848,7 +848,7 @@ function shallowCopy(src, dst) {
   for(var key in src) {
     // shallowCopy is only ever called by $compile nodeLinkFn, which has control over src
     // so we don't need to worry about using our custom hasOwnProperty here
-    if (src.hasOwnProperty(key) && key.charAt(0) !== '$' && key.charAt(1) !== '$') {
+    if (src.hasOwnProperty(key) && key.substr(0, 2) !== '$$') {
       dst[key] = src[key];
     }
   }
@@ -1829,11 +1829,11 @@ function setupModuleLoader(window) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.2.6-build.2005+sha.8f329ff',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.2.5',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 2,
-  dot: 6,
-  codeName: 'taco-salsafication'
+  dot: 5,
+  codeName: 'singularity-expansion'
 };
 
 
@@ -2600,10 +2600,7 @@ function createEventHandler(element, events) {
       return event.defaultPrevented || event.returnValue === false;
     };
 
-    // Copy event handlers in case event handlers array is modified during execution.
-    var eventHandlersCopy = shallowCopy(events[type || event.type] || []);
-
-    forEach(eventHandlersCopy, function(fn) {
+    forEach(events[type || event.type], function(fn) {
       fn.call(element, event);
     });
 
@@ -5114,14 +5111,14 @@ function $TemplateCacheProvider() {
  *   example would not point to the clone, but rather to the original template that was cloned. In
  *   this case, you can access the clone via the cloneAttachFn:
  *   <pre>
- *     var templateElement = angular.element('<p>{{total}}</p>'),
+ *     var templateHTML = angular.element('<p>{{total}}</p>'),
  *         scope = ....;
  *
- *     var clonedElement = $compile(templateElement)(scope, function(clonedElement, scope) {
+ *     var clonedElement = $compile(templateHTML)(scope, function(clonedElement, scope) {
  *       //attach the clone to DOM document at the right place
  *     });
  *
- *     //now we have reference to the cloned DOM via `clonedElement`
+ *     //now we have reference to the cloned DOM via `clone`
  *   </pre>
  *
  *
@@ -5463,7 +5460,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       var compositeLinkFn =
               compileNodes($compileNodes, transcludeFn, $compileNodes,
                            maxPriority, ignoreDirective, previousCompileContext);
-      safeAddClass($compileNodes, 'ng-scope');
       return function publicLinkFn(scope, cloneConnectFn, transcludeControllers){
         assertArg(scope, 'scope');
         // important!!: we must call our jqLite.clone() since the jQuery one is trying to be smart
@@ -5478,13 +5474,12 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
         // Attach scope only to non-text nodes.
         for(var i = 0, ii = $linkNode.length; i<ii; i++) {
-          var node = $linkNode[i],
-              nodeType = node.nodeType;
-          if (nodeType === 1 /* element */ || nodeType === 9 /* document */) {
+          var node = $linkNode[i];
+          if (node.nodeType == 1 /* element */ || node.nodeType == 9 /* document */) {
             $linkNode.eq(i).data('$scope', scope);
           }
         }
-
+        safeAddClass($linkNode, 'ng-scope');
         if (cloneConnectFn) cloneConnectFn($linkNode, scope);
         if (compositeLinkFn) compositeLinkFn(scope, $linkNode, $linkNode);
         return $linkNode;
@@ -5512,15 +5507,15 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      * @param {DOMElement=} $rootElement If the nodeList is the root of the compilation tree then
      *        the rootElement must be set the jqLite collection of the compile root. This is
      *        needed so that the jqLite collection items can be replaced with widgets.
-     * @param {number=} maxPriority Max directive priority.
+     * @param {number=} max directive priority
      * @returns {?function} A composite linking function of all of the matched directives or null.
      */
     function compileNodes(nodeList, transcludeFn, $rootElement, maxPriority, ignoreDirective,
                             previousCompileContext) {
       var linkFns = [],
-          attrs, directives, nodeLinkFn, childNodes, childLinkFn, linkFnFound;
+          nodeLinkFn, childLinkFn, directives, attrs, linkFnFound;
 
-      for (var i = 0; i < nodeList.length; i++) {
+      for(var i = 0; i < nodeList.length; i++) {
         attrs = new Attributes();
 
         // we must always refer to nodeList[i] since the nodes can be replaced underneath us.
@@ -5532,19 +5527,16 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                                       null, [], [], previousCompileContext)
             : null;
 
-        if (nodeLinkFn && nodeLinkFn.scope) {
-          safeAddClass(jqLite(nodeList[i]), 'ng-scope');
-        }
-
         childLinkFn = (nodeLinkFn && nodeLinkFn.terminal ||
-                      !(childNodes = nodeList[i].childNodes) ||
-                      !childNodes.length)
+                      !nodeList[i].childNodes ||
+                      !nodeList[i].childNodes.length)
             ? null
-            : compileNodes(childNodes,
+            : compileNodes(nodeList[i].childNodes,
                  nodeLinkFn ? nodeLinkFn.transclude : transcludeFn);
 
-        linkFns.push(nodeLinkFn, childLinkFn);
-        linkFnFound = linkFnFound || nodeLinkFn || childLinkFn;
+        linkFns.push(nodeLinkFn);
+        linkFns.push(childLinkFn);
+        linkFnFound = (linkFnFound || nodeLinkFn || childLinkFn);
         //use the previous context only for the first element in the virtual group
         previousCompileContext = null;
       }
@@ -5556,10 +5548,9 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         var nodeLinkFn, childLinkFn, node, $node, childScope, childTranscludeFn, i, ii, n;
 
         // copy nodeList so that linking doesn't break due to live list updates.
-        var nodeListLength = nodeList.length,
-            stableNodeList = new Array(nodeListLength);
-        for (i = 0; i < nodeListLength; i++) {
-          stableNodeList[i] = nodeList[i];
+        var stableNodeList = [];
+        for (i = 0, ii = nodeList.length; i < ii; i++) {
+          stableNodeList.push(nodeList[i]);
         }
 
         for(i = 0, n = 0, ii = linkFns.length; i < ii; n++) {
@@ -5572,6 +5563,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             if (nodeLinkFn.scope) {
               childScope = scope.$new();
               $node.data('$scope', childScope);
+              safeAddClass($node, 'ng-scope');
             } else {
               childScope = scope;
             }
@@ -8259,88 +8251,6 @@ function $IntervalProvider() {
       * @param {boolean=} [invokeApply=true] If set to `false` skips model dirty checking, otherwise
       *   will invoke `fn` within the {@link ng.$rootScope.Scope#methods_$apply $apply} block.
       * @returns {promise} A promise which will be notified on each iteration.
-      *
-      * @example
-      <doc:example module="time">
-        <doc:source>
-          <script>
-            function Ctrl2($scope,$interval) {
-              $scope.format = 'M/d/yy h:mm:ss a';
-              $scope.blood_1 = 100;
-              $scope.blood_2 = 120;
-
-              var stop;
-              $scope.fight = function() {
-                // Don't start a new fight if we are already fighting
-                if ( angular.isDefined(stop) ) return;
-
-                stop = $interval(function() {
-                  if ($scope.blood_1 > 0 && $scope.blood_2 > 0) {
-                      $scope.blood_1 = $scope.blood_1 - 3;
-                      $scope.blood_2 = $scope.blood_2 - 4;
-                  } else {
-                      $interval.cancel(stop);
-                  }
-                }, 100);
-              };
-
-              $scope.stopFight = function() {
-                $interval.cancel(stop);
-                stop = undefined;
-              };
-
-              $scope.resetFight = function() {
-                $scope.blood_1 = 100;
-                $scope.blood_2 = 120;
-              }
-            }
-
-            angular.module('time', [])
-              // Register the 'myCurrentTime' directive factory method.
-              // We inject $interval and dateFilter service since the factory method is DI.
-              .directive('myCurrentTime', function($interval, dateFilter) {
-                // return the directive link function. (compile function not needed)
-                return function(scope, element, attrs) {
-                  var format,  // date format
-                  stopTime; // so that we can cancel the time updates
-
-                  // used to update the UI
-                  function updateTime() {
-                    element.text(dateFilter(new Date(), format));
-                  }
-
-                  // watch the expression, and update the UI on change.
-                  scope.$watch(attrs.myCurrentTime, function(value) {
-                    format = value;
-                    updateTime();
-                  });
-
-                  stopTime = $interval(updateTime, 1000);
-
-                  // listen on DOM destroy (removal) event, and cancel the next UI update
-                  // to prevent updating time ofter the DOM element was removed.
-                  element.bind('$destroy', function() {
-                    $interval.cancel(stopTime);
-                  });
-                }
-              });
-          </script>
-
-          <div>
-            <div ng-controller="Ctrl2">
-              Date format: <input ng-model="format"> <hr/>
-              Current time is: <span my-current-time="format"></span>
-              <hr/>
-              Blood 1 : <font color='red'>{{blood_1}}</font>
-              Blood 2 : <font color='red'>{{blood_2}}</font>
-              <button type="button" data-ng-click="fight()">Fight</button>
-              <button type="button" data-ng-click="stopFight()">StopFight</button>
-              <button type="button" data-ng-click="resetFight()">resetFight</button>
-            </div>
-          </div>
-
-        </doc:source>
-      </doc:example>
       */
     function interval(fn, delay, count, invokeApply) {
       var setInterval = $window.setInterval,
@@ -10219,19 +10129,19 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
       ? function cspSafeGetter(scope, locals) {
           var pathVal = (locals && locals.hasOwnProperty(key0)) ? locals : scope;
 
-          if (pathVal == null) return pathVal;
+          if (pathVal === null || pathVal === undefined) return pathVal;
           pathVal = pathVal[key0];
 
-          if (!key1 || pathVal == null) return pathVal;
+          if (!key1 || pathVal === null || pathVal === undefined) return pathVal;
           pathVal = pathVal[key1];
 
-          if (!key2 || pathVal == null) return pathVal;
+          if (!key2 || pathVal === null || pathVal === undefined) return pathVal;
           pathVal = pathVal[key2];
 
-          if (!key3 || pathVal == null) return pathVal;
+          if (!key3 || pathVal === null || pathVal === undefined) return pathVal;
           pathVal = pathVal[key3];
 
-          if (!key4 || pathVal == null) return pathVal;
+          if (!key4 || pathVal === null || pathVal === undefined) return pathVal;
           pathVal = pathVal[key4];
 
           return pathVal;
@@ -10240,7 +10150,7 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
           var pathVal = (locals && locals.hasOwnProperty(key0)) ? locals : scope,
               promise;
 
-          if (pathVal == null) return pathVal;
+          if (pathVal === null || pathVal === undefined) return pathVal;
 
           pathVal = pathVal[key0];
           if (pathVal && pathVal.then) {
@@ -10252,7 +10162,7 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
             }
             pathVal = pathVal.$$v;
           }
-          if (!key1 || pathVal == null) return pathVal;
+          if (!key1 || pathVal === null || pathVal === undefined) return pathVal;
 
           pathVal = pathVal[key1];
           if (pathVal && pathVal.then) {
@@ -10264,7 +10174,7 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
             }
             pathVal = pathVal.$$v;
           }
-          if (!key2 || pathVal == null) return pathVal;
+          if (!key2 || pathVal === null || pathVal === undefined) return pathVal;
 
           pathVal = pathVal[key2];
           if (pathVal && pathVal.then) {
@@ -10276,7 +10186,7 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
             }
             pathVal = pathVal.$$v;
           }
-          if (!key3 || pathVal == null) return pathVal;
+          if (!key3 || pathVal === null || pathVal === undefined) return pathVal;
 
           pathVal = pathVal[key3];
           if (pathVal && pathVal.then) {
@@ -10288,7 +10198,7 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
             }
             pathVal = pathVal.$$v;
           }
-          if (!key4 || pathVal == null) return pathVal;
+          if (!key4 || pathVal === null || pathVal === undefined) return pathVal;
 
           pathVal = pathVal[key4];
           if (pathVal && pathVal.then) {
@@ -10304,27 +10214,6 @@ function cspSafeGetterFn(key0, key1, key2, key3, key4, fullExp, options) {
         };
 }
 
-function simpleGetterFn1(key0, fullExp) {
-  ensureSafeMemberName(key0, fullExp);
-
-  return function simpleGetterFn1(scope, locals) {
-    if (scope == null) return scope;
-    return ((locals && locals.hasOwnProperty(key0)) ? locals : scope)[key0];
-  };
-}
-
-function simpleGetterFn2(key0, key1, fullExp) {
-  ensureSafeMemberName(key0, fullExp);
-  ensureSafeMemberName(key1, fullExp);
-
-  return function simpleGetterFn2(scope, locals) {
-    if (scope == null) return scope;
-    scope = ((locals && locals.hasOwnProperty(key0)) ? locals : scope)[key0];
-
-    return scope == null ? scope : scope[key1];
-  };
-}
-
 function getterFn(path, options, fullExp) {
   // Check whether the cache has this getter already.
   // We can use hasOwnProperty directly on the cache because we ensure,
@@ -10337,13 +10226,7 @@ function getterFn(path, options, fullExp) {
       pathKeysLength = pathKeys.length,
       fn;
 
-  // When we have only 1 or 2 tokens, use optimized special case closures.
-  // http://jsperf.com/angularjs-parse-getter/6
-  if (!options.unwrapPromises && pathKeysLength === 1) {
-    fn = simpleGetterFn1(pathKeys[0], fullExp);
-  } else if (!options.unwrapPromises && pathKeysLength === 2) {
-    fn = simpleGetterFn2(pathKeys[0], pathKeys[1], fullExp);
-  } else if (options.csp) {
+  if (options.csp) {
     if (pathKeysLength < 6) {
       fn = cspSafeGetterFn(pathKeys[0], pathKeys[1], pathKeys[2], pathKeys[3], pathKeys[4], fullExp,
                           options);
@@ -10361,10 +10244,11 @@ function getterFn(path, options, fullExp) {
       };
     }
   } else {
-    var code = 'var p;\n';
+    var code = 'var l, fn, p;\n';
     forEach(pathKeys, function(key, index) {
       ensureSafeMemberName(key, fullExp);
-      code += 'if(s == null) return s;\n' +
+      code += 'if(s === null || s === undefined) return s;\n' +
+              'l=s;\n' +
               's='+ (index
                       // we simply dereference 's' on any .dot notation
                       ? 's'
@@ -10387,10 +10271,10 @@ function getterFn(path, options, fullExp) {
     /* jshint -W054 */
     var evaledFnGetter = new Function('s', 'k', 'pw', code); // s=scope, k=locals, pw=promiseWarning
     /* jshint +W054 */
-    evaledFnGetter.toString = valueFn(code);
-    fn = options.unwrapPromises ? function(scope, locals) {
+    evaledFnGetter.toString = function() { return code; };
+    fn = function(scope, locals) {
       return evaledFnGetter(scope, locals, promiseWarning);
-    } : evaledFnGetter;
+    };
   }
 
   // Only cache the value if it's not going to mess up the cache object
@@ -13401,7 +13285,6 @@ function $SnifferProvider() {
       vendorPrefix: vendorPrefix,
       transitions : transitions,
       animations : animations,
-      android: android,
       msie : msie,
       msieDocumentMode: documentMode
     };
@@ -13439,6 +13322,93 @@ function $TimeoutProvider() {
       * @returns {Promise} Promise that will be resolved when the timeout is reached. The value this
       *   promise will be resolved with is the return value of the `fn` function.
       * 
+      * @example
+      <doc:example module="time">
+        <doc:source>
+          <script>
+            function Ctrl2($scope,$timeout) {
+              $scope.format = 'M/d/yy h:mm:ss a';
+              $scope.blood_1 = 100;
+              $scope.blood_2 = 120;
+
+              var stop;
+              $scope.fight = function() {
+                stop = $timeout(function() {
+                  if ($scope.blood_1 > 0 && $scope.blood_2 > 0) {
+                      $scope.blood_1 = $scope.blood_1 - 3;
+                      $scope.blood_2 = $scope.blood_2 - 4;
+                      $scope.fight();
+                  } else {
+                      $timeout.cancel(stop);
+                  }
+                }, 100);
+              };
+
+              $scope.stopFight = function() {
+                $timeout.cancel(stop);
+              };
+
+              $scope.resetFight = function() {
+                $scope.blood_1 = 100;
+                $scope.blood_2 = 120;
+              }
+            }
+
+            angular.module('time', [])
+              // Register the 'myCurrentTime' directive factory method.
+              // We inject $timeout and dateFilter service since the factory method is DI.
+              .directive('myCurrentTime', function($timeout, dateFilter) {
+                // return the directive link function. (compile function not needed)
+                return function(scope, element, attrs) {
+                  var format,  // date format
+                  timeoutId; // timeoutId, so that we can cancel the time updates
+
+                  // used to update the UI
+                  function updateTime() {
+                    element.text(dateFilter(new Date(), format));
+                  }
+
+                  // watch the expression, and update the UI on change.
+                  scope.$watch(attrs.myCurrentTime, function(value) {
+                    format = value;
+                    updateTime();
+                  });
+
+                  // schedule update in one second
+                  function updateLater() {
+                    // save the timeoutId for canceling
+                    timeoutId = $timeout(function() {
+                      updateTime(); // update DOM
+                      updateLater(); // schedule another update
+                    }, 1000);
+                  }
+
+                  // listen on DOM destroy (removal) event, and cancel the next UI update
+                  // to prevent updating time ofter the DOM element was removed.
+                  element.bind('$destroy', function() {
+                    $timeout.cancel(timeoutId);
+                  });
+
+                  updateLater(); // kick off the UI update process.
+                }
+              });
+          </script>
+
+          <div>
+            <div ng-controller="Ctrl2">
+              Date format: <input ng-model="format"> <hr/>
+              Current time is: <span my-current-time="format"></span>
+              <hr/>
+              Blood 1 : <font color='red'>{{blood_1}}</font>
+              Blood 2 : <font color='red'>{{blood_2}}</font>
+              <button type="button" data-ng-click="fight()">Fight</button>
+              <button type="button" data-ng-click="stopFight()">StopFight</button>
+              <button type="button" data-ng-click="resetFight()">resetFight</button>
+            </div>
+          </div>
+
+        </doc:source>
+      </doc:example>
       */
     function timeout(fn, delay, invokeApply) {
       var deferred = $q.defer(),
@@ -15886,17 +15856,15 @@ function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   // In composition mode, users are still inputing intermediate text buffer,
   // hold the listener until composition is done.
   // More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
-  if (!$sniffer.android) {
-    var composing = false;
+  var composing = false;
 
-    element.on('compositionstart', function(data) {
-      composing = true;
-    });
+  element.on('compositionstart', function() {
+    composing = true;
+  });
 
-    element.on('compositionend', function() {
-      composing = false;
-    });
-  }
+  element.on('compositionend', function() {
+    composing = false;
+  });
 
   var listener = function() {
     if (composing) return;
@@ -18106,6 +18074,9 @@ forEach(
         padding:10px;
       }
 
+      /&#42;
+        The transition styles can also be placed on the CSS base class above
+      &#42;/
       .animate-if.ng-enter, .animate-if.ng-leave {
         -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
         transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
@@ -18413,7 +18384,7 @@ var ngIncludeFillContentDirective = ['$compile',
  * current scope.
  *
  * <div class="alert alert-error">
- * The only appropriate use of `ngInit` is for aliasing special properties of
+ * The only appropriate use of `ngInit` for aliasing special properties of
  * {@link api/ng.directive:ngRepeat `ngRepeat`}, as seen in the demo below. Besides this case, you
  * should use {@link guide/controller controllers} rather than `ngInit`
  * to initialize values on a scope.
@@ -18912,7 +18883,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
     $$tlb: true,
     link: function($scope, $element, $attr, ctrl, $transclude){
         var expression = $attr.ngRepeat;
-        var match = expression.match(/^\s*(.+)\s+in\s+([\r\n\s\S]*?)\s*(\s+track\s+by\s+(.+)\s*)?$/),
+        var match = expression.match(/^\s*(.+)\s+in\s+(.*?)\s*(\s+track\s+by\s+(.+)\s*)?$/),
           trackByExp, trackByExpGetter, trackByIdExpFn, trackByIdArrayFn, trackByIdObjFn,
           lhs, rhs, valueIdentifier, keyIdentifier,
           hashFnLocals = {$id: hashKey};
@@ -19970,10 +19941,18 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
       selectCtrl.init(ngModelCtrl, nullOption, unknownOption);
 
       // required validator
-      if (multiple) {
-        ngModelCtrl.$isEmpty = function(value) {
-          return !value || value.length === 0;
+      if (multiple && (attr.required || attr.ngRequired)) {
+        var requiredValidator = function(value) {
+          ngModelCtrl.$setValidity('required', !attr.required || (value && value.length));
+          return value;
         };
+
+        ngModelCtrl.$parsers.push(requiredValidator);
+        ngModelCtrl.$formatters.unshift(requiredValidator);
+
+        attr.$observe('required', function() {
+          requiredValidator(ngModelCtrl.$viewValue);
+        });
       }
 
       if (optionsExp) setupAsOptions(scope, element, ngModelCtrl);

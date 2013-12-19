@@ -1,4 +1,1 @@
-angular.module('appModule', [])
-.routes({
-  '/login': 'loginController'
-})
+angular.module('appModule', ['ngRoute'])

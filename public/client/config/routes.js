@@ -24,18 +24,18 @@ angular.module('appModule')
 			})
 		.when('/whereIs',
 			{
-				controller: 'whereIs',
+				controller: 'whereIsController',
 				templateUrl: 'client/views/rider/where.html'
 			})
 		.when('/wait',
 			{
-				controller: 'riderWait',
+				controller: 'riderWaitController',
 				templateUrl: 'client/views/rider/wait.html'
 			})
 		.when('/coming',
 			{
-				controller: 'coming',
+				controller: 'riderComingController',
 				templateUrl: 'client/views/rider/coming.html'
 			})
 		.otherwise({ redirectTo: '/' });
-};
+})
