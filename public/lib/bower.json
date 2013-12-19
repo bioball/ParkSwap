@@ -1,0 +1,16 @@
+{
+  "name": "park-swapper",
+  "version": "0.0.0",
+  "authors": [
+    "Daniel Chao <daniel.h.chao@gmail.com>"
+  ],
+  "description": "Swap parking spots!",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

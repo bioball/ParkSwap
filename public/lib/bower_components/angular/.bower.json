@@ -1,0 +1,16 @@
+{
+  "name": "angular",
+  "version": "1.2.6-build.2005+sha.8f329ff",
+  "main": "./angular.js",
+  "dependencies": {},
+  "homepage": "https://github.com/angular/bower-angular",
+  "_release": "1.2.6-build.2005+sha.8f329ff",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.6-build.2005+sha.8f329ff",
+    "commit": "7ec432cc75131a4a5f7ed6c890db5b6feeebf91d"
+  },
+  "_source": "git://github.com/angular/bower-angular.git",
+  "_target": ">= 1.1.4",
+  "_originalSource": "angular"
+}
