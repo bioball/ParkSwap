@@ -3,7 +3,16 @@
 <head>
   <title>Park Swapper</title>
 </head>
-<body>
+<body ng-app="appModule">
+  <div ng-view="">
+  </div>
   <script src="lib/bower_components/angular/angular.min.js"></script>
+  <script src="client/app/modules/main.js"></script>
+  <script src="client/controllers/loginController.js"></script>
+  <script src="client/controllers/mainController.js"></script>
+  <script src="client/controllers/parkerListController.js"></script>
+  <script src="client/riderComingController.js"></script>
+  <script src="client/riderWaitController.js"></script>
+  <script src="client/riderWhereController.js"></script>
 </body>
 </html>
