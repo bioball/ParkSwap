@@ -1,4 +1,4 @@
-app.module('app')
+angular.module('appModule')
 .controller('loginController', function(){
 
 });
