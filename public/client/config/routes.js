@@ -22,7 +22,7 @@ angular.module('appModule')
 				controller: 'parkerPickUpController',
 				templateUrl: 'client/views/parker/pickUp.html'
 			})
-		.when('/whereIs',
+		.when('/where',
 			{
 				controller: 'whereIsController',
 				templateUrl: 'client/views/rider/where.html'
@@ -37,5 +37,7 @@ angular.module('appModule')
 				controller: 'riderComingController',
 				templateUrl: 'client/views/rider/coming.html'
 			})
-		.otherwise({ redirectTo: '/' });
+		.otherwise({
+			redirectTo: '/'
+		});
 })
