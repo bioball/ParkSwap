@@ -1,5 +1,5 @@
 angular.module('appModule')
-.controller('parkerListController', function($scope, riderFactory){
+.controller('parkerListController', function($scope, parkerServices){
 	$scope.riders = [
 		{ name: "John Smith", profilePhoto: "something.jpg", carLocation: 23294 },
 		{ name: "Bill Smith", profilePhoto: "anotherThing.jpg", carLocation: 23544 },
@@ -8,7 +8,7 @@ angular.module('appModule')
 	];
 
 	$scope.selectRider = function(rider) {
-		riderFactory.rider = rider;
+		parkerServices.setRider(rider);
 	};
 
 });
