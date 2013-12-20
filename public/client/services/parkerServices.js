@@ -1,4 +1,4 @@
-angular.module('AppModule')
+angular.module('appModule')
 .factory('parkerServices', function(){
   return {
     setRider: function(rider){
