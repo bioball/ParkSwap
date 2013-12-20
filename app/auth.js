@@ -9,7 +9,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
     clientID: 550858538345751,
     clientSecret: '07b50d80033a1112837e85c4ff144ff3',
-    callbackURL: 'http://localhost:3000/login'
+    callbackURL: 'http://localhost:3000/loginsuccess'
   },
   function(accessToken, refreshToken, profile, done){
   	debugger
@@ -27,6 +27,7 @@ exports.index = function (req, res) {
 };
 
 exports.loginsuccess = function (req, res) {
+  debugger;
 	console.log(req);
 	console.log(res);
 	res.send("Login success");
