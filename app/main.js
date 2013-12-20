@@ -1,22 +1,40 @@
+
+/**
+ * Module dependencies.
+ */
+
 var express = require('express');
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
+var routes = require('./routes/index');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+// var request-handler = require('request-handler');
+
 var app = express();
 
-passport.use(new FacebookStrategy({
-    clientID: 550858538345751,
-    clientSecret: '07b50d80033a1112837e85c4ff144ff3',
-    callbackURL: 'http://0.0.0.0:4567/auth/facebook/callback'
-  },
-  function(accessToken, refreshToken, profile, done){
-    console.log('accessToken is ' + accessToken);
-    console.log('refreshToken is ' + refreshToken);
-    console.log('profile is ' + profile);
-    done()
-  }
-));
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('auth/facebook', passport.authenticate('facebook'));
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
 
-app.listen(4567);
-console.log('listening on part 4567');
+app.get('/login', routes.login);
+app.get('/loginsuccess', routes.loginsuccess);
+app.get('/loginfailure', routes.loginfailure);
+app.get('/users', user.list);
+
+console.log(app.routes);
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
