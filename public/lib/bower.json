@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "homepage": "https://github.com/bioball/Park-Swapper",
   "authors": [
-    "Daniel Chao <daniel.h.chao@gmail.com>"
+    "Daniel Chao <daniel.h.chao@gmail.com>",
+    "Joseph Toney <jdtoney@gmail.com>",
+    "Yong-Soo Chung <yongsoochung@gmail.com>"
   ],
-  "license": "MIT",
+  "license": "",
   "ignore": [
     "**/.*",
     "node_modules",
