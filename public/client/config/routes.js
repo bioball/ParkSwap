@@ -12,27 +12,27 @@ angular.module('appModule')
 				controller: 'loginController',
 				templateUrl: 'client/views/login.html'
 			})
-		.when('/list',
+		.when('/parker/list',
 			{
 				controller: 'parkerListController',
 				templateUrl: 'client/views/parker/list.html'
 			})
-		.when('/pickUpRider',
+		.when('/parker/pickUpRider',
 			{
 				controller: 'parkerPickUpController',
 				templateUrl: 'client/views/parker/pickUp.html'
 			})
-		.when('/where',
+		.when('/rider/where',
 			{
 				controller: 'riderWhereController',
 				templateUrl: 'client/views/rider/where.html'
 			})
-		.when('/wait',
+		.when('/rider/wait',
 			{
 				controller: 'riderWaitController',
 				templateUrl: 'client/views/rider/wait.html'
 			})
-		.when('/coming',
+		.when('/rider/coming',
 			{
 				controller: 'riderComingController',
 				templateUrl: 'client/views/rider/coming.html'
