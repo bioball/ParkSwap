@@ -1,8 +1,8 @@
 <div class="container">
-  <ul ng-if="riders.length">
+  <ul>
   	<li ng-repeat="rider in riders | orderBy: 'carLocation'" ng-click="selectRider(rider)">{{ rider.profilePhoto }} - {{ rider.name }}: {{ rider.carLocation }}</li>
   </ul>
 
-  <div ng-if="pending">Searching...</div>
-  <div ng-if="noRiders">No riders available!  <button ng-click="pingServer()">Return</button></div>
+  <div ng-if="pending">Searching...</div> <!-- should have cancel button here -->
+  <div ng-if="noRiders">No riders available!  <button ng-click="pingServer()">Retry</button></div>
 </div>
