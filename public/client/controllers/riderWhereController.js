@@ -1,5 +1,5 @@
 angular.module('appModule')
-.controller('riderWhereController', function($scope, $http, geocodeServices, $location){
+.controller('riderWhereController', function($scope, $http, $location, geocodeServices){
   var riderLocation;
   navigator.geolocation.getCurrentPosition(function(position){
     riderLocation = {
