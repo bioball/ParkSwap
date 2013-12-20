@@ -1,5 +1,8 @@
 <div class="container">
-  <ul>
+  <ul ng-if="riders.length">
   	<li ng-repeat="rider in riders | orderBy: 'carLocation'" ng-click="selectRider(rider)">{{ rider.profilePhoto }} - {{ rider.name }}: {{ rider.carLocation }}</li>
   </ul>
+
+  <div ng-if="pending">Searching...</div>
+  <div ng-if="noRiders">No riders available!  <button ng-click="pingServer()">Return</button></div>
 </div>
