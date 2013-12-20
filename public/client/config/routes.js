@@ -24,7 +24,7 @@ angular.module('appModule')
 			})
 		.when('/where',
 			{
-				controller: 'whereIsController',
+				controller: 'riderWhereController',
 				templateUrl: 'client/views/rider/where.html'
 			})
 		.when('/wait',

@@ -21,6 +21,9 @@ angular.module('appModule')
     },
     getParker: function(){
       return this.parker;
+    },
+    callParker: function(){
+      console.log("calling this parker");
     }
   }
 })

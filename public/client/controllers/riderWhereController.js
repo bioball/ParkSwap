@@ -2,27 +2,35 @@ angular.module('appModule')
 .controller('riderWhereController', function($scope, $http, geocodeServices, $location){
   var riderLocation;
   navigator.geolocation.getCurrentPosition(function(position){
-    riderLocation = [position.coords.latitude, position.coords.longitude];
+    riderLocation = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
   });
   $scope.submitRider = function(){
-    carLocation = geocodeServices.getCoords($scope.carLocation)
-    .then(function(){
+    geocodeServices.getCoords($scope.carLocation)
+    .then(function(carLocation){
+      console.log(carLocation);
       $http({
         method: "POST",
         url: "/riders/new",
         data: {
-          uid: $rootScope.currentUser.UID,
+          uid: "uid",
           riderLocation: riderLocation,
           carLocation: carLocation
         }
       }).success(function(){
-        $location.path('/rider/wait');
-      }).failure(function(){
-        $scope.serverError = true
+        $location.path('/wait');
+      }).error(function(err){
+        $scope.err = {
+          reason: err
+        }
       })
     },
     function(){
-      $scope.badLocation = true;
+      $scope.err = {
+        reason: "bad location"
+      }
     });
   }
 });
