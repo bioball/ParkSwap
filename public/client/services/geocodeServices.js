@@ -1,4 +1,4 @@
-angular.module('AppModule')
+angular.module('appModule')
 .factory('geocodeServices', function($q, $http){
   return {
     getCoords: function(address){
@@ -11,11 +11,15 @@ angular.module('AppModule')
           sensor: true
         }
       }).success(function(data){
-        d.resolve(data.results[0].geometry.location);
+        if(data.results.length){
+          deferred.resolve(data.results[0].geometry.location);
+        } else {
+          deferred.reject("bad location");
+        }
       }).error(function(err){
-        d.reject(err);
+        deferred.reject(err);
       })
-      return d.promise;
+      return deferred.promise;
     },
     getAddress: function(lat, lng){
       var deferred = $q.defer();
@@ -27,10 +31,15 @@ angular.module('AppModule')
           sensor: true
         }
       }).success(function(data){
-        d.resolve(data.results[0].formatted_address);
+        if(data.results.length){
+          deferred.resolve(data.results[0].formatted_address);
+        } else {
+          deferred.reject("bad location");
+        }
       }).error(function(err){
-        d.reject(err);
-      })
+        deferred.reject(err);
+      });
+      return deferred.promise;
     }
   }
 });
