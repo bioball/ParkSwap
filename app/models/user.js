@@ -1,4 +1,4 @@
-var DB = require("./init.js");
+var DB = require("../db/init.js");
 
 User = DB.Model.extend({
   tableName: 'users',
@@ -28,10 +28,15 @@ module.exports.addNoPhoneUser = function(profile) {
   noPhoneUsers[profile.id] = profile
 };
 
+
 module.exports.add = function(uid, phone) {
   saveToDB(noPhoneUser[uid], phone);
   delete noPhoneUser[uid];
 };
+
+module.exports.getNoPhoneUser = function(uid){
+  return noPhoneUsers[uid];
+}
 
 module.exports.find = function(uid) {
   return new User({'uid': uid}).fetch();
