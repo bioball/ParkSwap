@@ -23,7 +23,6 @@ module.exports.findRiders = function(req, res) {
 }
 
 module.exports.pickUpRider = function(req, res) {
-  // twilio integration -> send text to rider;
 
   var body = "";
 
@@ -33,6 +32,14 @@ module.exports.pickUpRider = function(req, res) {
 
   req.on('end', function() {
     var rider = JSON.parse(body);
-    Rider.destroy(rider.uid);
+
+    User.find(rider.uid).then(function(profile) {
+      var phone = profile.phone;
+
+      Twilio.sendMessage(phone, req.user.name);
+
+      Rider.destroy(rider.uid);
+      res.end();
+    });
   });
 }
