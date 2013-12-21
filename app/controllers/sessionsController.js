@@ -2,6 +2,17 @@ var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 // var User = require('../models/usersModel');
 
+passport.serializeUser(function(user, done) {
+  done(null, user.uid);
+});
+
+passport.deserializeUser(function(id, done) {
+  done(null, {
+    uid: 9385193,
+    name: 'Bobby Bob Bob'
+  });
+});
+
 
 passport.use(new FacebookStrategy({
     clientID: 550858538345751,
@@ -9,50 +20,29 @@ passport.use(new FacebookStrategy({
     callbackURL: 'http://localhost:3000/loginsuccess'
   },
   function(accessToken, refreshToken, profile, done){
-    done(null, profile);
+      // User.addNoPhoneUser(profile);
+      var user = {
+        uid: profile.id,
+        profile: profile._json
+      }
+
+    done(null, user);
   }
 ));
 
 exports.login = passport.authenticate('facebook'); 
 
 exports.loginsuccess = passport.authenticate('facebook', {
-  successRedirect: '/bobby',
+  successRedirect: '/getphonenumber',
   failureRedirect: '/login'
 });
 
-exports.bobby = function(req, res){
-  debugger;
-}
+exports.getPhoneNumber = function(req, res){
+  res.cookie('uid', req.user.uid)
+  res.writeHead(302, {location: 'http://localhost:3000/#/getphonenumber'});
+  res.end();
+};
 
-
-
-// function (req, res) {
-//   //does User exist? if not, redirect user to Angular page to get phone number
-//   // res.writeHead({location: '#/getphonenumber'})
-
-//   // debugger;
-//   var body = "";
-//   req.client.ondata(function(data){
-//     body += data
-//   })
-//   req.client.onend(function(){
-//     debugger;
-//   })
-//   // if(User.exist(id)){
-//   //   createSession(id);
-//   //   res.writeHead({location: '/'});
-//   //   res.end();
-//   // } else {
-//   //   res.writeHead({location: '#/getphonenumber'});
-//   //   res.end();
-//   // }
-
-//   // else, create Session for this user and redirect to home page
-//     // res.writeHead({location: '#/'})
-//   console.log(req);
-//   console.log(res);
-//   res.send("Login success");
-// };
 
 exports.loginfailure = function(req, res) {
   res.send("Login Failure");

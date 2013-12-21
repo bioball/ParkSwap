@@ -16,7 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.5",
-    "angular-route": "~1.2.5"
+    "angular": "~1.2.4",
+    "angular-route": "~1.2.4",
+    "angular-cookie": "*"
   }
 }

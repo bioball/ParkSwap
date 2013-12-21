@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 
 require('./config/config.js')(app);
-require('./routes/routes.js')(app);
+require('./config/routes.js')(app);
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // development only

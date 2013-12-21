@@ -8,5 +8,8 @@ module.exports = function(app){
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(express.methodOverride());
+  app.use(express.cookieParser());
+  app.use(express.session({ secret: 'keyboardcat' }));
   app.use(passport.initialize());
+  app.use(passport.session());
 }
