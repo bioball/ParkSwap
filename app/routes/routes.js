@@ -5,5 +5,6 @@ module.exports = function(app){
   app.get('/login', sessionsController.login);
   app.get('/loginsuccess', sessionsController.loginsuccess);
   app.get('/loginfailure', sessionsController.loginfailure);
+  app.get('/bobby', sessionsController.bobby);
   // app.get('/users', usersController.list);
 }

@@ -9,7 +9,6 @@ passport.use(new FacebookStrategy({
     callbackURL: 'http://localhost:3000/loginsuccess'
   },
   function(accessToken, refreshToken, profile, done){
-    debugger;
     done(null, profile);
   }
 ));
@@ -17,9 +16,14 @@ passport.use(new FacebookStrategy({
 exports.login = passport.authenticate('facebook'); 
 
 exports.loginsuccess = passport.authenticate('facebook', {
-  successRedirect: '/',
+  successRedirect: '/bobby',
   failureRedirect: '/login'
-})
+});
+
+exports.bobby = function(req, res){
+  debugger;
+}
+
 
 
 // function (req, res) {
