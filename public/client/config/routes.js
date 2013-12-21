@@ -33,7 +33,7 @@ angular.module('appModule')
 	})
 	.when('/getphonenumber', {
 		controller: 'getPhoneController',
-		templateUrl: 'client/views/goodbye.html'
+		templateUrl: 'client/views/getphone.html'
 	})
 	.otherwise({
 		redirectTo: '/'

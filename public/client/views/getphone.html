@@ -1,0 +1,6 @@
+<h1>Please enter your phone number to complete registration: </h1>
+<form ng-submit="sendPhoneNumToServer()">
+  <input ng-model="userPhoneNum" type="text"></input>
+  <input type="button" value="submit"></input>
+</form>
+<div ng-if="err">{{ err.reason }}</div>
