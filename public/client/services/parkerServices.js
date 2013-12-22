@@ -11,7 +11,7 @@ angular.module('appModule')
       var deferred = $q.defer();
       $http({
         method: 'GET',
-        url: 'SOMETHING',
+        url: 'parkers/find',
         params: {
           location: this.location
         }
