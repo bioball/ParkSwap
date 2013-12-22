@@ -2,7 +2,7 @@ var passport = require('passport');
 var User     = require('../models/user');
 
 // set up session serialization, deserialization, and facebook oauth
-require('../helpers/sessionsHelpers.js')(passport);
+require('../config/sessions.js')(passport);
 
 exports.login = passport.authenticate('facebook'); 
 
@@ -12,8 +12,8 @@ exports.loginsuccess = passport.authenticate('facebook', {
 });
 
 exports.getPhoneNumber = function(req, res){
-  if(!req.user.phone){
-    res.cookie('uid', req.user.id)
+  if(!req.user.attributes.phone){
+    res.cookie('uid', req.user.attributes.uid)
     res.writeHead(302, {location: 'http://localhost:3000/#/getphonenumber'});
     res.end();
   } else {

@@ -1,9 +1,9 @@
-var User             = require('../models/user.js');
+var User = require('../models/user.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(passport){
   passport.serializeUser(function(user, done) {
-    done(null, user.uid);
+    done(null, user.attributes.uid);
   });
 
   passport.deserializeUser(function(id, done) {
@@ -32,8 +32,10 @@ module.exports = function(passport){
       } else {
         User.addNoPhoneUser(profile);
         user = {
-          uid: profile.id,
-          profile: profile
+          attributes: {
+            uid: profile.id,
+            profile: profile
+          }
         };
         done(null, user);
       }
