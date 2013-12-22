@@ -22,22 +22,21 @@ module.exports = function(passport){
   });
 
   passport.use(new FacebookStrategy({
-      clientID: 550858538345751,
-      clientSecret: '07b50d80033a1112837e85c4ff144ff3',
-      callbackURL: 'http://localhost:3000/loginsuccess'
-    }, function(accessToken, refreshToken, profile, done){
-      User.find(profile.id).then(function(user){
-        if(user){
-          done(null, user);
-        } else {
-          User.addNoPhoneUser(profile);
-          user = {
-            uid: profile.id,
-            profile: profile
-          };
-          done(null, user);
-        }
-      })
-    }
-  ));
+    clientID: 550858538345751,
+    clientSecret: '07b50d80033a1112837e85c4ff144ff3',
+    callbackURL: 'http://localhost:3000/loginsuccess'
+  }, function(accessToken, refreshToken, profile, done){
+    User.find(profile.id).then(function(user){
+      if(user){
+        done(null, user);
+      } else {
+        User.addNoPhoneUser(profile);
+        user = {
+          uid: profile.id,
+          profile: profile
+        };
+        done(null, user);
+      }
+    })
+  }));
 };
