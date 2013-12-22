@@ -3,26 +3,15 @@ var Rider = require("../models/rider.js");
 
 
 module.exports.createNewRider = function(req, res) {
-  var body = "";
-  var rider = {};
+  var rider = req.body;
 
-  req.on('data', function(data){
-    body += data;
+  Rider.add({
+    uid: rider.uid, 
+    carLoc: rider.carLoc, 
+    riderLoc: rider.carLoc
   });
-
-  req.on('end', function(data) {
-    rider = JSON.parse(body)
-  });
-
-  Rider.add({uid: rider.uid, 
-            carLoc:rider.carLoc, 
-            riderLoc:rider.carLoc
-          });
 }
 
 module.exports.cancel = function(uid) {
   Rider.destroy(uid);
 };
-
-
-

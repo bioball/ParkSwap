@@ -2,10 +2,6 @@ var DB = require("../db/init.js");
 
 User = DB.Model.extend({
   tableName: 'users',
-
-  initialize: function(username) {
-    console.log("User" + username + "entry has been created in the database...");
-  }
 });
 
 var noPhoneUsers = {};
@@ -28,10 +24,9 @@ module.exports.addNoPhoneUser = function(profile) {
   noPhoneUsers[profile.id] = profile
 };
 
-
 module.exports.add = function(uid, phone) {
-  saveToDB(noPhoneUser[uid], phone);
-  delete noPhoneUser[uid];
+  saveToDB(noPhoneUsers[uid], phone);
+  delete noPhoneUsera[uid];
 };
 
 module.exports.getNoPhoneUser = function(uid){
