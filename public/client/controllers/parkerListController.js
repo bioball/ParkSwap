@@ -1,38 +1,34 @@
 angular.module('appModule')
-.controller('parkerListController', function($scope, $location, $interval, parkerServices){
+.controller('parkerListController', function($scope, $location, $interval, geocodeServices, parkerServices){
 
-  var interval, count = 0;
+  var interval, position, count = 0;
 
-  // $scope.riders = [{name: "john"}]
+  navigator.geolocation.getCurrentPosition(function(position){
+    parkerLocation = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    $scope.pingServer();
+  });
 
   var repeatFn = function() {
     $scope.noRiders = false;
     $scope.pending = true;
     count++;
-    if (count === 10) { stop(); }
-    parkerServices.getRiderList().then(function(data){
-      if (!data.length || count === 300) {
-        stop();
-        parkerServices.setRiderList(data);
-      }
+    parkerServices.getRiderList(parkerLocation).then(function(data){
+      $scope.riders = data;
+      if (count === 300) { stop(); }
     })
-  };
-  
+  }
+
   var stop = function() {
     $interval.cancel(interval);
     $scope.pending = false;
 
-    if (!$scope.riders.length) {
+    if (!$scope.riders) {
       $scope.noRiders = true;
     }
   };
-
-	$scope.riders = parkerServices.getRiderList();
-
-	$scope.selectRider = function(rider) {
-		parkerServices.setRider(rider);
-		$location.path('/parker/pickUpRider');
-	};
 
   $scope.pingServer = function() {
     count = 0;
@@ -40,6 +36,9 @@ angular.module('appModule')
     interval = $interval(repeatFn, 2000);
   };
 
-	$scope.pingServer();
 
+  $scope.selectRider = function(rider) {
+    parkerServices.pickRider(rider);
+    $location.path('/parker/pickUpRider');
+  };
 });

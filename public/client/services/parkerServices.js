@@ -1,22 +1,23 @@
 angular.module('appModule')
 .factory('parkerServices', function($q, $http){
   return {
-    setRider: function(rider){
+    pickRider: function(rider){
       this.rider = rider;
     },
     getRider: function() {
       return this.rider;
     },
-    getRiderList: function() {
+    getRiderList: function(location) {
       var deferred = $q.defer();
       $http({
         method: 'GET',
-        url: 'SOMETHING',
+        url: 'parker/find',
         params: {
-          location: this.location
+          lat: location.lat,
+          lng: location.lng
         }
       }).success(function(data) {
-        if(data.results.length) {
+        if(data.results && data.results.length) {
           deferred.resolve(data);
         } else {
           deferred.reject('No one is looking for a ride right now!');

@@ -11,6 +11,7 @@ angular.module('appModule')
   			phone: $scope.userPhoneNum
   		}
   	}).success(function() {
+      $cookieStore.remove('uid');
   		$location.path('/');
   	}).error(function(err) {
   	  console.log('failed to post to server');
