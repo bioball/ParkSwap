@@ -9,4 +9,3 @@ exports.sendMessage = function(req, res){
     if (err) { throw err };
   });
 }
-
