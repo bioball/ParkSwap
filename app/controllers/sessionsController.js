@@ -1,8 +1,8 @@
 var passport = require('passport');
-var user     = require('../models/user');
+var User     = require('../models/user');
 
 // set up session serialization, deserialization, and facebook oauth
-require('../helpers/sessionsHelpers.js')(passport);
+require('../config/sessions.js')(passport);
 
 exports.login = passport.authenticate('facebook'); 
 
@@ -12,9 +12,8 @@ exports.loginsuccess = passport.authenticate('facebook', {
 });
 
 exports.getPhoneNumber = function(req, res){
-  if(!req.user.phone){
-    debugger;
-    res.cookie('uid', req.user.uid)
+  if(!req.user.attributes.phone){
+    res.cookie('uid', req.user.attributes.uid)
     res.writeHead(302, {location: 'http://localhost:3000/#/getphonenumber'});
     res.end();
   } else {
@@ -28,14 +27,7 @@ exports.loginfailure = function(req, res) {
 };
 
 exports.signUp = function(req, res){
-  var body = "";
-  req.on('data', function(data){
-    body += data;
-  });
-  req.on('end', function(){
-    var newUser = JSON.parse(body);
-    user.add(newUser.uid, newUser.phone);
-  });
+  User.add(req.body.uid, req.body.phone);
   res.writeHead(200);
   res.end();
 }

@@ -1,11 +1,10 @@
 angular.module('appModule')
-.controller('getPhoneController', function($scope, $http, $cookieStore){
+.controller('getPhoneController', function($scope, $http, $location, $cookieStore){
 
   $scope.sendPhoneNumToServer = function() {
-  	console.log('testing...');
   	$http({
   		method: "POST",
-  		url: "/signin",
+  		url: "/signup",
   		data: {
         uid: $cookieStore.get('uid'),
   			phone: $scope.userPhoneNum

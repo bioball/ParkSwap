@@ -3,11 +3,10 @@
 var riderList = {};
 
 modules.exports.add = function(rider) {
-  riderList[rider.uid] = 
-              {
-                carLoc: rider.carLoc, 
-                riderLoc: rider.riderLoc;
-              };
+  riderList[rider.uid] = {
+    carLoc: rider.carLoc, 
+    riderLoc: rider.riderLoc;
+  };
 };
 
 modules.exports.find  = function(parkerLoc, searchRadius) {
@@ -19,8 +18,3 @@ modules.exports.find  = function(parkerLoc, searchRadius) {
 modules.exports.destroy = function(uid) {
   delete riderList[uid];
 };
-
-
-
-
-
