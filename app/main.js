@@ -1,15 +1,15 @@
 var express = require('express');
-var http = require('http');
-var app = express();
+var app     = express();
+var path    = require('path');
 
 require('./config/config.js')(app);
 require('./config/routes.js')(app);
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // development only
-if (app.get('env') === 'development') {
+if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(app.get('port'));
+console.log('Server is listening on port ' + app.get('port'));

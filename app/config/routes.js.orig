@@ -1,16 +1,25 @@
 var express            = require('express');
 var path               = require('path');
 var sessionsController = require('../controllers/sessionsController.js');
+<<<<<<< HEAD
+var express = require('express');
+var path = require('path');
+=======
 var parkerController   = require('../controllers/parkerController.js');
 var riderController    = require('../controllers/riderController.js');
+>>>>>>> auth
 
 module.exports = function(app){
   app.get('/login',          sessionsController.login);
   app.get('/loginsuccess',   sessionsController.loginsuccess);
   app.get('/loginfailure',   sessionsController.loginfailure);
   app.get('/getphonenumber', sessionsController.getPhoneNumber);
+<<<<<<< HEAD
+  app.post('/signup', sessionsController.signUp)
+=======
   app.post('/signup',        sessionsController.signUp);
   app.get('/parker/find',    parkerController.findRiders);
   app.post('/rider/new',     riderController.new);
+>>>>>>> auth
   app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 }

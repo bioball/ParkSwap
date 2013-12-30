@@ -1,14 +1,11 @@
-// New Rider
 var Rider = require("../models/rider.js");
 
-
-module.exports.createNewRider = function(req, res) {
-  var rider = req.body;
-
+module.exports.new = function(req, res) {
+  var rider = req.user;
   Rider.add({
-    uid: rider.uid, 
-    carLoc: rider.carLoc, 
-    riderLoc: rider.carLoc
+    uid: rider.get('uid'),
+    carLoc: req.body.carLocation, 
+    riderLoc: req.body.riderLocation
   });
 }
 

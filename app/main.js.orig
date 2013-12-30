@@ -1,0 +1,25 @@
+var express = require('express');
+<<<<<<< HEAD
+var http = require('http');
+var app = express();
+=======
+var app     = express();
+var path    = require('path');
+>>>>>>> auth
+
+require('./config/config.js')(app);
+require('./config/routes.js')(app);
+
+// development only
+if (app.get('env') === 'development') {
+  app.use(express.errorHandler());
+}
+
+<<<<<<< HEAD
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+=======
+app.listen(app.get('port'));
+console.log('Server is listening on port ' + app.get('port'));
+>>>>>>> auth

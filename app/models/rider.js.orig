@@ -2,6 +2,16 @@
 
 var riderList = {};
 
+<<<<<<< HEAD
+modules.exports.add = function(rider) {
+  riderList[rider.uid] = {
+    carLoc: rider.carLoc, 
+    riderLoc: rider.riderLoc;
+  };
+};
+
+modules.exports.find  = function(parkerLoc, searchRadius) {
+=======
 module.exports.add = function(rider) {
   riderList[rider.uid] = {
     carLoc: rider.carLoc, 
@@ -10,11 +20,16 @@ module.exports.add = function(rider) {
 };
 
 module.exports.find  = function(parkerLoc, searchRadius) {
+>>>>>>> auth
 // Use google distance API
 
 //return a list of riders, an array
 };
 
+<<<<<<< HEAD
+modules.exports.destroy = function(uid) {
+=======
 module.exports.destroy = function(uid) {
+>>>>>>> auth
   delete riderList[uid];
 };

@@ -10,12 +10,10 @@ angular.module('appModule')
   $scope.submitRider = function(){
     geocodeServices.getCoords($scope.carLocation)
     .then(function(carLocation){
-      console.log(carLocation);
       $http({
         method: "POST",
-        url: "/riders/new",
+        url: "/rider/new",
         data: {
-          uid: "uid",
           riderLocation: riderLocation,
           carLocation: carLocation
         }
