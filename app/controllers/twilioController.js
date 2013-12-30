@@ -4,16 +4,16 @@ module.exports.sendMessage = function(riderNum, name){
     client.sendMessage({
 
       to: riderNum, // replace with number of rider
-	    from: '+14156609491', // our twilio number (trial number)
-	    body: name + ' is coming now to give you a ride in exchange for your parking spot!' // message
+      from: '+14156609491', // our twilio number (trial number)
+      body: name + ' is coming now to give you a ride in exchange for your parking spot!' // message
 
-	}, function(err, responseData) { //this function is executed when a response is received from Twilio
+  }, function(err, responseData) { //this function is executed when a response is received from Twilio
 
-	    if (err) { throw err }
+      if (err) { throw err }
 
-	    else {
-	      console.log(responseData.from);
-	      console.log(responseData.body);
-	    }
-	});
+      else {
+        console.log(responseData.from);
+        console.log(responseData.body);
+      }
+  });
 }

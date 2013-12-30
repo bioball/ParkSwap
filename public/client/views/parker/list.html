@@ -1,6 +1,6 @@
 <div class="container">
   <ul>
-  	<li ng-repeat="rider in riders | orderBy: 'carLocation'" ng-click="selectRider(rider)">{{ rider.profilePhoto }} - {{ rider.name }}: {{ rider.carLocation }}</li>
+    <li ng-repeat="rider in riders | orderBy: 'carLocation'" ng-click="selectRider(rider)">{{ rider.profilePhoto }} - {{ rider.name }}: {{ rider.carLocation }}</li>
   </ul>
 
   <div ng-if="pending">Searching...</div> <!-- should have cancel button here -->
