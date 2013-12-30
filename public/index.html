@@ -6,13 +6,18 @@
 <body ng-app="appModule">
   <div ng-view="">
   </div>
+
+  <!-- Libraries -->
   <script src="lib/bower_components/angular/angular.min.js"></script>
   <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
   <script src="lib/angular-cookie.js"></script>
 
+  <!-- Main module, configs -->
   <script src="client/modules/main.js"></script>
   <script src="client/config/routes.js"></script>
+  <script src="client/config/sessions.js"></script>
 
+  <!-- Controllers -->
   <script src="client/controllers/parkerListController.js"></script>
   <script src="client/controllers/parkerPickUpController.js"></script>
   <script src="client/controllers/riderComingController.js"></script>
@@ -20,8 +25,10 @@
   <script src="client/controllers/riderWhereController.js"></script>
   <script src="client/controllers/getPhoneController.js"></script>
 
+  <!-- Services -->
   <script src="client/services/geocodeServices.js"></script>
   <script src="client/services/parkerServices.js"></script>
   <script src="client/services/riderServices.js"></script>
+
 </body>
 </html>

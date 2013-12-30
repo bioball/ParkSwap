@@ -1,5 +1,7 @@
-var express = require('express');
-var passport = require('passport');
+var express            = require('express');
+var passport           = require('passport');
+var sessionsController = require('../controllers/sessionsController');
+var path               = require('path');
 
 module.exports = function(app){
   app.set('port', process.env.PORT || 3000);
@@ -12,4 +14,6 @@ module.exports = function(app){
   app.use(express.session({ secret: 'keyboardcat' }));
   app.use(passport.initialize());
   app.use(passport.session());
-}
+  app.use(sessionsController.checkAuth);
+  app.use(express.static(path.join(__dirname, '..', '..', 'public')));
+};

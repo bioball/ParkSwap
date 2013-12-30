@@ -4,6 +4,15 @@ var User     = require('../models/user');
 // set up session serialization, deserialization, and facebook oauth
 require('../config/sessions.js')(passport);
 
+exports.checkAuth = function(req, res, next){
+  if(!req.user){
+    res.cookie('notSignedIn', true);
+  } else if (!req.user.attributes.phone){
+    res.cookie('noPhone', true);
+  }
+  next();
+};
+
 exports.login = passport.authenticate('facebook'); 
 
 exports.loginsuccess = passport.authenticate('facebook', {
