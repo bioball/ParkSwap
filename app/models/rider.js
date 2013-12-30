@@ -32,22 +32,21 @@ var distanceBetweenLocs = function(lat1, lon1, lat2, lon2) {
 
 var find  = function(parkerLoc, searchRadius, riderList /* third arg used only in testing */) {
 
-
-  var pLat = parkerLoc.lat;
-  var pLng = parkerLoc.lng;
+  var parkerLat = parkerLoc.lat;
+  var parkerLng = parkerLoc.lng;
 
   var riderArray = [];
 
-  var rLat, rLng;
+  var riderLat, riderLng;
   var riderLoc;
   var carLoc;
 
   for(rider in riderList) {
     riderLoc = riderList[rider].riderLoc;
-    carLoc = riderList[rider].carLoc;
-    rLat = riderLoc.lat;
-    rLng = riderLoc.lng;
-    d = distanceBetweenLocs(pLat, pLng, rLat, rLng);
+    carLoc   = riderList[rider].carLoc;
+    riderLat = riderLoc.lat;
+    riderLng = riderLoc.lng;
+    d = distanceBetweenLocs(parkerLat, parkerLng, riderLat, riderLng);
 
     if (d <= searchRadius) {
       riderArray.push({distance: d, uid: rider, riderLoc: riderLoc, carLoc: carLoc});
