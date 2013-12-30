@@ -28,10 +28,9 @@ var distanceBetweenLocs = function(lat1, lon1, lat2, lon2) {
   var d = R * c;
 
   return d;
-
 };
 
-module.exports.find  = function(parkerLoc, searchRadius) {
+var find  = function(parkerLoc, searchRadius, riderList /* third arg used only in testing */) {
 
 
   var pLat = parkerLoc.lat;
@@ -39,7 +38,6 @@ module.exports.find  = function(parkerLoc, searchRadius) {
 
   var riderArray = [];
 
-  //{distance: d, riderUid: .uid, riderLoc: loc, carLoc: cLoc}
   var rLat, rLng;
   var riderLoc;
   var carLoc;
@@ -47,8 +45,8 @@ module.exports.find  = function(parkerLoc, searchRadius) {
   for(rider in riderList) {
     riderLoc = riderList[rider].riderLoc;
     carLoc = riderList[rider].carLoc;
-    rLat = rLoc.lat;
-    rLng = rLoc.lng;
+    rLat = riderLoc.lat;
+    rLng = riderLoc.lng;
     d = distanceBetweenLocs(pLat, pLng, rLat, rLng);
 
     if (d <= searchRadius) {
@@ -62,6 +60,12 @@ module.exports.find  = function(parkerLoc, searchRadius) {
 
 };
 
+module.exports.find = find;
+
+
 module.exports.destroy = function(uid) {
   delete riderList[uid];
 };
+
+
+
