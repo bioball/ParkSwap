@@ -7,7 +7,9 @@ module.exports.new = function(req, res) {
     carLoc: req.body.carLocation, 
     riderLoc: req.body.riderLocation
   });
-}
+  res.writeHead(200);
+  res.end();
+};
 
 module.exports.cancel = function(uid) {
   Rider.destroy(uid);

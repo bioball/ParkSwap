@@ -3,6 +3,7 @@ var Twilio = require('./twilioController');
 var User = require('../models/user');
 
 module.exports.findRiders = function(req, res) {
+  debugger;
   var searchRadiusInMiles = 1;
   var parkerLocation = req.query;
   var riders = Rider.find(parkerLocation, searchRadiusInMiles);
