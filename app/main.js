@@ -1,5 +1,6 @@
 var express = require('express');
-var app = express();
+var app     = express();
+var path    = require('path');
 
 require('./config/config.js')(app);
 require('./config/routes.js')(app);
