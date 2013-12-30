@@ -18,7 +18,7 @@ angular.module('appModule')
           carLocation: carLocation
         }
       }).success(function(){
-        $location.path('/wait');
+        $location.path('/rider/wait');
       }).error(function(err){
         $scope.err = {
           reason: err
