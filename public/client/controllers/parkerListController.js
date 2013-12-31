@@ -16,7 +16,9 @@ angular.module('appModule')
     $scope.pending = true;
     count++;
     parkerServices.getRiderList(parkerLocation).then(function(data){
-      $scope.riders = data;
+      if(data.length){
+        $scope.riders = data;
+      }
       if (count === 300) { stop(); }
     })
   }

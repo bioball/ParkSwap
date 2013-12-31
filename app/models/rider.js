@@ -1,13 +1,15 @@
 // Add new rider to JSON object
-var fs = require('fs');
+var fs        = require('fs');
+var path      = require('path');
 var riderList = {};
+var jsonPath  = path.join(__dirname, '..', '/db/riderList.json');
 
 var saveToJSONFile = function() {
-  fs.writeFileSync("../db/riderList.json", JSON.stringify(riderList));
+  fs.writeFileSync(jsonPath, JSON.stringify(riderList));
 };
 
 var readFromJSONFile = function() {
-  riderList = JSON.parse(fs.readFileSync("../db/riderList.json"));  
+  riderList = JSON.parse(fs.readFileSync(jsonPath));
 };
 
 var toRad = function(x) {

@@ -17,11 +17,7 @@ angular.module('appModule')
           lng: location.lng
         }
       }).success(function(data) {
-        if(data.results && data.results.length) {
-          deferred.resolve(data);
-        } else {
-          deferred.reject('No one is looking for a ride right now!');
-        }
+        deferred.resolve(data);
       }).error(function(err) {
         deferred.reject(err);
       });
