@@ -11,4 +11,5 @@ module.exports = function(app){
   app.get('/parker/find',    parkerController.findRiders);
   app.post('/parker/pickuprider',    parkerController.pickUpRider);
   app.post('/rider/new',     riderController.new);
+  app.post('/rider/cancel',  riderController.cancel);
 };

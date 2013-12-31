@@ -1,6 +1,7 @@
 // Add new rider to JSON object
 var fs        = require('fs');
 var path      = require('path');
+var User      = require('./user');
 var riderList = {};
 var jsonPath  = path.join(__dirname, '..', '/db/riderList.json');
 
@@ -22,7 +23,7 @@ var findDistance = function(coord1, coord2) {
     Math.pow(Math.sin(toRad(coord2.lng - coord1.lng)/2), 2) *
     Math.cos(toRad(coord1.lat)) * Math.cos(toRad(coord2.lat));
 
-  return 3963.1676 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  return 7926.3352 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 };
 
 module.exports.find = function(parkerLoc, searchRadius) {
@@ -35,13 +36,15 @@ module.exports.find = function(parkerLoc, searchRadius) {
   var closeRiders = [];
   var riderDistance, carDistance;
 
-  for(var rider in riderList) {
-    riderDistance = findDistance(parkerLoc, riderList[rider].riderLoc);
+  for(var uid in riderList) {
+    riderDistance = findDistance(parkerLoc, riderList[uid].riderLoc);
     if(riderDistance < searchRadius){
       closeRiders.push({
-        riderDistance: riderDistance,
-        carDistance: findDistance(parkerLoc, riderList[rider].carLoc),
-        rider: rider
+        riderDistance: riderDistance.toFixed(1),
+        carDistance: findDistance(parkerLoc, riderList[uid].carLoc).toFixed(1),
+        uid: uid,
+        riderLoc: riderList[uid].riderLoc,
+        carLoc: riderList[uid].carLoc
       });
     }
   }

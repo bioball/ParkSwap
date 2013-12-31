@@ -7,10 +7,10 @@ module.exports.new = function(req, res) {
     carLoc: req.body.carLocation, 
     riderLoc: req.body.riderLocation
   });
-  res.writeHead(200);
-  res.end();
+  res.send(201);
 };
 
-module.exports.cancel = function(uid) {
-  Rider.destroy(uid);
+module.exports.cancel = function(req, res) {
+  Rider.destroy(req.user.get('uid'));
+  res.send(201);
 };
