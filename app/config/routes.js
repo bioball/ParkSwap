@@ -9,5 +9,6 @@ module.exports = function(app){
   app.get('/getphonenumber', sessionsController.getPhoneNumber);
   app.post('/signup',        sessionsController.signUp);
   app.get('/parker/find',    parkerController.findRiders);
+  app.post('/parker/pickuprider',    parkerController.pickUpRider);
   app.post('/rider/new',     riderController.new);
 };

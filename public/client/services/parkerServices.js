@@ -3,6 +3,22 @@ angular.module('appModule')
   return {
     pickRider: function(rider){
       this.rider = rider;
+
+      // Notify server
+
+      $http({
+        method: 'POST',
+        url: 'parker/pickUpRider',
+        data: {
+          rider: rider
+        }
+      }).success(function(data) {
+        deferred.resolve(data);
+      }).error(function(err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+
     },
     getRider: function() {
       return this.rider;
