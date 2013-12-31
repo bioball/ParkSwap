@@ -1,4 +1,5 @@
 var DB = require("../db/init.js");
+var fs = require('fs');
 
 User = DB.Model.extend({
   tableName: 'users',
@@ -8,7 +9,7 @@ var noPhoneUsers = {};
 
 
 var saveToJSONFile = function() {
-  fs.writeFileSync("./noPhoneUsers.json", noPhoneUsers);
+  fs.writeFileSync("./noPhoneUsers.json", JSON.stringify(noPhoneUsers));
 };
 
 

@@ -1,4 +1,4 @@
-var User = require('../models/user.js');
+var User             = require('../models/user.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(passport){

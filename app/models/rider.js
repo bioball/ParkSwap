@@ -1,74 +1,52 @@
 // Add new rider to JSON object
-
+var fs = require('fs');
 var riderList = {};
 
 var saveToJSONFile = function() {
-  fs.writeFileSync("./riderList.json", riderList);
+  fs.writeFileSync("../db/riderList.json", JSON.stringify(riderList));
 };
-
 
 var readFromJSONFile = function() {
-  riderList = JSON.parse(fs.readFileSync("./riderList.json"));   
+  riderList = JSON.parse(fs.readFileSync("../db/riderList.json"));  
 };
 
-var distanceBetweenLocs = function(lat1, lon1, lat2, lon2) {
-
-  var toRad = function(x) {
-    return (x * (22/7))/180;
-  };
-
-  var R = 6371; // km
-  var dLat = toRad(lat2-lat1);
-  var dLon = toRad(lon2-lon1);
-  var lat1 = toRad(lat1);
-  var lat2 = toRad(lat2);
-
-  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-  Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  var d = R * c;
-
-  return d;
+var toRad = function(x) {
+  return x * Math.PI / 180;
 };
 
-var find  = function(parkerLoc, searchRadius, riderList /* third arg used only in testing */) {
+var findDistance = function(coord1, coord2) {
+  var a =
+    Math.pow(Math.sin(toRad(coord2.lat - coord1.lat)/2), 2) +
+    Math.pow(Math.sin(toRad(coord2.lng - coord1.lng)/2), 2) *
+    Math.cos(toRad(coord1.lat)) * Math.cos(toRad(coord2.lat));
 
-  var parkerLat = parkerLoc.lat;
-  var parkerLng = parkerLoc.lng;
+  return 3963.1676 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+};
 
-  var riderArray = [];
-
-  var riderLat, riderLng;
-  var riderLoc;
-  var carLoc;
-
+module.exports.find = function(parkerLoc, searchRadius) {
   // If  the riderList is empty, restore it from the  json file saved
   // on the disk
-
-  if (riderList.length === 0) {
-      readFromJSONFile();
+  if (JSON.stringify(riderList) === '{}') {
+    readFromJSONFile();
   }
 
-  for(rider in riderList) {
-    riderLoc = riderList[rider].riderLoc;
-    carLoc   = riderList[rider].carLoc;
-    riderLat = riderLoc.lat;
-    riderLng = riderLoc.lng;
-    d = distanceBetweenLocs(parkerLat,  parkerLng, riderLat, riderLng);
+  var closeRiders = [];
+  var riderDistance, carDistance;
 
-    if (d <= searchRadius) {
-      riderArray.push({distance: d, uid: rider, riderLoc: riderLoc, carLoc: carLoc});
+  for(var rider in riderList) {
+    riderDistance = findDistance(parkerLoc, riderList[rider].riderLoc);
+    if(riderDistance < searchRadius){
+      closeRiders.push({
+        riderDistance: riderDistance,
+        carDistance: findDistance(parkerLoc, riderList[rider].carLoc),
+        rider: rider
+      });
     }
   }
-
-  return riderArray.sort(function(a, b){
+  return closeRiders.sort(function(a, b){
     return a.distance - b.distance;
   });
-
 };
-
-
-module.exports.find = find;
 
 module.exports.add = function(rider) {
   riderList[rider.uid] = {
@@ -82,6 +60,3 @@ module.exports.destroy = function(uid) {
   delete riderList[uid];
   saveToJSONFile();
 };
-
-
-
