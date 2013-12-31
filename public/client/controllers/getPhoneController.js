@@ -11,6 +11,7 @@ angular.module('appModule')
       }
     }).success(function() {
       $cookieStore.remove('uid');
+      $cookieStore.remove('status');
       $location.path('/');
     }).error(function(err) {
       console.log('failed to post to server');

@@ -6,9 +6,9 @@ require('../config/sessions.js')(passport);
 
 exports.checkAuth = function(req, res, next){
   if(!req.user){
-    res.cookie('notSignedIn', true);
+    res.cookie('status', 401);
   } else if (!req.user.attributes.phone){
-    res.cookie('noPhone', true);
+    res.cookie('status', 412);
   }
   next();
 };
@@ -22,13 +22,13 @@ exports.loginsuccess = passport.authenticate('facebook', {
 
 exports.getPhoneNumber = function(req, res){
   if(!req.user.attributes.phone){
-    res.cookie('uid', req.user.attributes.uid)
-    res.writeHead(302, {location: 'http://localhost:3000/#/getphonenumber'});
-    res.end();
+    res.cookie('uid', req.user.attributes.uid);
+    res.cookie('status', 412);
   } else {
-    res.writeHead(302, {location: '/'});
-    res.end();
+    res.cookie('status', 'OK');
   }
+  res.writeHead(302, {location: '/'});
+  res.end();
 };
 
 exports.loginfailure = function(req, res) {
@@ -37,6 +37,6 @@ exports.loginfailure = function(req, res) {
 
 exports.signUp = function(req, res){
   User.add(req.body.uid, req.body.phone);
-  res.writeHead(200);
-  res.end();
-}
+  res.cookie('status', 'OK');
+  res.send(201);
+};
