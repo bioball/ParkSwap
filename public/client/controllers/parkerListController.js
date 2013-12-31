@@ -39,7 +39,6 @@ angular.module('appModule')
 
   $scope.pingServer = function() {
     count = 0;
-    repeatFn();
     interval = $interval(repeatFn, 2000);
   };
 
