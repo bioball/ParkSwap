@@ -5,10 +5,7 @@ angular.module('appModule')
       var deferred = $q.defer();
       $http({
         method: 'POST',
-        url: 'riders/cancel',
-        data: {
-          rider: "this rider"
-        }
+        url: 'rider/cancel',
       }).success(function(data){
         deferred.resolve(data)
       }).error(function(err){

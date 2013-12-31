@@ -10,4 +10,5 @@ module.exports = function(app){
   app.post('/signup',        sessionsController.signUp);
   app.get('/parker/find',    parkerController.findRiders);
   app.post('/rider/new',     riderController.new);
+  app.post('/rider/cancel',  riderController.cancel);
 };
