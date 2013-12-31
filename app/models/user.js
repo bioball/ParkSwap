@@ -6,13 +6,24 @@ User = DB.Model.extend({
 
 var noPhoneUsers = {};
 
+
+var saveToJSONFile = function() {
+  fs.writeFileSync("./noPhoneUsers.json", noPhoneUsers);
+};
+
+
+var readFromJSONFile = function() {
+  noPhoneUsers = JSON.parse(fs.readFileSync("./noPhoneUsers.json"));   
+};
+
+
 saveToDB = function(uid, phone) {
   var user = noPhoneUsers[uid];
   user.phone = phone;
   new User(user)
   .save()
   .then(function() {
-    delete noPhoneUsers[uid]
+    delete noPhoneUsers[uid]  
   });
 };
 
@@ -23,6 +34,8 @@ module.exports.addNoPhoneUser = function(profile) {
     last_name: profile._json.last_name,
     name: profile.displayName
   }
+
+  saveToJSONFile();
 };
 
 module.exports.add = function(uid, phone) {
@@ -30,6 +43,9 @@ module.exports.add = function(uid, phone) {
 };
 
 module.exports.getNoPhoneUser = function(uid){
+  if (noPhoneUsers.length === 0) {
+    readFromJSONFile();
+  }
   return { attributes: noPhoneUsers[uid] };
 }
 

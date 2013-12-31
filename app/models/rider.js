@@ -2,13 +2,14 @@
 
 var riderList = {};
 
-module.exports.add = function(rider) {
-  riderList[rider.uid] = {
-    carLoc: rider.carLoc, 
-    riderLoc: rider.riderLoc
-  };
+var saveToJSONFile = function() {
+  fs.writeFileSync("./riderList.json", riderList);
 };
 
+
+var readFromJSONFile = function() {
+  riderList = JSON.parse(fs.readFileSync("./riderList.json"));   
+};
 
 var distanceBetweenLocs = function(lat1, lon1, lat2, lon2) {
 
@@ -41,12 +42,19 @@ var find  = function(parkerLoc, searchRadius, riderList /* third arg used only i
   var riderLoc;
   var carLoc;
 
+  // If  the riderList is empty, restore it from the  json file saved
+  // on the disk
+
+  if (riderList.length === 0) {
+      readFromJSONFile();
+  }
+
   for(rider in riderList) {
     riderLoc = riderList[rider].riderLoc;
     carLoc   = riderList[rider].carLoc;
     riderLat = riderLoc.lat;
     riderLng = riderLoc.lng;
-    d = distanceBetweenLocs(parkerLat, parkerLng, riderLat, riderLng);
+    d = distanceBetweenLocs(parkerLat,  parkerLng, riderLat, riderLng);
 
     if (d <= searchRadius) {
       riderArray.push({distance: d, uid: rider, riderLoc: riderLoc, carLoc: carLoc});
@@ -59,11 +67,20 @@ var find  = function(parkerLoc, searchRadius, riderList /* third arg used only i
 
 };
 
+
 module.exports.find = find;
 
+module.exports.add = function(rider) {
+  riderList[rider.uid] = {
+    carLoc: rider.carLoc, 
+    riderLoc: rider.riderLoc
+  };
+  saveToJSONFile();
+};
 
 module.exports.destroy = function(uid) {
   delete riderList[uid];
+  saveToJSONFile();
 };
 
 
