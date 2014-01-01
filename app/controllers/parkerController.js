@@ -18,7 +18,7 @@ module.exports.pickUpRider = function(req, res) {
     Twilio.sendMessage(model.get('phone'), 
       req.user.get('name'), 
       req.user.get('phone'), 
-      req.user.get('photo'));
+      req.user.get('photo')); 
     Rider.destroy(rideruid);
   });
 

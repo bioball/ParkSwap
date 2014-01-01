@@ -40,16 +40,16 @@ module.exports.find = function(parkerLoc, searchRadius) {
     riderDistance = findDistance(parkerLoc, riderList[uid].riderLoc);
     if(riderDistance < searchRadius){
       closeRiders.push({
-        riderDistance: riderDistance.toFixed(1),
-        carDistance: findDistance(parkerLoc, riderList[uid].carLoc).toFixed(1),
         uid: uid,
+        riderDistance: riderDistance.toFixed(1),
         riderLoc: riderList[uid].riderLoc,
+        carDistance: findDistance(parkerLoc, riderList[uid].carLoc).toFixed(1),
         carLoc: riderList[uid].carLoc
       });
     }
   }
   return closeRiders.sort(function(a, b){
-    return a.distance - b.distance;
+    return a.riderDistance - b.riderDistance;
   });
 };
 

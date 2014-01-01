@@ -8,7 +8,7 @@ angular.module('appModule')
       var deferred = $q.defer();
       $http({
         method: 'POST',
-        url: 'parker/pickUpRider',
+        url: 'parker/pickuprider',
         data: {
           rider: rider
         }
@@ -21,7 +21,17 @@ angular.module('appModule')
 
     },
     getRider: function() {
-      return this.rider;
+      var _rider = this.rider;
+      var deferred = $q.defer();
+      $http({
+        method: 'GET',
+        url: 'users/' + _rider.uid
+      }).success(function(rider){
+        deferred.resolve(angular.extend(_rider, rider));
+      }).error(function(err){
+        deferred.reject(err);
+      })
+      return deferred.promise;
     },
     getRiderList: function(location) {
       var deferred = $q.defer();

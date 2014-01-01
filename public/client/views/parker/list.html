@@ -1,9 +1,9 @@
 <div class="container">
   <div class="rider" ng-repeat="rider in riders | orderBy: 'rider.riderDistance'" ng-click="selectRider(rider)">
-    Rider: Car is parked at {{ rider.carLoc }}, (roughly {{ rider.carDistance }} miles away)</li>
+    Rider: Car is parked at {{ rider.carAddress }}, (roughly {{ rider.carDistance }} miles away)</li>
   </div>
 
-  <div ng-if="pending">Searching...</div> <!-- should have cancel button here -->
+  <div ng-if="pending">Searching...</div>
   <div ng-if="noRiders">No riders available!  <button ng-click="pingServer()">Retry</button></div>
   <button ng-click="cancel()">Nevermind!</button>
 </div>

@@ -1,5 +1,7 @@
-var DB = require("../db/init.js");
-var fs = require('fs');
+var DB        = require("../db/init.js");
+var fs        = require('fs');
+var path      = require('path');
+var jsonPath  = path.join(__dirname, '..', '/db/noPhoneUsers.json');
 
 User = DB.Model.extend({
   tableName: 'users',
@@ -9,14 +11,13 @@ var noPhoneUsers = {};
 
 
 var saveToJSONFile = function() {
-  fs.writeFileSync("./noPhoneUsers.json", JSON.stringify(noPhoneUsers));
+  fs.writeFileSync(jsonPath, JSON.stringify(noPhoneUsers));
 };
 
 
 var readFromJSONFile = function() {
-  noPhoneUsers = JSON.parse(fs.readFileSync("./noPhoneUsers.json"));   
+  noPhoneUsers = JSON.parse(jsonPath);   
 };
-
 
 saveToDB = function(uid, phone) {
   var user = noPhoneUsers[uid];
@@ -41,6 +42,8 @@ module.exports.addNoPhoneUser = function(profile) {
 
 module.exports.add = function(uid, phone) {
   saveToDB(uid, phone);
+  delete noPhoneUsers[uid];
+  saveToJSONFile();
 };
 
 module.exports.getNoPhoneUser = function(uid){

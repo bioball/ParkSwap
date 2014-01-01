@@ -19,9 +19,12 @@ angular.module('appModule')
     parkerServices.getRiderList(parkerLocation).then(function(data){
       if(!data.length){ $scope.riders = [] }
       data.forEach(function(rider, index){
-        geocodeServices.getAddress(rider.carLoc).then(function(carLoc){
-          rider.carLoc = carLoc;
-          $scope.riders[index] = rider
+        geocodeServices.getAddress(rider.carLoc).then(function(carAddress){
+          geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){
+            rider.carAddress = carAddress;
+            rider.riderAddress = riderAddress;
+            $scope.riders[index] = rider
+          })
         })
       })
       if (count === 300) { stop(); }
@@ -39,12 +42,12 @@ angular.module('appModule')
 
   $scope.pingServer = function() {
     count = 0;
-    repeatFn();
     interval = $interval(repeatFn, 2000);
   };
 
 
   $scope.selectRider = function(rider) {
+    stop();
     parkerServices.pickRider(rider);
     $location.path('/parker/pickUpRider');
   };
