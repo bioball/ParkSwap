@@ -10,11 +10,15 @@ module.exports.findRiders = function(req, res) {
 }
 
 module.exports.pickUpRider = function(req, res) {
-  //var rider  = req.body.name;
-  console.log("Inside rider", req);
-  // var parker = req.user.get('name');
-  // var phone  = req.user.get('phone');
-  // Twilio.sendMessage(phone, req.user.get('name'));
-  // Rider.destroy(rider.uid);
+  var rideruid     = req.body.rider.uid;
+  var riderSearchQuery = User.find(rideruid);
+
+  riderSearchQuery.then(function(model) {
+    console.log("Number: ", model.attributes.phone);
+    console.log("Name: ", req.user.get('name'));
+    Twilio.sendMessage(model.attributes.phone, req.user.get('name'));
+    Rider.destroy(rideruid);
+  });
+
   res.end();
 };

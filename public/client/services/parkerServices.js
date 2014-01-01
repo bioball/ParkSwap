@@ -5,7 +5,7 @@ angular.module('appModule')
       this.rider = rider;
 
       // Notify server
-
+      var deferred = $q.defer();
       $http({
         method: 'POST',
         url: 'parker/pickUpRider',

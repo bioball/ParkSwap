@@ -1,6 +1,7 @@
 var client = require('twilio')('ACea60b0c4dbb6aa6c066e81b615f74406', 'd2106d41fe31596ebedb3e45e66f8747');
 
-module.exports.sendMessage = function(riderNum, name){
+//module.exports.
+sendMessage = function(riderNum, name){
     client.sendMessage({
 
       to: riderNum, // replace with number of rider
@@ -9,11 +10,16 @@ module.exports.sendMessage = function(riderNum, name){
 
   }, function(err, responseData) { //this function is executed when a response is received from Twilio
 
-      if (err) { throw err }
+      if (err) { 
+        console.log(err);
+        throw err 
+      }
 
       else {
         console.log(responseData.from);
         console.log(responseData.body);
       }
   });
-}
+};
+
+
