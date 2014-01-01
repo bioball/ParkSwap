@@ -1,25 +1,24 @@
 var client = require('twilio')('ACea60b0c4dbb6aa6c066e81b615f74406', 'd2106d41fe31596ebedb3e45e66f8747');
 
-//module.exports.
-sendMessage = function(riderNum, name){
-    client.sendMessage({
+module.exports.sendMessage = function(riderNum, name){
+  //   client.sendMessage({
 
-      to: riderNum, // replace with number of rider
-      from: '+14156609491', // our twilio number (trial number)
-      body: name + ' is coming now to give you a ride in exchange for your parking spot!' // message
+  //     to: riderNum, // replace with number of rider
+  //     from: '+14156609491', // our twilio number (trial number)
+  //     body: name + ' is coming now to give you a ride in exchange for your parking spot!' // message
 
-  }, function(err, responseData) { //this function is executed when a response is received from Twilio
+  // }, function(err, responseData) { //this function is executed when a response is received from Twilio
 
-      if (err) { 
-        console.log(err);
-        throw err 
-      }
+  //     if (err) { 
+  //       console.log(err);
+  //       throw err 
+  //     }
 
-      else {
-        console.log(responseData.from);
-        console.log(responseData.body);
-      }
-  });
+  //     else {
+  //       console.log(responseData.from);
+  //       console.log(responseData.body);
+  //     }
+  // });
 };
 
 

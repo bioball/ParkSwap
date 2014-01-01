@@ -27,7 +27,7 @@ angular.module('appModule')
     },
     function(){
       $scope.err = {
-        reason: "bad location"
+        reason: "Sorry, we don't recognize that location! Please clarify your address."
       }
     });
   }
