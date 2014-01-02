@@ -1,6 +1,6 @@
 var Rider  = require('../models/rider');
-var Twilio = require('./twilioController');
 var User   = require('../models/user');
+var twilio = require('../helpers/twilio');
 
 module.exports.findRiders = function(req, res) {
   var searchRadiusInMiles = 1;
@@ -15,7 +15,7 @@ module.exports.pickUpRider = function(req, res) {
   parkerPhone = req.user.get('phone');
   parkerImg   = req.user.get('photo');
   User.find(riderUid).then(function(model) {
-    Twilio.sendMessage(model.get('phone'), 
+    twilio.sendMessage(model.get('phone'), 
       req.user.get('name'), 
       req.user.get('phone'), 
       req.user.get('photo'));
