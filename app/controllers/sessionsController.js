@@ -1,42 +1,40 @@
 var passport = require('passport');
 var User     = require('../models/user');
+var Rider    = require('../models/rider');
 
 // set up session serialization, deserialization, and facebook oauth
 require('../config/sessions.js')(passport);
 
-exports.checkAuth = function(req, res, next){
-  if(!req.user){
+module.exports.checkStatus = function(req, res, next){
+  var user = req.user;
+  if(!user){
     res.cookie('status', 401);
-  } else if (!req.user.attributes.phone){
+  } else if (!user.get('phone')){
     res.cookie('status', 412);
+  } else if (Rider.exists(user.get('uid'))){
+    res.cookie('status', 409);
+  } else {
+    res.cookie('status', 'OK');
   }
   next();
 };
 
-exports.login = passport.authenticate('facebook'); 
+module.exports.login = passport.authenticate('facebook'); 
 
-exports.loginsuccess = passport.authenticate('facebook', {
-  successRedirect: global.host + 'getphonenumber',
+module.exports.loginSuccess = passport.authenticate('facebook', {
+  successRedirect: global.host,
   failureRedirect: global.host + 'login'
 });
 
-exports.getPhoneNumber = function(req, res){
-  if(!req.user.attributes.phone){
-    res.cookie('uid', req.user.attributes.uid);
-    res.cookie('status', 412);
-  } else {
+module.exports.loginFailure = function(req, res) {
+  res.send(401, "Login Failure");
+};
+
+module.exports.updatePhone = function(req, res){
+  User.update(req.user.get('uid'), {
+    phone: req.body.phone
+  }).then(function(){
     res.cookie('status', 'OK');
-  }
-  res.writeHead(302, {location: '/'});
-  res.end();
-};
-
-exports.loginfailure = function(req, res) {
-  res.send("Login Failure");
-};
-
-exports.signUp = function(req, res){
-  User.add(req.body.uid, req.body.phone);
-  res.cookie('status', 'OK');
-  res.send(201);
+    res.send(201);
+  });
 };

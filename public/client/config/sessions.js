@@ -9,7 +9,14 @@ angular.module('appModule')
         case "412":
           $location.path('/getphonenumber');
           break;
+        case "409":
+          $location.path('/rider/wait');
+          break;
       }
     }
-  })
+
+    if($rootScope.searchingForRiders){
+      $location.path('/parker/list');
+    }
+  });
 });

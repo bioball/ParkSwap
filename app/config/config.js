@@ -14,6 +14,6 @@ module.exports = function(app){
   app.use(express.session({ secret: 'keyboardcat' }));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(sessionsController.checkAuth);
+  app.use(sessionsController.checkStatus);
   app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 };
