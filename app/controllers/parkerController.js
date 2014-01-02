@@ -10,16 +10,16 @@ module.exports.findRiders = function(req, res) {
 }
 
 module.exports.pickUpRider = function(req, res) {
-  var rideruid = req.body.rider.uid;
+  var riderUid = req.body.rider.uid;
 
   parkerPhone = req.user.get('phone');
   parkerImg   = req.user.get('photo');
-  User.find(rideruid).then(function(model) {
+  User.find(riderUid).then(function(model) {
     Twilio.sendMessage(model.get('phone'), 
       req.user.get('name'), 
       req.user.get('phone'), 
       req.user.get('photo'));
-    Rider.destroy(rideruid);
+    Rider.destroy(riderUid);
   });
 
   res.end();

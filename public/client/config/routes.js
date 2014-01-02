@@ -24,7 +24,7 @@ angular.module('appModule')
     controller: 'riderWaitController',
     templateUrl: 'client/views/rider/wait.html'
   })
-  .when('/rider/coming', {
+  .when('/rider/coming/:uid', {
     controller: 'riderComingController',
     templateUrl: 'client/views/rider/coming.html'
   })
