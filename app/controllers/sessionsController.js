@@ -16,8 +16,8 @@ exports.checkAuth = function(req, res, next){
 exports.login = passport.authenticate('facebook'); 
 
 exports.loginsuccess = passport.authenticate('facebook', {
-  successRedirect: '/getphonenumber',
-  failureRedirect: '/login'
+  successRedirect: global.host + 'getphonenumber',
+  failureRedirect: global.host + 'login'
 });
 
 exports.getPhoneNumber = function(req, res){

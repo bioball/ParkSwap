@@ -1,6 +1,8 @@
 var express = require('express');
 var app     = express();
 
+global.host = 'http://localhost:3000/';
+
 require('./config/config.js')(app);
 require('./config/routes.js')(app);
 

@@ -1,7 +1,7 @@
 var User             = require('../models/user.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-module.exports = function(passport){
+module.exports = function(passport, app){
   passport.serializeUser(function(user, done) {
     done(null, user.attributes.uid);
   });
@@ -24,7 +24,7 @@ module.exports = function(passport){
   passport.use(new FacebookStrategy({
     clientID: 550858538345751,
     clientSecret: '07b50d80033a1112837e85c4ff144ff3',
-    callbackURL: 'http://localhost:3000/loginsuccess'
+    callbackURL: global.host + 'loginsuccess'
   }, function(accessToken, refreshToken, profile, done){
     User.find(profile.id).then(function(user){
       if(user){
