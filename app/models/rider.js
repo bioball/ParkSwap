@@ -62,6 +62,8 @@ module.exports.add = function(rider) {
 };
 
 module.exports.destroy = function(uid) {
-  delete riderList[uid];
-  saveToJSONFile();
+  if(riderList[uid]){
+    delete riderList[uid];
+    saveToJSONFile();
+  }
 };
