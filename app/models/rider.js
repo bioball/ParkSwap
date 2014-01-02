@@ -1,9 +1,7 @@
-// Add new rider to JSON object
 var fs        = require('fs');
-var path      = require('path');
 var User      = require('./user');
+var jsonPath  = require('path').join(__dirname, '..', '/db/riderList.json');
 var riderList = {};
-var jsonPath  = path.join(__dirname, '..', '/db/riderList.json');
 
 var saveToJSONFile = function() {
   fs.writeFileSync(jsonPath, JSON.stringify(riderList));
@@ -27,7 +25,7 @@ var findDistance = function(coord1, coord2) {
 };
 
 module.exports.find = function(parkerLoc, searchRadius) {
-  // If  the riderList is empty, restore it from the  json file saved
+  // If the riderList is empty, restore it from the json file saved
   // on the disk
   if (JSON.stringify(riderList) === '{}') {
     readFromJSONFile();
