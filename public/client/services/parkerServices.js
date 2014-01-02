@@ -1,5 +1,5 @@
 angular.module('appModule')
-.factory('parkerServices', function($q, $http){
+.factory('parkerServices', function($q, $http, userServices){
   return {
     pickRider: function(rider){
       this.rider = rider;
@@ -23,12 +23,9 @@ angular.module('appModule')
     getRider: function() {
       var _rider = this.rider;
       var deferred = $q.defer();
-      $http({
-        method: 'GET',
-        url: 'users/' + _rider.uid
-      }).success(function(rider){
+      userServices.get(_rider.uid).then(function(rider){
         deferred.resolve(angular.extend(_rider, rider));
-      }).error(function(err){
+      }, function(err){
         deferred.reject(err);
       })
       return deferred.promise;

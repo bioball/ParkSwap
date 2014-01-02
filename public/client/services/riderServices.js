@@ -1,5 +1,5 @@
 angular.module('appModule')
-.factory('riderServices', function($q, $http){
+.factory('riderServices', function($q, $http, userServices){
   return {
     cancel: function(){
       var deferred = $q.defer();
@@ -16,8 +16,8 @@ angular.module('appModule')
     setParker: function(parker){
       this.parker = parker;
     },
-    getParker: function(){
-      return this.parker;
+    getParker: function(uid){
+      return userServices.get(uid);
     },
     callParker: function(){
       console.log("calling this parker");

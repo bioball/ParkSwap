@@ -1,7 +1,6 @@
 var DB        = require("../db/init.js");
 var fs        = require('fs');
-var path      = require('path');
-var jsonPath  = path.join(__dirname, '..', '/db/noPhoneUsers.json');
+var jsonPath  = require('path').join(__dirname, '..', '/db/noPhoneUsers.json');
 
 User = DB.Model.extend({
   tableName: 'users',
