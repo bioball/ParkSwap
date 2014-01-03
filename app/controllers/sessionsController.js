@@ -22,8 +22,8 @@ module.exports.checkStatus = function(req, res, next){
 module.exports.login = passport.authenticate('facebook'); 
 
 module.exports.loginSuccess = passport.authenticate('facebook', {
-  successRedirect: global.host,
-  failureRedirect: global.host + 'login'
+  successRedirect: global.root,
+  failureRedirect: global.root + 'login'
 });
 
 module.exports.loginFailure = function(req, res) {

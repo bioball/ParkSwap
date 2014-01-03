@@ -1,16 +1,16 @@
 angular.module('appModule')
 .controller('parkerListController', function($scope, $rootScope, $location, $interval, geocodeServices, parkerServices){
 
-  var interval, position, count = 0;
-  $rootScope.searchingForRiders = true;
+  var interval, position, parkerLocation, count = 0;
   $scope.riders = [];
+  $rootScope.searchingForRiders = true;
 
   navigator.geolocation.getCurrentPosition(function(position){
     parkerLocation = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    $scope.pingServer();
+    $rootScope.searchingForRiders && $scope.pingServer();
   });
 
   var repeatFn = function() {
@@ -25,19 +25,19 @@ angular.module('appModule')
             rider.carAddress = carAddress;
             rider.riderAddress = riderAddress;
             $scope.riders[index] = rider
-          })
-        })
-      })
+          });
+        });
+      });
       if (count === 300) { stop(); }
-    })
+    });
   }
 
   var stop = function() {
-    $interval.cancel(interval);
     $rootScope.searchingForRiders = false;
     if(!$scope.riders.length){
       $scope.noRiders = true;
     }
+    return $interval.cancel(interval);
   };
 
   $scope.pingServer = function() {
@@ -55,5 +55,5 @@ angular.module('appModule')
   $scope.cancel = function(){
     stop();
     $location.path('/goodbye');
-  }
+  };
 });
