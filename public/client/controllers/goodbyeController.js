@@ -1,6 +1,7 @@
 angular.module('appModule')
-.controller('goodbyeController', function($scope, $location){
-  $scope.home = function(){
+.controller('goodbyeController', function($scope, $cookies, $location){
+  $scope.cancel = function(){
+    $cookies.status = 'OK';
     $location.path('/');
-  }
+  };
 });
