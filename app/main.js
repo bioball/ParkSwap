@@ -8,9 +8,5 @@ require('./config/config')(app);
 require('./config/routes')(app);
 require('./config/environments')(app);
 
-var server = http.createServer(app);
-server.listen(app.get('port'));
-
+app.listen(app.get('port'));
 console.log('Server is listening on port ' + app.get('port'));
-
-module.exports = server;

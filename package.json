@@ -15,8 +15,15 @@
     "sqlite3": "~2.1.19",
     "passport-facebook": "~1.0.2",
     "twilio": "~1.5.0",
-    "q": "~0.9.7",
-    "request": "2.30.0",
-    "chai": "~1.8.1"
+    "q": "~0.9.7"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-nodemon": "~0.1.2",
+    "grunt-node-inspector": "~0.1.2",
+    "grunt-mocha-test": "~0.8.1",
+    "grunt-concurrent": "~0.4.2",
+    "chai": "~1.8.1",
+    "request": "2.30.0"
   }
 }
