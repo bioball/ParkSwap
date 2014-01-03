@@ -1,5 +1,5 @@
 {
-  "name": "lib",
+  "name": "ParkSwap",
   "version": "0.0.0",
   "homepage": "https://github.com/bioball/ParkSwap",
   "authors": [
@@ -18,6 +18,9 @@
   "dependencies": {
     "angular": "~1.2.4",
     "angular-route": "~1.2.4",
-    "angular-cookie": "*"
+    "angular-ui-utils": "bower-mask"
+  },
+  "resolutions": {
+    "angular": "~1.2.4"
   }
 }

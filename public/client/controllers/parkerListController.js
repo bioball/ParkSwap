@@ -1,8 +1,8 @@
 angular.module('appModule')
-.controller('parkerListController', function($scope, $location, $interval, geocodeServices, parkerServices){
+.controller('parkerListController', function($scope, $rootScope, $location, $interval, geocodeServices, parkerServices){
 
   var interval, position, count = 0;
-  $scope.pending = true;
+  $rootScope.searchingForRiders = true;
 
   navigator.geolocation.getCurrentPosition(function(position){
     parkerLocation = {
@@ -33,7 +33,7 @@ angular.module('appModule')
 
   var stop = function() {
     $interval.cancel(interval);
-    $scope.pending = false;
+    $rootScope.searchingForRiders = false;
 
     if (!$scope.riders) {
       $scope.noRiders = true;

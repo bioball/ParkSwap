@@ -4,7 +4,7 @@ angular.module('appModule')
   $scope.sendPhoneNumToServer = function() {
     $http({
       method: "POST",
-      url: "/signup",
+      url: "/updatephone",
       data: {
         uid: $cookieStore.get('uid'),
         phone: $scope.userPhoneNum

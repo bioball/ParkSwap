@@ -8,7 +8,9 @@ var saveToJSONFile = function() {
 };
 
 var readFromJSONFile = function() {
-  riderList = JSON.parse(fs.readFileSync(jsonPath));
+  if(JSON.stringify(riderList) === '{}'){
+    riderList = JSON.parse(fs.readFileSync(jsonPath));
+  }
 };
 
 var toRad = function(x) {
@@ -24,12 +26,13 @@ var findDistance = function(coord1, coord2) {
   return 7926.3352 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 };
 
+module.exports.exists = function(uid){
+  readFromJSONFile();
+  return !!riderList[uid];
+};
+
 module.exports.find = function(parkerLoc, searchRadius) {
-  // If the riderList is empty, restore it from the json file saved
-  // on the disk
-  if (JSON.stringify(riderList) === '{}') {
-    readFromJSONFile();
-  }
+  readFromJSONFile();
 
   var closeRiders = [];
   var riderDistance, carDistance;
