@@ -3,14 +3,17 @@
 <head>
   <title>ParkSwap</title>
 </head>
-<body ng-app="appModule">
-  <div ng-view="">
+<body>
+  <div ng-app="appModule">
+    <div ng-view="">
+    </div>
   </div>
 
   <!-- Libraries -->
   <script src="lib/bower_components/angular/angular.min.js"></script>
   <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
   <script src="lib/angular-cookie.js"></script>
+  <script src="lib/bower_components/angular-ui-utils/mask.min.js"></script>
 
   <!-- Main module, configs -->
   <script src="client/modules/main.js"></script>
@@ -24,6 +27,7 @@
   <script src="client/controllers/riderWaitController.js"></script>
   <script src="client/controllers/riderWhereController.js"></script>
   <script src="client/controllers/getPhoneController.js"></script>
+  <script src="client/controllers/goodbyeController.js"></script>
 
   <!-- Services -->
   <script src="client/services/geocodeServices.js"></script>

@@ -1,5 +1,5 @@
 var Q  = require('q');
-var DB = require("../db/init.js");
+var DB = require('../db/init.js');
 
 var User = DB.Model.extend({
   tableName: 'users',
@@ -22,9 +22,9 @@ module.exports.findOrCreate = function(profile){
     } else {
       module.exports.create(profile).then(function(user){
         deferred.resolve(user);
-      })
+      });
     }
-  })
+  });
   return deferred.promise;
 };
 

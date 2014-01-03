@@ -29,6 +29,7 @@ angular.module('appModule')
     templateUrl: 'client/views/rider/coming.html'
   })
   .when('/goodbye', {
+    controller: 'goodbyeController',
     templateUrl: 'client/views/goodbye.html'
   })
   .when('/getphonenumber', {
