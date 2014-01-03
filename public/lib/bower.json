@@ -18,6 +18,6 @@
   "dependencies": {
     "angular": "~1.2.4",
     "angular-route": "~1.2.4",
-    "angular-cookie": "*"
+    "angular-ui-utils": "bower-mask"
   }
 }
