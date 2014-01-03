@@ -10,7 +10,7 @@ module.exports = function(grunt){
         'options': {
           'reporter': 'spec'
         },
-        'src': ['spec/node/*.js', 'spec/node/**/*.js']
+        'src': ['spec/server/*.js', 'spec/server/**/*.js']
       }
     },
     'nodemon': {
