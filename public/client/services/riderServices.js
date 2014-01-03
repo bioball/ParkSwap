@@ -1,5 +1,5 @@
 angular.module('appModule')
-.factory('riderServices', function($q, $http, userServices){
+.factory('riderServices', function($q, $http, $cookies, userServices){
   return {
     cancel: function(){
       var deferred = $q.defer();
@@ -7,6 +7,7 @@ angular.module('appModule')
         method: 'POST',
         url: 'rider/cancel',
       }).success(function(data){
+        $cookies.status = 'OK';
         deferred.resolve(data)
       }).error(function(err){
         deferred.reject(err)
