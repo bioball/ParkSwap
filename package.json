@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha $(find spec -name '*js')"
   },
   "dependencies": {
     "express": "3.4.7",
@@ -14,6 +15,8 @@
     "sqlite3": "~2.1.19",
     "passport-facebook": "~1.0.2",
     "twilio": "~1.5.0",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "request": "2.30.0",
+    "chai": "~1.8.1"
   }
 }

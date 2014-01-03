@@ -8,15 +8,8 @@ module.exports.sendMessage = function(riderNum, name){
       body: name + ' is coming now to give you a ride in exchange for your parking spot!' // message
 
   }, function(err, responseData) { //this function is executed when a response is received from Twilio
-
-    if (err) { 
-      console.log(err);
-      throw err 
-    }
-
-    else {
-      console.log(responseData.from);
-      console.log(responseData.body);
-    }
+    if (err) { throw err; }
+    console.log(responseData.from);
+    console.log(responseData.body);
   });
 };

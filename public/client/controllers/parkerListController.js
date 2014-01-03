@@ -34,17 +34,13 @@ angular.module('appModule')
   var stop = function() {
     $interval.cancel(interval);
     $rootScope.searchingForRiders = false;
-
-    if (!$scope.riders) {
-      $scope.noRiders = true;
-    }
+    !$scope.riders.length && $scope.noRiders = true;
   };
 
   $scope.pingServer = function() {
     count = 0;
     interval = $interval(repeatFn, 2000);
   };
-
 
   $scope.selectRider = function(rider) {
     stop();
