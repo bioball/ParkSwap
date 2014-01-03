@@ -1,19 +1,18 @@
-// process.env.NODE_ENV = 'test';
-// var request          = require('request');
+process.env.NODE_ENV = 'test';
 
-// beforeEach(function(){
-//   var appServer = require('../../app/main.js');
-// })
+var appServer = require('../../app/main.js');
+var request   = require('request');
+var expect    = require('chai').expect;
 
-// afterEach(function(){
-//   appServer.close();
-// })
+after(function(){
+  appServer.close();
+})
 
-// describe("Main app", function(){
-//   it("should respond to GET requests to the root path", function(){
-//     request('http://localhost:3000/', function(error, response, body){
-//       expect(response.statusCode).toEqual(200);
-//       done();
-//     });
-//   });
-// });
+describe("Main app", function(){
+  it("should respond to GET requests to the root path", function(done){
+    request('http://localhost:3000/', function(error, response, body){
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+});
