@@ -12,8 +12,9 @@ module.exports.findRiders = function(req, res) {
 module.exports.pickUpRider = function(req, res) {
   var riderUid = req.body.rider.uid;
   User.find(riderUid).then(function(rider) {
+    debugger;
     twilio.sendMessage(rider.get('phone'), req.user.get('name'))
     Rider.destroy(riderUid);
-    res.end(200);
+    res.send(200);
   });
 };

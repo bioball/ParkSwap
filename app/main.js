@@ -1,6 +1,4 @@
-var express = require('express');
-var http    = require('http'); 
-var app     = express();
+var app = require('express')();
 
 global.host = 'http://localhost:3000/';
 

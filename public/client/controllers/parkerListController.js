@@ -3,6 +3,7 @@ angular.module('appModule')
 
   var interval, position, count = 0;
   $rootScope.searchingForRiders = true;
+  $scope.riders = [];
 
   navigator.geolocation.getCurrentPosition(function(position){
     parkerLocation = {
@@ -14,7 +15,7 @@ angular.module('appModule')
 
   var repeatFn = function() {
     $scope.noRiders = false;
-    $scope.riders = $scope.riders || [];
+    $scope.riders || [];
     count++;
     parkerServices.getRiderList(parkerLocation).then(function(data){
       if(!data.length){ $scope.riders = [] }
@@ -34,7 +35,9 @@ angular.module('appModule')
   var stop = function() {
     $interval.cancel(interval);
     $rootScope.searchingForRiders = false;
-    !$scope.riders.length && $scope.noRiders = true;
+    if(!$scope.riders.length){
+      $scope.noRiders = true;
+    }
   };
 
   $scope.pingServer = function() {
@@ -44,8 +47,9 @@ angular.module('appModule')
 
   $scope.selectRider = function(rider) {
     stop();
-    parkerServices.pickRider(rider);
-    $location.path('/parker/pickUpRider');
+    parkerServices.pickRider(rider).then(function(){
+      $location.path('/parker/pickUpRider');
+    });
   };
 
   $scope.cancel = function(){
