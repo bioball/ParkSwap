@@ -24,7 +24,7 @@ angular.module('appModule')
           geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){
             rider.carAddress = carAddress;
             rider.riderAddress = riderAddress;
-            $scope.riders[index] = rider
+            $scope.riders[index] = rider;
           });
         });
       });
