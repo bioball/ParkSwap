@@ -1,2 +1,10 @@
-<h1>{{ parker.name }} is coming to get you!</h1>
-<input type="button" ng-click="callParker()" value="Call"></input>
+<div class="container">
+  <img src="http://graph.facebook.com/{{parker.uid}}/picture?type=large"></img>
+  <div class="userName"> {{ parker.name }} is giving you a ride</div>
+  <button ng-click="callParker()">Call {{ parker.first_name }} </button>
+</div>
+
+
+
+<!-- <h1>{{ parker.name }} is coming to get you!</h1>
+<input type="button" ng-click="callParker()" value="Call"></input> -->

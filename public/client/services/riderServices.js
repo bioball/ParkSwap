@@ -21,7 +21,7 @@ angular.module('appModule')
       return userServices.get(uid);
     },
     callParker: function(){
-      console.log("calling this parker");
+      console.log("calling this parker @"+ this.parker.phone);
     }
   }
 })
