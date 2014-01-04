@@ -7,10 +7,9 @@ var setExpiration = function(uid){
     if(Rider.destroy(uid)){
       User.find(uid).then(function(user){
         var message = "Unfortuantely we couldn't find anybody who's looking for a spot. Click below to try again: http://localhost:3000/#/rider/wait";
-        twilio.sendMessage(user.phone, message);
+        twilio.sendMessage(user.get('phone'), message).then(function(){}, function(err){console.log(err)});
       });
     }
-    // this should also send a SMS to the rider to let him know that no parkers were found.
   }, 600000)
 };
 

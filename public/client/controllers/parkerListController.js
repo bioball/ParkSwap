@@ -28,7 +28,7 @@ angular.module('appModule')
       });
       if (count === 300) { stop(); }
     });
-  }
+  };
 
   var stop = function() {
     $rootScope.searchingForRiders = false;
