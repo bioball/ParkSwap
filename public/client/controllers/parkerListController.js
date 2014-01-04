@@ -17,6 +17,9 @@ angular.module('appModule')
   var repeatFn = function() {
     count++;
     parkerServices.getRiderList(parkerLocation).then(function(data){
+      if(!data.length){
+        $scope.riders = data;
+      }
       data.forEach(function(rider, index){
         geocodeServices.getAddress(rider.carLoc).then(function(carAddress){
           geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){

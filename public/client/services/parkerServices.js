@@ -3,8 +3,6 @@ angular.module('appModule')
   return {
     pickRider: function(rider){
       this.rider = rider;
-
-      // Notify server
       var deferred = $q.defer();
       $http({
         method: 'POST',
@@ -18,7 +16,6 @@ angular.module('appModule')
         deferred.reject(err);
       });
       return deferred.promise;
-
     },
     getRider: function() {
       var _rider = this.rider;
@@ -46,5 +43,5 @@ angular.module('appModule')
       });
       return deferred.promise;
     }
-  }
+  };
 });

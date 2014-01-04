@@ -5,5 +5,5 @@ module.exports.get = function(req, res){
     res.send(200, user);
   }, function(){
     res.send(403, 'User does not exist');
-  })
+  });
 };
