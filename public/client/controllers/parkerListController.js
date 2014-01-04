@@ -4,6 +4,7 @@ angular.module('appModule')
   var interval, position, parkerLocation, count = 0;
   $scope.riders = [];
   $rootScope.searchingForRiders = true;
+  $scope.noRiders = false;
 
   navigator.geolocation.getCurrentPosition(function(position){
     parkerLocation = {
@@ -14,7 +15,6 @@ angular.module('appModule')
   });
 
   var repeatFn = function() {
-    $scope.noRiders = false;
     count++;
     parkerServices.getRiderList(parkerLocation).then(function(data){
       data.forEach(function(rider, index){
