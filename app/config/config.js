@@ -3,7 +3,6 @@ var passport           = require('passport');
 var sessionsController = require('../controllers/sessionsController');
 var path               = require('path');
 
-
 module.exports = function(app){
   app.set('port', 3000);
   app.use(express.favicon());

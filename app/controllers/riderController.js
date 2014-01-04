@@ -6,8 +6,11 @@ var setExpiration = function(uid){
   setTimeout(function(){
     if(Rider.destroy(uid)){
       User.find(uid).then(function(user){
-        var message = "Unfortuantely we couldn't find anybody who's looking for a spot. Click below to try again: http://localhost:3000/#/rider/wait";
-        twilio.sendMessage(user.get('phone'), message).then(function(){}, function(err){console.log(err)});
+        var message = "Unfortuantely we couldn't find anybody who's looking for a spot. Click below to try again: " + global.root + "#/rider/wait";
+        twilio.sendMessage(user.get('phone'), message)
+        .then(function(){}, function(err){
+          console.log(err)
+        });
       });
     }
   }, 600000)
