@@ -11,7 +11,7 @@ var setExpiration = function(uid){
       });
     }
     // this should also send a SMS to the rider to let him know that no parkers were found.
-  }, 6000)
+  }, 600000)
 };
 
 module.exports.new = function(req, res) {
