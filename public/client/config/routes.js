@@ -16,6 +16,10 @@ angular.module('appModule')
     controller: 'parkerPickUpController',
     templateUrl: 'client/views/parker/pickUp.html'
   })
+  // .when('/user/:uid', {
+  //   controller: 'parkerInfoController',
+  //   templateUrl: 'client/views/parker/parkerInfo.html'
+  // })
   .when('/rider/where', {
     controller: 'riderWhereController',
     templateUrl: 'client/views/rider/where.html'
