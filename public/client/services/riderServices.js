@@ -8,9 +8,9 @@ angular.module('appModule')
         url: 'rider/cancel',
       }).success(function(data){
         $cookies.status = 'OK';
-        deferred.resolve(data)
+        deferred.resolve(data);
       }).error(function(err){
-        deferred.reject(err)
+        deferred.reject(err);
       });
       return deferred.promise;
     },
