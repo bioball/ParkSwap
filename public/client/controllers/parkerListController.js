@@ -15,10 +15,8 @@ angular.module('appModule')
 
   var repeatFn = function() {
     $scope.noRiders = false;
-    $scope.riders || [];
     count++;
     parkerServices.getRiderList(parkerLocation).then(function(data){
-      if(!data.length){ $scope.riders = [] }
       data.forEach(function(rider, index){
         geocodeServices.getAddress(rider.carLoc).then(function(carAddress){
           geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){
@@ -41,7 +39,10 @@ angular.module('appModule')
   };
 
   $scope.pingServer = function() {
+    $rootScope.searchingForRiders = true;
+    $scope.noRiders = false;
     count = 0;
+    $scope.riders = [];
     interval = $interval(repeatFn, 2000);
   };
 
