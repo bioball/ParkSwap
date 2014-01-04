@@ -43,5 +43,7 @@ module.exports.destroy = function(uid) {
   if(riderList[uid]){
     delete riderList[uid];
     helpers.saveToJSON(riderList);
+    return true;
   }
+  return false;
 };
