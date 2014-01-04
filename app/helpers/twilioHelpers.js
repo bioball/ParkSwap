@@ -6,7 +6,7 @@ module.exports.sendMessage = function(number, message){
   client.sendMessage({
     to: number, // replace with number of rider
     from: '+14157670797', // our twilio number (trial number)
-    body: name + ' is coming now to give you a ride in exchange for your parking spot!' // message
+    body: message // message
   }, function(err, responseData) { //this function is executed when a response is received from Twilio
     if (err) {
       deferred.reject(err);
@@ -15,5 +15,5 @@ module.exports.sendMessage = function(number, message){
       deferred.resolve(responseData);
     }
   });
-  return deferrred.promise();
+  return deferred.promise;
 };
