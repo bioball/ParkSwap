@@ -1,12 +1,11 @@
-var express = require('express');
-var http    = require('http'); 
-var app     = express();
+var app = require('express')();
 
-global.host = 'http://localhost:3000/';
+global.root = 'http://localhost:3000/';
 
+require('./config/environments')(app);
 require('./config/config')(app);
 require('./config/routes')(app);
-require('./config/environments')(app);
+
 
 app.listen(app.get('port'));
 console.log('Server is listening on port ' + app.get('port'));

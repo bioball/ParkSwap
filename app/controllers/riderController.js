@@ -5,7 +5,7 @@ var setExpiration = function(uid){
     Rider.destroy(uid);
     // this should also send a SMS to the rider to let him know that no parkers were found.
   }, 600000)
-}
+};
 
 module.exports.new = function(req, res) {
   Rider.add({
