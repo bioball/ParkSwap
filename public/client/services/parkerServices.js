@@ -1,26 +1,46 @@
 angular.module('appModule')
-.factory('parkerServices', function($q, $http){
+.factory('parkerServices', function($q, $http, userServices){
   return {
-    setRider: function(rider){
+    pickRider: function(rider){
       this.rider = rider;
+
+      // Notify server
+      var deferred = $q.defer();
+      $http({
+        method: 'POST',
+        url: 'parker/pickuprider',
+        data: {
+          rider: rider
+        }
+      }).success(function(data) {
+        deferred.resolve(data);
+      }).error(function(err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+
     },
     getRider: function() {
-      return this.rider;
+      var _rider = this.rider;
+      var deferred = $q.defer();
+      userServices.get(_rider.uid).then(function(rider){
+        deferred.resolve(angular.extend(_rider, rider));
+      }, function(err){
+        deferred.reject(err);
+      })
+      return deferred.promise;
     },
-    getRiderList: function() {
+    getRiderList: function(location) {
       var deferred = $q.defer();
       $http({
         method: 'GET',
-        url: 'parkers/find',
+        url: 'parker/find',
         params: {
-          location: this.location
+          lat: location.lat,
+          lng: location.lng
         }
       }).success(function(data) {
-        if(data.results.length) {
-          deferred.resolve(data);
-        } else {
-          deferred.reject('No one is looking for a ride right now!');
-        }
+        deferred.resolve(data);
       }).error(function(err) {
         deferred.reject(err);
       });

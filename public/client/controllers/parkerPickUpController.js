@@ -1,12 +1,12 @@
 angular.module('appModule')
 .controller('parkerPickUpController', function($scope, parkerServices){
-	$scope.rider = parkerServices.getRider();
+  parkerServices.getRider().then(function(rider){
+    $scope.rider = rider
+  });
 
-	$scope.callRider = function() {
+  $scope.callRider = function() {
+  };
 
-	};
-
-	$scope.navigate = function() {
-
-	};
+  $scope.navigate = function() {
+  };
 });

@@ -10,17 +10,15 @@ angular.module('appModule')
   $scope.submitRider = function(){
     geocodeServices.getCoords($scope.carLocation)
     .then(function(carLocation){
-      console.log(carLocation);
       $http({
         method: "POST",
-        url: "/riders/new",
+        url: "/rider/new",
         data: {
-          uid: "uid",
           riderLocation: riderLocation,
           carLocation: carLocation
         }
       }).success(function(){
-        $location.path('/wait');
+        $location.path('/rider/wait');
       }).error(function(err){
         $scope.err = {
           reason: err
@@ -29,7 +27,7 @@ angular.module('appModule')
     },
     function(){
       $scope.err = {
-        reason: "bad location"
+        reason: "Sorry, we don't recognize that location! Please clarify your address."
       }
     });
   }

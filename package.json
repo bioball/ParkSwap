@@ -3,12 +3,27 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha $(find spec -name '*js')"
   },
   "dependencies": {
     "express": "3.4.7",
     "jade": "*",
     "knex": "~0.5.2",
-    "bookshelf": "~0.6.2"
+    "bookshelf": "~0.6.2",
+    "passport": "~0.1.17",
+    "sqlite3": "~2.1.19",
+    "passport-facebook": "~1.0.2",
+    "twilio": "~1.5.0",
+    "q": "~0.9.7"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-nodemon": "~0.1.2",
+    "grunt-node-inspector": "~0.1.2",
+    "grunt-mocha-test": "~0.8.1",
+    "grunt-concurrent": "~0.4.2",
+    "chai": "~1.8.1",
+    "request": "2.30.0",
   }
 }

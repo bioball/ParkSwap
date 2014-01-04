@@ -21,13 +21,13 @@ angular.module('appModule')
       })
       return deferred.promise;
     },
-    getAddress: function(lat, lng){
+    getAddress: function(coord){
       var deferred = $q.defer();
       $http({
         method: 'GET',
         url: 'http://maps.googleapis.com/maps/api/geocode/json',
         params: {
-          latlng: lat+','+lng,
+          latlng: coord.lat+','+coord.lng,
           sensor: true
         }
       }).success(function(data){

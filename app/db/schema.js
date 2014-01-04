@@ -5,7 +5,6 @@ DB.knex.schema.createTable('users',
     table.string('uid');
     table.string('first_name');
     table.string('last_name');
-    table.string('photo');
     table.string('phone');
     table.string('name')
   }).then(function(){

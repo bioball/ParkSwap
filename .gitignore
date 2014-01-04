@@ -25,6 +25,7 @@
 *.log
 *.sql
 *.sqlite
+app/db/*.json
 
 # OS generated files #
 ######################
@@ -43,3 +44,7 @@ node_modules/
 # BOWER LIBRARIES #
 ###################
 public/lib/bower_components/
+
+# DESIGN FILES #
+################
+design/

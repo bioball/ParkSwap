@@ -1,15 +1,13 @@
 angular.module('appModule')
-.factory('riderServices', function($q, $http){
+.factory('riderServices', function($q, $http, $cookies, userServices){
   return {
     cancel: function(){
       var deferred = $q.defer();
       $http({
         method: 'POST',
-        url: 'riders/cancel',
-        data: {
-          rider: "this rider"
-        }
+        url: 'rider/cancel',
       }).success(function(data){
+        $cookies.status = 'OK';
         deferred.resolve(data)
       }).error(function(err){
         deferred.reject(err)
@@ -19,11 +17,11 @@ angular.module('appModule')
     setParker: function(parker){
       this.parker = parker;
     },
-    getParker: function(){
-      return this.parker;
+    getParker: function(uid){
+      return userServices.get(uid);
     },
     callParker: function(){
-      console.log("calling this parker");
+      console.log("calling this parker @"+ this.parker.phone);
     }
   }
 })

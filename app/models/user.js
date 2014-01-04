@@ -1,38 +1,42 @@
-var DB = require("../db/init.js");
+var Q  = require('q');
+var DB = require('../db/init.js');
 
-User = DB.Model.extend({
+var User = DB.Model.extend({
   tableName: 'users',
 });
 
-var noPhoneUsers = {};
-
-saveToDB = function(uid, phone) {
-  var user = noPhoneUsers[uid];
-  user.phone = phone;
-  new User(user)
-  .save()
-  .then(function() {
-    delete noPhoneUsers[uid]
-  });
-};
-
-module.exports.addNoPhoneUser = function(profile) {
-  noPhoneUsers[profile.id] = {
+module.exports.create = function(profile){
+  return new User({
     uid: profile.id,
     first_name: profile._json.first_name,
     last_name: profile._json.last_name,
     name: profile.displayName
-  }
+  }).save();
 };
 
-module.exports.add = function(uid, phone) {
-  saveToDB(uid, phone);
+module.exports.findOrCreate = function(profile){
+  var deferred = Q.defer();
+  module.exports.find(profile.id).then(function(user){
+    if(user){
+      deferred.resolve(user);    
+    } else {
+      module.exports.create(profile).then(function(user){
+        deferred.resolve(user);
+      });
+    }
+  });
+  return deferred.promise;
 };
 
-module.exports.getNoPhoneUser = function(uid){
-  return { attributes: noPhoneUsers[uid] };
-}
+module.exports.update = function(uid, attrs){
+  var deferred = Q.defer();
+  DB.knex('users').where('uid', '=', uid).update(attrs)
+  .then(function(success){
+    success ? deferred.resolve() : deferred.reject();
+  })
+  return deferred.promise;
+};
 
 module.exports.find = function(uid) {
-  return new User({'uid': uid}).fetch();
+  return new User({uid: uid}).fetch();
 };
