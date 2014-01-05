@@ -1,7 +1,24 @@
-<strong>Great!</strong><br />
-Where is your car parked?
-<form ng-submit="submitRider()">
-  <input ng-model="carLocation" type="text" placeholder="Address of car"></input>
-  <button>submit</button>
-</form>
-<div ng-if="err">{{ err.reason }}</div>
+<div class="where-top">
+  <div class="where-message">
+    <strong>Great!</strong><br />
+    Where is your car parked?
+  </div>
+</div>
+<div class="where-bottom">
+  <form ng-submit="submitRider()">
+    <div class="formbox">
+      <div class="inputbox">
+        <input ng-model="carLocation" type="text" placeholder="123 Fake St., Springfield" />
+        <div class="corner left"></div>
+        <div class="corner right"></div>
+        <div class="bottom"></div>
+      </div>
+      <i class="fa fa-check-circle-o"></i>
+    </div>
+    <button class="bar">submit</button>
+  </form>
+  <div ng-if="err">{{ err.reason }}</div>
+  <div class="map">
+    <img src="/map.png"></img>
+  </div>
+</div>

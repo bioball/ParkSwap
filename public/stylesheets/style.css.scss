@@ -1,5 +1,3 @@
-
-
         ////////////////////
         // FONTS & COLORS //
         ////////////////////
@@ -10,11 +8,13 @@
 
 $brown:      #5d331a;
 $blue:       #3b5998;
+$lightBlue:  #0072bc;
 $red:        #c46848;
 $darkGreen:  #a5b13f;
 $lightGreen: #cbc765;
 $paleGreen:  #d2d38c;
 $darkGrey:   #404040;
+$lightGrey:  #9C9C9C;
 
         ////////////
         // MIXINS //
@@ -170,5 +170,101 @@ input:focus {
   }
   .inner-top {
     border-top: 1px solid darken($darkGreen, 10%);
+  }
+}
+
+
+        ////////////////
+        // WHERE PAGE //
+        ////////////////
+
+
+.where-top {
+  position: relative;
+  height: 30%;
+}
+
+.where-message {
+  position: relative;
+  text-align: center;
+  top: 35%;
+}
+.where-bottom {
+  .bar {
+    width: 100%;
+    height: 3.2em;
+    font-size: 1em;
+    font-family: "Muli";
+    font-weight: 300;
+    background-color: $red;
+    color: white;
+    border: none;
+    position: fixed;
+    bottom: 0;
+  }
+  .map img {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 30%;
+    right: 0;
+    z-index: -99;
+  }
+  .formbox {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2em;
+    background-color: white;
+    border-top: 1px solid $lightGrey;
+    border-bottom: 1px solid $lightGrey;
+    .inputbox {
+      position: absolute;
+      display: block;
+      left: 3%;
+      right: 10%;
+      top: 30%;
+      bottom: 20%;
+      padding-left: 0.4em;
+      input {
+        font-weight: 300;
+        font-size: 0.7em;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: none;
+        padding-left: 0.5em;
+        padding-bottom: 0.2em;
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+      .bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom: 1px solid $lightBlue;
+      }
+      .left {
+        left: 0;
+        border-left: 1px solid $lightBlue;
+      }
+      .right {
+        right: 0;
+        border-right: 1px solid $lightBlue;
+      }
+      .corner {
+        height: 0.3em;
+        bottom: 0;
+        position: absolute;
+      }
+    }
+    i {
+      position: absolute;
+      left: 92%;
+      top: 23%;
+      color: $lightBlue;
+    }
   }
 }
