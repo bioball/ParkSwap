@@ -1,8 +1,136 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url("http://fonts.googleapis.com/css?family=Muli:300,400");
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900");
+@import url("http://fonts.googleapis.com/css?family=Lato:200,400,700");
+html, body, .wrapper {
+  height: 100%;
 }
 
-a {
-  color: #00B7FF;
+body {
+  background: #a5b13f;
+  background: -moz-linear-gradient(top, #a5b13f 0%, #cbc765 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a5b13f), color-stop(100%, #cbc765));
+  background: -webkit-linear-gradient(top, #a5b13f 0%, #cbc765 100%);
+  background: -o-linear-gradient(top, #a5b13f 0%, #cbc765 100%);
+  background: -ms-linear-gradient(top, #a5b13f 0%, #cbc765 100%);
+  background: linear-gradient(to bottom, #a5b13f 0%, #cbc765 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cbc765', endColorstr='#a5b13f',GradientType=0 );
+  font-size: 23px;
+  /* Fallback property */
+  font-size: 6vw;
+  font-family: "Helvetica Neue", "Lato", Helvetica, sans-serif;
+  color: #404040;
+  font-weight: 100;
+  position: relative;
+}
+
+strong {
+  font-weight: 700;
+}
+
+button {
+  outline-width: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.pill {
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  border-radius: 0.3em;
+  width: 75%;
+  height: 3.2em;
+  font-size: 1em;
+  font-family: "Muli";
+  font-weight: 300;
+  background-color: #d2d38c;
+  color: white;
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+
+.pill-active {
+  background-color: #c46848;
+}
+.pill-active:active {
+  background-color: #d79882;
+}
+
+.top {
+  height: 70%;
+  position: relative;
+  text-align: center;
+}
+
+.bottom {
+  height: 30%;
+  position: relative;
+}
+
+.logo {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: 0 auto;
+}
+.logo span {
+  color: #5d331a;
+}
+
+.logo-login {
+  font-size: 17vw;
+  top: 40%;
+}
+
+.log-in {
+  background-color: #3b5998;
+  position: relative;
+}
+.log-in i {
+  position: absolute;
+  left: 5vw;
+  font-size: 1.6em;
+}
+.log-in span {
+  position: relative;
+  left: 18px;
+}
+.log-in:active {
+  background-color: #5f7ec1;
+}
+
+.logo-main {
+  top: 12%;
+  font-size: 12vw;
+}
+
+.main-container {
+  position: relative;
+  top: 45%;
+}
+.main-container .active {
+  background-color: #dae0a9;
+}
+
+.main-nav {
+  position: relative;
+}
+.main-nav .main-inner {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.9em 0;
+  border-bottom: 1px solid #828b32;
+}
+.main-nav .inner-top {
+  border-top: 1px solid #828b32;
 }

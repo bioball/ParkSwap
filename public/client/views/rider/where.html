@@ -1,6 +1,7 @@
-<h3>Great! Where is your car parked?</h3>
+<strong>Great!</strong><br />
+Where is your car parked?
 <form ng-submit="submitRider()">
-  <input ng-model="carLocation" type="text"></input>
+  <input ng-model="carLocation" type="text" placeholder="Address of car"></input>
   <button>submit</button>
 </form>
 <div ng-if="err">{{ err.reason }}</div>

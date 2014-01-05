@@ -48,3 +48,4 @@ public/lib/bower_components/
 # DESIGN FILES #
 ################
 design/
+.sass-cache/

@@ -29,15 +29,15 @@ angular.module('appModule')
           });
         });
       });
-      if (count === 300) { stop(); }
+      if (count === 300) {
+        $scope.noRiders = true;
+        stop(); 
+      }
     });
   };
 
   var stop = function() {
     $rootScope.searchingForRiders = false;
-    if(!$scope.riders.length){
-      $scope.noRiders = true;
-    }
     return $interval.cancel(interval);
   };
 

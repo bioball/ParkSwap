@@ -3,8 +3,20 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-node-inspector');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
+    'sass': {
+      'dist': {
+        'options': {
+          'style': 'expanded'
+        },
+        'files': {
+          'public/stylesheets/style.css': 'public/stylesheets/style.css.scss'
+        }
+      }
+    },
     'mochaTest': {
       'test': {
         'options': {
@@ -27,6 +39,12 @@ module.exports = function(grunt){
     'concurrent': {
       'dev': {
         'tasks': ['nodemon', 'node-inspector']
+      }
+    },
+    'watch': {
+      'css': {
+        'files': 'public/stylesheets/*.scss',
+        'tasks': ['sass']
       }
     }
   });

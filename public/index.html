@@ -2,10 +2,14 @@
 <html>
 <head>
   <title>ParkSwap</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href="stylesheets/normalize.css" rel="stylesheet"/>
+  <link href="stylesheets/style.css" rel="stylesheet"/>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
-  <div ng-app="appModule">
-    <div ng-view="">
+  <div ng-app="appModule" class="wrapper">
+    <div ng-view="" class="wrapper">
     </div>
   </div>
 
@@ -21,6 +25,7 @@
   <script src="client/config/sessions.js"></script>
 
   <!-- Controllers -->
+  <script src="client/controllers/mainController.js"></script>
   <script src="client/controllers/parkerListController.js"></script>
   <script src="client/controllers/parkerPickUpController.js"></script>
   <script src="client/controllers/riderComingController.js"></script>

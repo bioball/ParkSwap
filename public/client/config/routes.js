@@ -3,6 +3,7 @@ angular.module('appModule')
 .config(function($routeProvider) {
   $routeProvider
   .when('/', {
+    controller: 'mainController',
     templateUrl: 'client/views/main.html'
   })
   .when('/login', {
