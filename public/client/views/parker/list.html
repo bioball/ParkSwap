@@ -2,10 +2,10 @@
   <div class="list-head">
     <span ng-if="searchingForRiders">Parking spots</span>
   </div>
-  <div class="list-rider">
-    <div class="list-rider-caraddress"><span>944 Market St.</span></div>
-    <div class="list-rider-cardistance"><span><span class="list-rider-mi">0.2</span>mi</span></div>
-    <div class="list-rider-rideraddress"><i class="icon-adult"></i>451 Kansas St.</div>
+  <div class="list-rider" ng-repeat="rider in riders" ng-click="selectRider(rider)">
+    <div class="list-rider-caraddress"><span>{{ rider.carAddress }}</span></div>
+    <div class="list-rider-cardistance"><span><span class="list-rider-mi">{{ rider.carDistance }}</span>mi</span></div>
+    <div class="list-rider-rideraddress"><i class="icon-adult"></i> {{ rider.riderAddress }}</div>
   </div>
 
 </div>
