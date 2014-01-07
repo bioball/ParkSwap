@@ -60,7 +60,7 @@ angular.module('appModule')
   $scope.selectRider = function(rider) {
     parkerServices.pickRider(rider).then(function(){
       stop();
-      $location.path('/parker/pickUpRider');
+      $location.path('/parker/pickuprider');
     }, function(){
       $scope.err = {
         reason: "Something broke! Try another person."

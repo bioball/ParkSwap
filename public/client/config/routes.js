@@ -13,7 +13,7 @@ angular.module('appModule')
     controller: 'parkerListController',
     templateUrl: 'client/views/parker/list.html'
   })
-  .when('/parker/pickUpRider', {
+  .when('/parker/pickuprider', {
     controller: 'parkerPickUpController',
     templateUrl: 'client/views/parker/pickUp.html'
   })

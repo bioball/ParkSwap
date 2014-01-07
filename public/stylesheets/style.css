@@ -50,6 +50,7 @@ input:focus {
   border: none;
   display: block;
   margin: 0 auto;
+  margin-bottom: 0.8em;
 }
 
 .bar {
@@ -73,6 +74,13 @@ input:focus {
 }
 .pill-active:active {
   background-color: #d79882;
+}
+
+.pill-blue {
+  background-color: #3b5998;
+}
+.pill-blue:active {
+  background-color: #5f7ec1;
 }
 
 .logo {

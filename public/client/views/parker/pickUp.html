@@ -1,6 +1,10 @@
-<div class="container">
-  <img src="http://graph.facebook.com/{{rider.uid}}/picture?type=large"></img>
-  <div class="location"> Please pick up {{ rider.name }} at {{ rider.riderAddress }}</div>
-  <input type="button" value="Call {{ rider.name }}" ng-click="callRider()">
-  <input type="button" value="Directions to {{ rider.name }}" ng-click="navigate()">
+<div class="top">
+  <img ng-src="{{ profileUrl }}" class="profile-picture"></img>
+  <div class="message-container">
+    Please pick up {{ rider.name }} at <strong>{{ rider.riderAddress }}</strong>
+  </div>
+</div>
+<div class="bottom">
+  <input type="button" class="pill pill-active" value="Call" ng-click="callRider()">
+  <input type="button" class="pill pill-blue" value="Directions" ng-click="navigate()">
 </div>
