@@ -10,38 +10,36 @@ angular.module('appModule')
   };
 
   $scope.navigate = function() {
-  //   var isMobile = {
-  //     Android: function() {
-  //         return navigator.userAgent.match(/Android/i);
-  //     },
-  //     BlackBerry: function() {
-  //         return navigator.userAgent.match(/BlackBerry/i);
-  //     },
-  //     iOS: function() {
-  //         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-  //     },
-  //     Opera: function() {
-  //         return navigator.userAgent.match(/Opera Mini/i);
-  //     },
-  //     Windows: function() {
-  //         return navigator.userAgent.match(/IEMobile/i);
-  //     },
-  //     any: function() {
-  //         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-  //     }
-  // };
+    var isMobile = {
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function() {
+          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+  };
 
-  // if (isMobile.Android()) {
-  //   alert("this device is android");
-  //   var navLocation = 'geo:' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
-  //   location.href = navLocation;
-  // } else if (isMobile.iOS()) {
-  //   alert("this device is ios");
-  //   var navLocation = 'maps://saddr=Current+Location&daddr=' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
-  // }
+  if (isMobile.iOS()) {
+    var navLocation = 'maps:saddr=Current+Location&daddr=' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
+  } else if (isMobile.Android()) {
+    var navLocation = 'geo:' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
+  } else {
+    var navLocation = 'https://maps.google.com/maps?saddr=Current+Location&daddr=' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
+  }
 
-  var navLocation = 'geo:' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
-  // var navLocation = 'https://maps.google.com/maps?saddr=Current+Location&daddr=' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
   location.href = navLocation;
+
   };
 });
