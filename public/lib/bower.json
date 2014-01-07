@@ -19,8 +19,5 @@
     "angular": "~1.2.4",
     "angular-route": "~1.2.4",
     "angular-ui-utils": "bower-mask"
-  },
-  "resolutions": {
-    "angular": "~1.2.4"
   }
 }
