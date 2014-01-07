@@ -25,9 +25,10 @@ angular.module('appModule')
         }
       })
     },
-    function(){
+    function(err){
+      debugger;
       $scope.err = {
-        reason: "We don't recognize that location!"
+        reason: "I don't recognize that location!"
       }
     });
   }

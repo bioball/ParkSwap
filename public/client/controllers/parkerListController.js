@@ -2,7 +2,7 @@ angular.module('appModule')
 .controller('parkerListController', function($scope, $rootScope, $location, $interval, geocodeServices, parkerServices){
 
   var interval, position, parkerLocation, count = 0;
-  $scope.riders = [];
+  $scope.riders = {};
   $rootScope.searchingForRiders = true;
   $scope.noRiders = false;
 
@@ -17,17 +17,25 @@ angular.module('appModule')
   var repeatFn = function() {
     count++;
     parkerServices.getRiderList(parkerLocation).then(function(data){
-      if(!data.length){
-        $scope.riders = data;
-      }
-      data.forEach(function(rider, index){
-        geocodeServices.getAddress(rider.carLoc).then(function(carAddress){
-          geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){
-            rider.carAddress = carAddress;
-            rider.riderAddress = riderAddress;
-            $scope.riders[index] = rider;
+      var uids = {};
+      data.forEach(function(rider){
+        uid[rider.uid] = true;
+        if(!$scope.riders[rider.uid]){
+          geocodeServices.getAddress(rider.carLoc).then(function(carAddress){
+            geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){
+              rider.carAddress = carAddress.split(',')[0];
+              rider.riderAddress = riderAddress.split(',')[0];
+              $scope.riders[rider.uid] = rider;
+            });
           });
-        });
+        }
+      });
+
+      // clean up the riders that no longer exist
+      $scope.riders.forEach(function(rider, uid){
+        if(!uids[uid]){
+          delete riders[uid]
+        }
       });
       if (count === 300) {
         $scope.noRiders = true;
@@ -45,7 +53,7 @@ angular.module('appModule')
     $rootScope.searchingForRiders = true;
     $scope.noRiders = false;
     count = 0;
-    $scope.riders = [];
+    $scope.riders = {};
     interval = $interval(repeatFn, 2000);
   };
 

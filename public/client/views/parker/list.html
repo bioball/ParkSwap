@@ -1,9 +1,20 @@
-<div class="container">
-  <div class="rider" ng-repeat="rider in riders | orderBy: 'rider.riderDistance'" ng-click="selectRider(rider)">
-    Rider: Car is parked at {{ rider.carAddress }}, (roughly {{ rider.carDistance }} miles away)</li>
+<div class="list-container">
+  <div class="list-head">
+    <span ng-if="searchingForRiders">Parking spots</span>
+  </div>
+  <div class="list-rider">
+    <div class="list-rider-caraddress"><span>944 Market St.</span></div>
+    <div class="list-rider-cardistance"><span><span class="list-rider-mi">0.2</span>mi</span></div>
+    <div class="list-rider-rideraddress"><i class="icon-adult"></i>451 Kansas St.</div>
   </div>
 
-  <div ng-if="searchingForRiders">Searching...</div>
-  <div ng-if="noRiders">No riders available!  <button ng-click="pingServer()">Retry</button></div>
-  <button ng-click="cancel()">Nevermind!</button>
 </div>
+<div class="list-spinner"><i class="icon-spin2 animate-spin"></i></div>
+<button class="bar bar-fixed-bottom" ng-click="cancel()">cancel</button>
+
+
+<!-- <div ng-if="noRiders">No riders available!  <button ng-click="pingServer()">Retry</button></div> -->
+
+<!--   <div class="rider" ng-repeat="rider in riders | orderBy: 'rider.riderDistance'" ng-click="selectRider(rider)">
+    Rider: Car is parked at {{ rider.carAddress }}, (roughly {{ rider.carDistance }} miles away)</li>
+  </div> -->

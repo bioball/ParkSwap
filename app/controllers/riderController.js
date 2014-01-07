@@ -13,7 +13,7 @@ var setExpiration = function(uid){
         });
       });
     }
-  }, 600000)
+  }, 600000);
 };
 
 module.exports.new = function(req, res) {
@@ -22,7 +22,7 @@ module.exports.new = function(req, res) {
     carLoc: req.body.carLocation, 
     riderLoc: req.body.riderLocation
   });
-  setExpiration(req.user.get('uid'));
+  // setExpiration(req.user.get('uid'));
   res.send(201);
 };
 
