@@ -19,7 +19,7 @@ angular.module('appModule')
     parkerServices.getRiderList(parkerLocation).then(function(data){
       var uids = {};
       data.forEach(function(rider){
-        uid[rider.uid] = true;
+        uids[rider.uid] = true;
         if(!$scope.riders[rider.uid]){
           geocodeServices.getAddress(rider.carLoc).then(function(carAddress){
             geocodeServices.getAddress(rider.riderLoc).then(function(riderAddress){
