@@ -10,7 +10,7 @@ angular.module('appModule')
   };
 
   $scope.navigate = function() {
-    var geoLocation = 'geo://' + $scope.rider.riderLocation.lat + ',' + $scope.rider.riderLocation.lng;
-    location.href = geoLocation;
+    var navLocation = 'https://maps.google.com/maps?saddr=Current+Location&addr=' + $scope.rider.riderLocation.lat + ',' + $scope.rider.riderLocation.lng;
+    location.href = navLocation;
   };
 });
