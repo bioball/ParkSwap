@@ -26,7 +26,6 @@ angular.module('appModule')
       })
     },
     function(err){
-      debugger;
       $scope.err = {
         reason: "I don't recognize that location!"
       }

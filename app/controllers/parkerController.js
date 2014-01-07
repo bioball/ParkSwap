@@ -21,5 +21,7 @@ module.exports.pickUpRider = function(req, res) {
       console.log(err);
       res.send(401, "Twilio");
     });
+  }, function(){
+    res.send(401, "User doesn't exist");
   });
 };

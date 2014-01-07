@@ -38,5 +38,13 @@ module.exports.update = function(uid, attrs){
 };
 
 module.exports.find = function(uid) {
-  return new User({uid: uid}).fetch();
+  var deferred = Q.defer();
+  new User({uid: uid}).fetch().then(function(user){
+    if(user){
+      deferred.resolve(user);
+    } else {
+      deferred.reject(user);
+    }
+  });
+  return deferred.promise;
 };

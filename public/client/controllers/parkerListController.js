@@ -58,9 +58,13 @@ angular.module('appModule')
   };
 
   $scope.selectRider = function(rider) {
-    stop();
     parkerServices.pickRider(rider).then(function(){
+      stop();
       $location.path('/parker/pickUpRider');
+    }, function(){
+      $scope.err = {
+        reason: "Something broke! Try another person."
+      };
     });
   };
 

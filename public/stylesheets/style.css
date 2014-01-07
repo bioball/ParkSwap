@@ -151,13 +151,22 @@ input:focus {
 }
 
 .flash-error {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   background-color: #edd989;
   color: #66230c;
   font-size: 1rem;
   font-weight: 400;
   padding: 2%;
   text-align: center;
+  z-index: 999;
+}
+.flash-error i {
+  position: absolute;
+  right: 0.5em;
+  top: 20%;
 }
 
 .top {
@@ -317,4 +326,8 @@ input:focus {
   font-family: "Muli";
   color: #c46848;
   padding-right: 0.3em;
+}
+
+.goodbye-message {
+  font-weight: 700;
 }
