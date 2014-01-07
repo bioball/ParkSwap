@@ -18,6 +18,10 @@
   "dependencies": {
     "angular": "~1.2.4",
     "angular-route": "~1.2.4",
-    "angular-ui-utils": "bower-mask"
+    "angular-ui-utils": "bower-mask",
+    "jquery": "~2.0.3"
+  },
+  "resolutions": {
+    "angular": "~1.2.4"
   }
 }

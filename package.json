@@ -1,6 +1,6 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "ParkSwap",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node app.js",
@@ -24,6 +24,8 @@
     "grunt-mocha-test": "~0.8.1",
     "grunt-concurrent": "~0.4.2",
     "chai": "~1.8.1",
-    "request": "2.30.0"
+    "request": "2.30.0",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }

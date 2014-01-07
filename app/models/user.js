@@ -5,7 +5,7 @@ var User = DB.Model.extend({
   tableName: 'users',
 });
 
-module.exports.create = function(profile){
+var create = function(profile){
   return new User({
     uid: profile.id,
     first_name: profile._json.first_name,
@@ -20,7 +20,7 @@ module.exports.findOrCreate = function(profile){
     if(user){
       deferred.resolve(user);    
     } else {
-      module.exports.create(profile).then(function(user){
+      create(profile).then(function(user){
         deferred.resolve(user);
       });
     }
