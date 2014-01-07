@@ -21,7 +21,8 @@ angular.module('appModule')
       return userServices.get(uid);
     },
     callParker: function(){
-      console.log("calling this parker @"+ this.parker.phone);
+      var hrefLocation = 'tel:' + this.parker.phone;
+      location.href = hrefLocation;
     }
   }
 })
