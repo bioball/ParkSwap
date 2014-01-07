@@ -18,7 +18,8 @@ module.exports.pickUpRider = function(req, res) {
       Rider.destroy(riderUid);
       res.send(200);
     }, function(err){
-      res.send(401, "We can't send a message to this user for some reason!");
+      console.log(err);
+      res.send(401, "Twilio");
     });
   });
 };

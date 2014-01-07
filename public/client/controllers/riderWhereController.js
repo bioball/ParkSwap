@@ -27,8 +27,12 @@ angular.module('appModule')
     },
     function(){
       $scope.err = {
-        reason: "Sorry, we don't recognize that location! Please clarify your address."
+        reason: "We don't recognize that location!"
       }
     });
+  }
+  $scope.focused = false;
+  $scope.toggleFocus = function(){
+    $scope.focused = !$scope.focused;
   }
 });

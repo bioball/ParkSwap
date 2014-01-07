@@ -1,23 +1,23 @@
 <div class="where-top">
-  <div class="where-message">
+  <div class="flash-error" slide-down="err">{{ err.reason }}</div>
+  <div class="message-container">
     <strong>Great!</strong><br />
     Where is your car parked?
   </div>
 </div>
 <div class="where-bottom">
   <form ng-submit="submitRider()">
-    <div class="formbox">
-      <div class="inputbox">
-        <input ng-model="carLocation" type="text" placeholder="123 Fake St., Springfield" />
-        <div class="corner left"></div>
-        <div class="corner right"></div>
-        <div class="bottom"></div>
+    <div class="input-form">
+      <div class="input-field">
+        <input ng-model="carLocation" ng-focus="toggleFocus()" ng-blur="toggleFocus()" type="text" placeholder="123 Fake St., San Francisco, CA" />
+        <div class="input-border input-border-left" ng-class="{'input-border-active': focused}"></div>
+        <div class="input-border input-border-right" ng-class="{'input-border-active': focused}"></div>
+        <div class="input-border input-border-bottom" ng-class="{'input-border-active': focused}"></div>
       </div>
-      <i class="fa fa-check-circle-o"></i>
+      <i class="fa fa-dot-circle-o"></i>
     </div>
-    <button class="bar">submit</button>
+    <button class="bar">go</button>
   </form>
-  <div ng-if="err">{{ err.reason }}</div>
   <div class="map">
     <img src="/map.png"></img>
   </div>

@@ -13,7 +13,7 @@ module.exports = function(grunt){
           'style': 'expanded'
         },
         'files': {
-          'public/stylesheets/style.css': 'public/stylesheets/style.css.scss'
+          'public/stylesheets/style.css': 'public/stylesheets/style.sass'
         }
       }
     },
@@ -43,7 +43,7 @@ module.exports = function(grunt){
     },
     'watch': {
       'css': {
-        'files': 'public/stylesheets/*.scss',
+        'files': ['public/stylesheets/*.scss', 'public/stylesheets/*.sass'],
         'tasks': ['sass']
       }
     }

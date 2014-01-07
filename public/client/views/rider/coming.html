@@ -1,7 +1,11 @@
-<div class="container">
+<div class="top">
   <img src="http://graph.facebook.com/{{parker.uid}}/picture?type=large"></img>
-  <div class="userName"> {{ parker.name }} is giving you a ride</div>
-  <button ng-click="callParker()">Call {{ parker.first_name }} </button>
+  <div class="message-container">
+    <div class="userName"> <strong>{{ parker.name }}</strong> is giving you a ride</div>
+  </div>
+</div>
+<div class="bottom">
+  <button class="pill pill-active" ng-click="callParker()">Call {{ parker.first_name }} </button>
 </div>
 
 
