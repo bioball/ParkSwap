@@ -244,19 +244,17 @@ input:focus {
 }
 
 .list-container {
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  -ms-border-radius: 0.3em;
-  -o-border-radius: 0.3em;
-  border-radius: 0.3em;
   position: absolute;
   top: 0.6em;
   left: 0.6em;
   right: 0.6em;
   bottom: 0;
 }
-.list-container div:nth-child(2n) {
+.list-container > div:nth-child(2n-1) {
   background-color: #d7dc92;
+}
+.list-container > div:nth-child(2n) {
+  background-color: #e3e8a3;
 }
 
 .list-spinner {
@@ -270,15 +268,16 @@ input:focus {
 .list-head {
   font-weight: 300;
   padding: 0.3em 0.6em;
-  -webkit-border-radius: 0.3em 0.3em 0 0;
-  -moz-border-radius: 0.3em 0.3em 0 0;
-  -ms-border-radius: 0.3em 0.3em 0 0;
-  -o-border-radius: 0.3em 0.3em 0 0;
-  border-radius: 0.3em 0.3em 0 0;
 }
 
 .list-rider {
   position: relative;
+  margin-bottom: 0.6em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
 }
 
 .list-rider-caraddress {

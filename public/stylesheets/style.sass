@@ -267,15 +267,16 @@ input:focus
 
 
 .list-container
-  +border-radius(0.3em)
   position: absolute
   top: 0.6em
   left: 0.6em
   right: 0.6em
   bottom: 0
   // background-color: #fbffc2
-  & div:nth-child(2n)
+  & > div:nth-child(2n-1)
     background-color: #d7dc92
+  & > div:nth-child(2n)
+    background-color: #e3e8a3
 
 .list-spinner
   position: relative
@@ -288,10 +289,12 @@ input:focus
   // border-bottom: 1px solid #bec376
   font-weight: 300
   padding: 0.3em 0.6em
-  +border-radius(0.3em 0.3em 0 0)
+  // +border-radius(0.3em 0.3em 0 0)
 
 .list-rider
   position: relative
+  margin-bottom: 0.6em
+  +border-radius(0.2em)
   // border-bottom: 1px solid #bec376
 
 .list-rider-caraddress

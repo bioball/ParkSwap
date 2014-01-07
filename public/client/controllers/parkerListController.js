@@ -32,11 +32,11 @@ angular.module('appModule')
       });
 
       // clean up the riders that no longer exist
-      $scope.riders.forEach(function(rider, uid){
+      for(var uid in $scope.riders){
         if(!uids[uid]){
-          delete riders[uid]
+          delete $scope.riders[uid]
         }
-      });
+      }
       if (count === 300) {
         $scope.noRiders = true;
         stop(); 
@@ -68,4 +68,9 @@ angular.module('appModule')
     stop();
     $location.path('/goodbye');
   };
+
+  $scope.empty = function(){
+    return JSON.stringify($scope.riders) == '{}';
+  };
+
 });
