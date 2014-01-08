@@ -8,19 +8,19 @@
   "scripts": {
     "start": "node app/main.js",
     "test": "mocha $(find spec -name '*js')",
-    "postinstall": "bower install; echo \"{}\" > app/db/riderList.json; cd app; node db/schema.js; cd .."
+    "postinstall": "echo \"{}\" > app/db/riderList.json",
+    "migrate": "cd app; node db/schema.js; cd .."
   },
   "dependencies": {
     "express": "3.4.7",
-    "pg": "2.x",
     "jade": "*",
     "knex": "~0.5.2",
     "bookshelf": "~0.6.2",
     "passport": "~0.1.17",
-    "sqlite3": "~2.1.19",
     "passport-facebook": "~1.0.2",
     "twilio": "~1.5.0",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "pg": "~2.11.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -29,6 +29,7 @@
     "grunt-mocha-test": "~0.8.1",
     "grunt-concurrent": "~0.4.2",
     "chai": "~1.8.1",
+    "sqlite3": "~2.1.19",
     "request": "2.30.0",
     "grunt-contrib-sass": "~0.6.0",
     "grunt-contrib-watch": "~0.5.3"
