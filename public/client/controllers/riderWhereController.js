@@ -1,5 +1,3 @@
-  var riderLocation;
-
   angular.module('appModule')
   .controller('riderWhereController', function($scope, $http, $location, geocodeServices){
     navigator.geolocation.getCurrentPosition(function(position){
