@@ -9,7 +9,6 @@
       };    
     });
     $scope.submitRider = function(){
-      console.log("Inside submit", $scope.carLocation);  
       geocodeServices.getCoords($scope.carLocation)
       .then(function(carLocation){
         $http({
@@ -44,17 +43,35 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
+    var findMarkerAddress = function(evt) {
+       var coord = {};
+       coord.lat = evt.latLng.lat().toFixed(3);
+       coord.lng = evt.latLng.lng().toFixed(3);
+
+       geocodeServices.getAddress(coord)
+       .then(function(address) {
+        $scope.carLocation = address;
+      })
+    };
+
     $scope.addMarkerToMap = function(latLng) {
 
       if ($scope.markerOnMap !== undefined) {
         $scope.markerOnMap.setMap(null);
 
       }
-      $scope.markerOnMap= new google.maps.Marker({
+      
+      $scope.markerOnMap = new google.maps.Marker({
         map: $scope.myMap,
         position: latLng,
-        draggable:true
+        draggable:true,
+        animation: google.maps.Animation.DROP,
       });
+
+
+      google.maps.event.addListener($scope.markerOnMap, 'dragend', findMarkerAddress);
+      google.maps.event.addListener($scope.markerOnMap, 'drag', findMarkerAddress);
+
       $scope.myMap.setZoom(15);
       $scope.myMap.panTo($scope.markerOnMap.position);
     };
@@ -82,6 +99,7 @@
         $scope.createMarker(carLocation.lat, carLocation.lng);
       })    
     }
+    
   });
 
 
