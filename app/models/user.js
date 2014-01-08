@@ -17,13 +17,11 @@ var create = function(profile){
 module.exports.findOrCreate = function(profile){
   var deferred = Q.defer();
   module.exports.find(profile.id).then(function(user){
-    if(user){
-      deferred.resolve(user);    
-    } else {
-      create(profile).then(function(user){
-        deferred.resolve(user);
-      });
-    }
+    deferred.resolve(user);
+  }, function(){
+    create(profile).then(function(user){
+      deferred.resolve(user);
+    });
   });
   return deferred.promise;
 };

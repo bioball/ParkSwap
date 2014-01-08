@@ -41,7 +41,7 @@ input:focus {
   -o-border-radius: 0.3em;
   border-radius: 0.3em;
   width: 75%;
-  height: 3.2em;
+  height: 10vh;
   font-size: 1em;
   font-family: "Muli";
   font-weight: 300;
@@ -67,6 +67,7 @@ input:focus {
 .bar-fixed-bottom {
   position: fixed;
   bottom: 0;
+  z-index: 99;
 }
 
 .pill-active {
@@ -100,23 +101,20 @@ input:focus {
 
 .input-form {
   position: absolute;
-  left: 0;
-  right: 0;
   height: 2em;
   background-color: white;
   border-top: 1px solid #9c9c9c;
   border-bottom: 1px solid #9c9c9c;
 }
-.input-form .input-field {
+
+.input-field {
   position: absolute;
   display: block;
-  left: 3%;
-  right: 10%;
   top: 30%;
   bottom: 20%;
   padding-left: 0.4em;
 }
-.input-form .input-field input {
+.input-field input {
   font-weight: 400;
   font-size: 0.6em;
   border: none;
@@ -127,31 +125,32 @@ input:focus {
   right: 0;
   width: 95%;
 }
-.input-form .input-field .input-border {
+.input-field .input-border {
   height: 0.2em;
   bottom: 0;
   border-width: 1px;
   border-color: #9c9c9c;
   position: absolute;
 }
-.input-form .input-field .input-border-bottom {
+.input-field .input-border-bottom {
   left: 0;
   right: 0;
   border-bottom-style: solid;
 }
-.input-form .input-field .input-border-left {
+.input-field .input-border-left {
   left: 0;
   border-left-style: solid;
 }
-.input-form .input-field .input-border-right {
+.input-field .input-border-right {
   right: 0;
   border-right-style: solid;
 }
-.input-form .input-field .input-border-active {
+.input-field .input-border-active {
   border-width: 2px;
   border-color: #0072bc;
 }
-.input-form .input-right {
+
+.input-right {
   position: absolute;
   left: 91%;
   top: 15%;
@@ -201,20 +200,19 @@ input:focus {
   top: 40%;
 }
 
-.login {
-  background-color: #3b5998;
+.pill-login {
   position: relative;
 }
-.login i {
+.pill-login i {
   position: absolute;
   left: 1.2vw;
   font-size: 1.3em;
 }
-.login span {
+.pill-login span {
   position: relative;
   left: 18px;
 }
-.login:active {
+.pill-login:active {
   background-color: #5f7ec1;
 }
 
@@ -246,18 +244,30 @@ input:focus {
   border-top: 1px solid #a3af3e;
 }
 
-.where-top {
-  position: relative;
-  height: 30%;
+.map-canvas {
+  position: fixed !important;
+  bottom: 3.2em;
+  top: 40%;
+  left: 0;
+  right: 0;
 }
 
-.where-bottom .map img {
-  position: fixed;
-  bottom: 0;
+.input-form-where {
   left: 0;
-  top: 30%;
   right: 0;
-  z-index: -99;
+  z-index: 99;
+  bottom: 60%;
+}
+
+.input-field-where {
+  left: 3%;
+  right: 10%;
+  z-index: 99;
+}
+
+.top-30 {
+  position: relative;
+  height: 30%;
 }
 
 .list-container {
@@ -341,12 +351,46 @@ input:focus {
 }
 
 .profile-picture {
-  width: 100%;
-  max-height: auto;
+  display: block;
   position: relative;
+  height: 28vh;
+  width: auto;
+  margin: 0 auto;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  border-radius: 0.3em;
 }
 
 .pickup-message {
   height: 30vh;
   position: relative;
+}
+
+.phone-form {
+  position: absolute;
+  top: 75%;
+  height: 5em;
+  background-color: white;
+  width: 80%;
+  left: 10%;
+}
+
+.input-form-phone {
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  border: none;
+}
+
+.input-field-phone {
+  left: 3%;
+  right: 3%;
+}
+
+.bar-phone {
+  bottom: 0;
+  position: absolute;
+  height: 2em;
 }

@@ -1,6 +1,20 @@
-<h3>Thank you! Please also provide your phone number. We won't share with anybody, we promise.</h3>
-<form ng-submit="sendPhoneNumToServer()">
-  <input ng-model="userPhoneNum" placeholder="(###) ###-####"></input>
-  <button>submit</button>
-</form>
-<div ng-if="err">{{ err.reason }}</div>
+<div slide-down="err" class="flash-error">{{ err.reason }}</div>
+<div class="top">
+  <div class="message-container">
+    <strong>Welcome to ParkSwap!</strong><br /><br />
+    Just more one thing, please enter your phone number.
+  </div>
+  <div class="phone-form">
+    <form ng-submit="sendPhoneNumToServer()">
+      <div class="input-form input-form-phone">
+        <div class="input-field input-field-phone">
+          <input ng-model="userPhoneNum" placeholder="(###) ###-####" ng-focus="toggleFocus()" ng-blur="toggleFocus()"></input>
+          <div class="input-border input-border-left" ng-class="{'input-border-active': focused}"></div>
+          <div class="input-border input-border-right" ng-class="{'input-border-active': focused}"></div>
+          <div class="input-border input-border-bottom" ng-class="{'input-border-active': focused}"></div>
+        </div>
+      </div>
+      <button class="bar bar-phone">submit</button>
+    </form>
+  </div>
+</div>

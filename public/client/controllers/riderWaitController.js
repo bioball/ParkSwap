@@ -3,8 +3,11 @@ angular.module('appModule')
   $scope.cancel = function(){
     riderServices.cancel().then(function(){
       $cookies.status = 'OK';
-      $location.path('/goodbye');
+      $location.path('/');
     }, function(){
+      $scope.err = {
+        reason: "The server fubar'd, please try again"
+      }
     });
   };
 

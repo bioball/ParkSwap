@@ -76,7 +76,7 @@ input:focus
 .pill
   +border-radius(0.3em)
   width: 75%
-  height: 3.2em
+  height: 10vh
   font-size: 1em
   font-family: "Muli"
   font-weight: 300
@@ -100,6 +100,7 @@ input:focus
 .bar-fixed-bottom
   position: fixed
   bottom: 0
+  z-index: 99
 
 .pill-active
   background-color: $red
@@ -126,54 +127,52 @@ input:focus
 
 .input-form
   position: absolute
-  left: 0
-  right: 0
   height: 2em
   background-color: white
   border-top: 1px solid $lightGrey
   border-bottom: 1px solid $lightGrey
-  .input-field
+
+.input-field
+  position: absolute
+  display: block
+  top: 30%
+  bottom: 20%
+  padding-left: 0.4em
+  input
+    font-weight: 400
+    font-size: 0.6em
+    border: none
+    padding-left: 0.5em
+    padding-bottom: 0.2em
     position: absolute
-    display: block
-    left: 3%
-    right: 10%
-    top: 30%
-    bottom: 20%
-    padding-left: 0.4em
-    input
-      font-weight: 400
-      font-size: 0.6em
-      border: none
-      padding-left: 0.5em
-      padding-bottom: 0.2em
-      position: absolute
-      left: 0
-      right: 0
-      width: 95%
-    .input-border
-      height: 0.2em
-      bottom: 0
-      border-width: 1px
-      border-color: $lightGrey
-      position: absolute
-    .input-border-bottom
-      left: 0
-      right: 0
-      border-bottom-style: solid
-    .input-border-left
-      left: 0
-      border-left-style: solid
-    .input-border-right
-      right: 0
-      border-right-style: solid
-    .input-border-active
-      border-width: 2px
-      border-color: $lightBlue
-  .input-right
+    left: 0
+    right: 0
+    width: 95%
+  .input-border
+    height: 0.2em
+    bottom: 0
+    border-width: 1px
+    border-color: $lightGrey
     position: absolute
-    left: 91%
-    top: 15%
-    color: $lightBlue
+  .input-border-bottom
+    left: 0
+    right: 0
+    border-bottom-style: solid
+  .input-border-left
+    left: 0
+    border-left-style: solid
+  .input-border-right
+    right: 0
+    border-right-style: solid
+  .input-border-active
+    border-width: 2px
+    border-color: $lightBlue
+
+.input-right
+  position: absolute
+  left: 91%
+  top: 15%
+  color: $lightBlue
 
 .flash-error
   position: fixed
@@ -219,8 +218,7 @@ input:focus
   font-size: 17vw
   top: 40%
 
-.login
-  background-color: $blue
+.pill-login
   position: relative
   i
     position: absolute
@@ -262,18 +260,30 @@ input:focus
 // WHERE PAGE //
 ////////////////
 
-.where-top
+
+.map-canvas
+  position: fixed !important
+  bottom: 3.2em
+  top: 40%
+  left: 0
+  right: 0
+
+.input-form-where
+  left: 0
+  right: 0
+  z-index: 99
+  bottom: 60%
+
+.input-field-where
+  left: 3%
+  right: 10%
+  z-index: 99
+
+.top-30
   position: relative
   height: 30%
 
-.where-bottom
-  .map img
-    position: fixed
-    bottom: 0
-    left: 0
-    top: 30%
-    right: 0
-    z-index: -99
+
 
 ///////////////
 // LIST PAGE //
@@ -357,10 +367,44 @@ input:focus
 /////////////////
 
 .profile-picture
-  width: 100%
-  max-height: auto
+  display: block
   position: relative
+  height: 28vh
+  width: auto
+  margin: 0 auto
+  +border-radius(0.3em)
 
 .pickup-message
   height: 30vh
   position: relative
+
+////////////////////
+// GET PHONE PAGE //
+////////////////////
+
+.phone-form
+  position: absolute
+  top: 75%
+  height: 5em
+  background-color: white
+  // +border-radius(0.3em)
+  +absolute-center(80%)
+  
+
+.input-form-phone
+  top: 0.5em
+  left: 0
+  right: 0
+  border: none
+
+.input-field-phone
+  left: 3%
+  right: 3%
+
+.bar-phone
+  bottom: 0
+  position: absolute
+  height: 2em
+  // +border-radius(0 0 0.3em 0.3em)
+
+
