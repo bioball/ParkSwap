@@ -67,8 +67,7 @@ input:focus {
 .bar-fixed-bottom {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right:0;
+  z-index: 99;
 }
 
 .pill-active {
@@ -245,28 +244,26 @@ input:focus {
   border-top: 1px solid #a3af3e;
 }
 
-.where-top {
+.top-30 {
   position: relative;
   height: 30%;
 }
 
-.where-bottom .map img {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  top: 30%;
-  right: 0;
-  z-index: -99;
+.map-canvas {
+  height: 70vh;
+  z-index: 0;
 }
 
 .input-form-where {
   left: 0;
   right: 0;
+  z-index: 99;
 }
 
 .input-field-where {
   left: 3%;
   right: 10%;
+  z-index: 99;
 }
 
 .list-container {
