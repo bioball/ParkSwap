@@ -2,7 +2,11 @@ var app = require('express')();
 
 var port = process.env.PORT || 3000;
 
-global.root = 'http://10.1.1.103:' + port + '/';
+if(process.env.NODE_ENV == 'production'){
+  global.root = 'http://park-swap.herokuapp.com/'
+} else {
+  global.root = 'http://10.1.1.103:' + port + '/';
+}
 
 require('./config/environments')(app);
 require('./config/config')(app);
