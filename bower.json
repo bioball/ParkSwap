@@ -7,6 +7,11 @@
     "Joseph Toney <jdtoney@gmail.com>",
     "Yong-Soo Chung <yongsoochung@gmail.com>"
   ],
+  "scripts": {
+    "postinstall": "echo \"{}\" > app/db/riderList.json",
+    "migrate": "cd app; node db/schema.js; cd ..",
+    "start": "node app/main.js"
+  },
   "license": "",
   "ignore": [
     "**/.*",
