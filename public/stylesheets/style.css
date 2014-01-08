@@ -244,17 +244,12 @@ input:focus {
   border-top: 1px solid #a3af3e;
 }
 
-.top-30 {
-  position: relative;
-  height: 30%;
-}
-
 .map-canvas {
   position: fixed !important;
   bottom: 3.2em;
+  top: 40%;
   left: 0;
   right: 0;
-  top: 40%;
 }
 
 .input-form-where {
@@ -268,6 +263,11 @@ input:focus {
   left: 3%;
   right: 10%;
   z-index: 99;
+}
+
+.top-30 {
+  position: relative;
+  height: 30%;
 }
 
 .list-container {
