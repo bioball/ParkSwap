@@ -6,6 +6,7 @@
   },
   "private": true,
   "scripts": {
+    "start": "node app/main.js",
     "test": "mocha $(find spec -name '*js')",
     "migrate": "cd app; node db/schema.js; cd .."
   },
