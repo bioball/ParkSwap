@@ -1,5 +1,5 @@
 angular.module('appModule')
-.controller('parkerPickUpController', function($scope, $http, parkerServices){
+.controller('parkerPickUpController', function($scope, $http, parkerServices){;
   parkerServices.getRider().then(function(rider){
     $scope.rider = rider;
     $http({
