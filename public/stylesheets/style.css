@@ -370,11 +370,6 @@ input:focus {
   top: 75%;
   height: 5em;
   background-color: white;
-  -webkit-border-radius: 0.3em;
-  -moz-border-radius: 0.3em;
-  -ms-border-radius: 0.3em;
-  -o-border-radius: 0.3em;
-  border-radius: 0.3em;
   width: 80%;
   left: 10%;
 }
@@ -395,9 +390,4 @@ input:focus {
   bottom: 0;
   position: absolute;
   height: 2em;
-  -webkit-border-radius: 0 0 0.3em 0.3em;
-  -moz-border-radius: 0 0 0.3em 0.3em;
-  -ms-border-radius: 0 0 0.3em 0.3em;
-  -o-border-radius: 0 0 0.3em 0.3em;
-  border-radius: 0 0 0.3em 0.3em;
 }
