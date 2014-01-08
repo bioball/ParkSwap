@@ -1,12 +1,12 @@
 <div class="top">
-  <img src="http://graph.facebook.com/{{parker.uid}}/picture?type=large"></img>
-  <div class="message-container">
-    <div class="userName"> <strong>{{ parker.name }}</strong> is giving you a ride</div>
+  <div class="pickup-message">
+    <div class="message-container">
+      <strong>{{ parker.name }}</strong> is giving you a ride!
+    </div>
   </div>
+  <img ng-if="profileUrl" ng-src="{{ profileUrl }}" class="profile-picture"></img>
 </div>
 <div class="bottom">
-  <input class="pill pill-active" type="button" value="Call {{ parker.first_name }}" ng-click="callParker()">
+  <button class="pill pill-active" ng-click="callParker()">call {{ parker.first_name.toLowerCase() }}</button>
+  <button class="pill pill-blue" ng-click="home()">back</button>
 </div>
-
-<!-- <h1>{{ parker.name }} is coming to get you!</h1>
-<input type="button" ng-click="callParker()" value="Call"></input> -->
