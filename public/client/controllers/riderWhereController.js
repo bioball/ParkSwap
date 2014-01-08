@@ -9,6 +9,7 @@
       };    
     });
     $scope.submitRider = function(){
+      console.log("Inside submit", $scope.carLocation);  
       geocodeServices.getCoords($scope.carLocation)
       .then(function(carLocation){
         $http({
@@ -64,14 +65,22 @@
     };
 
     $scope.addMarker = function($event, $params) {
-      $scope.addMarkerToMap($params[0].latLng);  
+      $scope.addMarkerToMap($params[0].latLng);
+      var coord = {};
+      coord.lat = $params[0].latLng.lat();
+      coord.lng = $params[0].latLng.lng();
+      geocodeServices.getAddress(coord)
+      .then(function(address) {
+        $scope.carLocation = address;
+      })
+
     };    
 
     $scope.showCarLocation = function () {
       geocodeServices.getCoords($scope.carLocation)
       .then(function(carLocation) {
         $scope.createMarker(carLocation.lat, carLocation.lng);
-      })
+      })    
     }
   });
 
