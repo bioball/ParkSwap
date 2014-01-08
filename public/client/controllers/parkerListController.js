@@ -1,7 +1,7 @@
 angular.module('appModule')
-.controller('parkerListController', function($scope, $rootScope, $location, $interval, geocodeServices, parkerServices){
+.controller('parkerListController', function($scope, $rootScope, $location, $interval, $cookies, geocodeServices, parkerServices){
 
-  var interval, position, parkerLocation, count = 0;
+  var position, parkerLocation, count = 0;
   $scope.riders = {};
   $rootScope.searchingForRiders = true;
   $scope.noRiders = false;
@@ -46,7 +46,7 @@ angular.module('appModule')
 
   var stop = function() {
     $rootScope.searchingForRiders = false;
-    return $interval.cancel(interval);
+    return $interval.cancel($rootScope.parkerPing);
   };
 
   $scope.pingServer = function() {
@@ -54,7 +54,7 @@ angular.module('appModule')
     $scope.noRiders = false;
     count = 0;
     $scope.riders = {};
-    interval = $interval(repeatFn, 2000);
+    $rootScope.parkerPing = $interval(repeatFn, 2000);
   };
 
   $scope.selectRider = function(rider) {
@@ -70,7 +70,7 @@ angular.module('appModule')
 
   $scope.cancel = function(){
     stop();
-    $location.path('/goodbye');
+    $location.path('/');
   };
 
   $scope.empty = function(){
