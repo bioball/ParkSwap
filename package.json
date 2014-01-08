@@ -1,12 +1,14 @@
 {
   "name": "ParkSwap",
   "version": "1.0.0",
+  "engines": {
+    "node": "0.10.21"
+  },
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "node app/main.js",
     "test": "mocha $(find spec -name '*js')",
-    "install": "bower install",
-    "postinstall": "echo \"{}\" > app/db/riderList.json"
+    "postinstall": "bower install; echo \"{}\" > app/db/riderList.json; cd app; node db/schema.js; cd .."
   },
   "dependencies": {
     "express": "3.4.7",

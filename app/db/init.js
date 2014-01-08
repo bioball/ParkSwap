@@ -7,6 +7,9 @@ switch(process.env.NODE_ENV){
   case 'test':
     dbFile = './db/test.sqlite';
     break;
+  case 'production':
+    dbFile = './db/production.sqlite';
+    break;
   default:
     dbFile = './db/development.sqlite';
     break;
