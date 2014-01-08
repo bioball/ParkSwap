@@ -1,0 +1,39 @@
+{
+  "name": "angular-cookie",
+  "main": "angular-cookie.js",
+  "homepage": "https://github.com/ivpusic/angular-cookie",
+  "authors": [
+    "ivpusic <pusic007@gmail.com>"
+  ],
+  "description": "angular module for accessing browser cookies",
+  "keywords": [
+    "cookie",
+    "angular"
+  ],
+  "license": "MIT",
+  "location": "git@github.com:ivpusic/angular-cookie.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "example",
+    "karma.conf.js",
+    "LICENSE",
+    "README.md",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "angular": "~1.0.8"
+  },
+  "_release": "92292c9815",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "92292c9815e4ec7230a705b5f1d0212a2badd557"
+  },
+  "_source": "git://github.com/ivpusic/angular-cookie.git",
+  "_target": "*",
+  "_originalSource": "angular-cookie"
+}
