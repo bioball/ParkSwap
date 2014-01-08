@@ -34,9 +34,7 @@ angular.module('appModule')
   if (isMobile.iOS()) {
     var navLocation = 'maps:saddr=Current+Location&daddr=' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
   } else if (isMobile.Android()) {
-    var navLocation = 'geo:' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
-  } else {
-    var navLocation = 'https://maps.google.com/maps?saddr=Current+Location&daddr=' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
+    var navLocation = 'http://maps.google.com/maps?q=@' + $scope.rider.riderLoc.lat + ',' + $scope.rider.riderLoc.lng;
   }
 
   location.href = navLocation;
