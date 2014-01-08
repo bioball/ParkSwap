@@ -13,7 +13,7 @@ angular.module('appModule')
     controller: 'parkerListController',
     templateUrl: 'client/views/parker/list.html'
   })
-  .when('/parker/pickUpRider', {
+  .when('/parker/pickuprider', {
     controller: 'parkerPickUpController',
     templateUrl: 'client/views/parker/pickUp.html'
   })
@@ -28,10 +28,6 @@ angular.module('appModule')
   .when('/rider/coming/:uid', {
     controller: 'riderComingController',
     templateUrl: 'client/views/rider/coming.html'
-  })
-  .when('/goodbye', {
-    controller: 'goodbyeController',
-    templateUrl: 'client/views/goodbye.html'
   })
   .when('/getphonenumber', {
     controller: 'getPhoneController',

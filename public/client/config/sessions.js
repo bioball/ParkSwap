@@ -1,5 +1,5 @@
 angular.module('appModule')
-.run(function($rootScope, $cookies, $location){
+.run(function($rootScope, $cookies, $location, $interval){
   $rootScope.$on('$routeChangeStart', function(evt, nextUrl, currentUrl){
     if(nextUrl.$$route && nextUrl.$$route.originalPath !== '/login'){
       switch($cookies.status){
@@ -15,8 +15,8 @@ angular.module('appModule')
       }
     }
 
-    if($rootScope.searchingForRiders){
-      $location.path('/parker/list');
+    if($rootScope.searchingForRiders && nextUrl.$$route && nextUrl.$$route.originalPath !== '/parker/list'){
+      $interval.cancel($rootScope.parkerPing)
     }
   });
 });

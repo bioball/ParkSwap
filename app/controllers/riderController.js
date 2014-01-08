@@ -13,7 +13,7 @@ var setExpiration = function(uid){
         });
       });
     }
-  }, 600000)
+  }, 600000);
 };
 
 module.exports.new = function(req, res) {

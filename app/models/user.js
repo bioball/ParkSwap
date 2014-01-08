@@ -17,13 +17,11 @@ var create = function(profile){
 module.exports.findOrCreate = function(profile){
   var deferred = Q.defer();
   module.exports.find(profile.id).then(function(user){
-    if(user){
-      deferred.resolve(user);    
-    } else {
-      create(profile).then(function(user){
-        deferred.resolve(user);
-      });
-    }
+    deferred.resolve(user);
+  }, function(){
+    create(profile).then(function(user){
+      deferred.resolve(user);
+    });
   });
   return deferred.promise;
 };
@@ -38,5 +36,13 @@ module.exports.update = function(uid, attrs){
 };
 
 module.exports.find = function(uid) {
-  return new User({uid: uid}).fetch();
+  var deferred = Q.defer();
+  new User({uid: uid}).fetch().then(function(user){
+    if(user){
+      deferred.resolve(user);
+    } else {
+      deferred.reject(user);
+    }
+  });
+  return deferred.promise;
 };

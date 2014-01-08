@@ -47,6 +47,7 @@
 
       if ($scope.markerOnMap !== undefined) {
         $scope.markerOnMap.setMap(null);
+
       }
       $scope.markerOnMap= new google.maps.Marker({
         map: $scope.myMap,

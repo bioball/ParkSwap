@@ -1,6 +1,12 @@
 angular.module('appModule')
 .controller('getPhoneController', function($scope, $http, $location, $cookieStore){
 
+  $scope.focused = false;
+
+  $scope.toggleFocus = function(){
+    $scope.focused = !$scope.focused;
+  };
+
   $scope.sendPhoneNumToServer = function() {
     $http({
       method: "POST",
