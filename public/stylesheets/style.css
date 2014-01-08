@@ -250,14 +250,18 @@ input:focus {
 }
 
 .map-canvas {
-  height: 70vh;
-  z-index: 0;
+  position: fixed !important;
+  bottom: 3.2em;
+  left: 0;
+  right: 0;
+  top: 40%;
 }
 
 .input-form-where {
   left: 0;
   right: 0;
   z-index: 99;
+  bottom: 60%;
 }
 
 .input-field-where {
