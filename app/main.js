@@ -1,6 +1,8 @@
 var app = require('express')();
 
-global.root = 'http://10.1.1.103:' + process.env.PORT || 3000 + '/';
+var port = process.env.PORT || 3000;
+
+global.root = 'http://10.1.1.103:' + port + '/';
 
 require('./config/environments')(app);
 require('./config/config')(app);
