@@ -5,10 +5,6 @@
     Where is your car parked?
   </div>
 </div>
-<div class="mapView">
- <div ui-map="myMap" ui-options="mapOptions" class="map-canvas"  ui-event="{'map-click': 'addMarker($event, $params)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }" style="height:250px">      
- </div>
-</div>
 <div class="where-bottom">
   <form ng-submit="submitRider()">
     <div class="input-form">
@@ -18,9 +14,24 @@
         <div class="input-border input-border-right" ng-class="{'input-border-active': focused}"></div>
         <div class="input-border input-border-bottom" ng-class="{'input-border-active': focused}"></div>
       </div>
-      <i class="fa fa-dot-circle-o" ng-click="showCarLocation()"></i>
-    </div>    
-  </form> 
-  <button class="bar">go</button>  
-  <div><button ng-click="addM()">Add</button></div>
+      <i class="fa fa-dot-circle-o"></i>
+    </div>
+    <button class="bar">go</button>
+  </form>
+
+  <!-- gm-map-options="options.map" -->
+  <gm-map gm-map-id="'appModule'" gm-center="center" gm-zoom="zoom"  gm-map-options="options.map" style="width:500px;height:500px;">
+
+  <gm-markers 
+    gm-objects="users"
+    gm-id="object.id"
+    gm-position="{lat: object.lat, lng: object.lng}"
+    gm-marker-options="getOptions(object)">
+</gm-markers>
+</gm-map>
+
+
+  <!--<div class="map">
+    <img src="/map.png"></img>
+  </div> -->
 </div>
