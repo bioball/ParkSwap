@@ -1,23 +1,19 @@
-var dbFile;
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-switch(process.env.NODE_ENV){
-  case 'development':
-    dbFile = './db/development.sqlite';
-    break;
-  case 'test':
-    dbFile = './db/test.sqlite';
-    break;
-  case 'production':
-    dbFile = './db/production.sqlite';
-    break;
-  default:
-    dbFile = './db/development.sqlite';
-    break;
+if(process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test'){
+  module.exports = require('bookshelf').initialize({
+    client: 'sqlite3',
+    connection: {
+      filename: './db/' + process.env.NODE_ENV + '.sqlite'
+    }
+  });
 }
 
-module.exports = require('bookshelf').initialize({
-  client: 'sqlite3',
-  connection: {
-    filename: dbFile
+if(process.env.NODE_ENV == 'production'){
+  module.exports = require('bookshelf').initialize{
+    client: 'pg',
+    connection: {
+      host: process.env.DATABASE_URL
+    }
   }
-});
+}
