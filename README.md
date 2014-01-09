@@ -1,12 +1,12 @@
 ParkSwap
 ========
 
-Give a ride, get a spot! This is a work in progress, currently being built as a student project at [Hack Reactor](http://www.hackreactor.com). Team members are [Dan Chao](http://www.github.com/bioball), [Joseph Toney](http://www.github.com/chip2int) and [Yong-Soo Chung](http://www.github.com/yongsoo).
+**Give a ride, get a spot!** In any busy city, there are people spending too much time driving around looking for a parking spot. At the same time, there are people who walk too far to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. We hope that those who get rides will also bring the parker back to the original location.
+
+This is a work in progress, currently being built as a student project at [Hack Reactor](http://www.hackreactor.com). Team members are [Dan Chao](http://www.github.com/bioball), [Joseph Toney](http://www.github.com/chip2int) and [Yong-Soo Chung](http://www.github.com/yongsoo).
 
 Usage
 -----
-
-In any busy city, there are people spending too much time driving around looking for a parking spot. At the same time, there are people who walk too far to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. We hope that those who get rides will also bring the parker back to the original location.
 
 ###If you are parking###
 Select "I want a spot", and wait for the list to populate with people with parking spots. The list will show you the parking spot address, distance from you, and the rider's current address.
