@@ -1,5 +1,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+console.log(process.env.NODE_ENV);
+
 if(process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test'){
   module.exports = require('bookshelf').initialize({
     client: 'sqlite3',
