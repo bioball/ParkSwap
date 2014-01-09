@@ -61,7 +61,6 @@ angular.module('appModule')
     $scope.pending = true;
     parkerServices.pickRider(rider).then(function(){
       stop();
-      $scope.pending = false;
       $location.path('/parker/pickuprider');
     }, function(){
       $scope.pending = false;
