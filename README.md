@@ -18,12 +18,12 @@ This is a work in progress, currently being built as a student project at [Hack 
 Usage
 -----
 
-###If you are parking###
+####If you are parking####
 Select "I want a spot", and wait for the list to populate with people with parking spots. The list will show you the parking spot address, distance from you, and the rider's current address.
 
 Clicking an entry will show you the person's picture, as well as buttons to call and navigate.
 
-###If you want a ride to your car###
+####If you want a ride to your car####
 Select "I want a ride", then enter your car's parking location. Enable location tracking if the browser requests it. Upon submit, your information will be sent to our servers, and we will try to connect you to a parker. 
 
 If somebody is coming to pick you up, you will recieve a text from us, including a link to go back to view that person's profile picture, as well as a button to call them.
