@@ -353,10 +353,6 @@ input:focus {
   padding-right: 0.3em;
 }
 
-.goodbye-message {
-  font-weight: 700;
-}
-
 .profile-picture {
   display: block;
   position: relative;
