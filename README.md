@@ -16,9 +16,10 @@ Set-up
 
 1. `git clone https://github.com/bioball/ParkSwap`
 2. `cd ParkSwap`
-3. `bower install`
-4. `npm run-script migrate`
-5. `npm start`
+3. `npm install`
+4. `bower install`
+5. `npm run-script migrate`
+6. `npm start`
 
 Version
 -------
