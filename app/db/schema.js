@@ -10,5 +10,5 @@ DB.knex.schema.createTable('users',
     table.string('name');
     table.timestamps();
   }).then(function(){
-  console.log("User schema created successfully...");
+  console.log("User schema created successfully. Ctrl + C to quit.");
 });
