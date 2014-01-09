@@ -5,6 +5,13 @@ ParkSwap
 
 This is a work in progress, currently being built as a student project at [Hack Reactor](http://www.hackreactor.com). Team members are [Dan Chao](http://www.github.com/bioball), [Joseph Toney](http://www.github.com/chip2int) and [Yong-Soo Chung](http://www.github.com/yongsoo).
 
+* [Usage](#usage)
+* [Android homescreen](#android-homescreen)
+* [Setup & installation](#setup--installation)
+* [Aspect ratio](#aspect-ratio)
+* [Version](#version)
+* [Deployment](#deployment)
+
 Usage
 -----
 
@@ -20,13 +27,6 @@ If somebody is coming to pick you up, you will recieve a text from us, including
 
 *Note: Your search will time out after 10 minutes.*
 
-Aspect ratio
-------------
-
-The site is designed for mobile phones in portrait view. When viewed from a landscape mode, the pages will be distorted out of proportion.
-
-If viewing from the browser, we suggest using Google Chrome Canary, and using their emulation feature (Developer Tools > Sources > Emulation), which will fix the aspect for you.
-
 Android homescreen
 ------------------
 
@@ -39,7 +39,6 @@ The app is built on a SEAN stack (SQL, Express, Angular, Node). The back-end dat
 
 The front-end libraries are frameworked by Angular, includes the ui-map and ui-utils libraries for Google Map integration, and jQuery for certain animations.
 
-
 Setup & installation
 --------------------
 
@@ -51,6 +50,14 @@ If you would like to fork this branch and set it up on your own environment, fol
 4. `bower install`
 5. `npm run-script migrate`
 6. `npm start`
+
+Aspect ratio
+------------
+
+The site is designed for mobile phones in portrait view. When viewed from a landscape mode, the pages will be distorted out of proportion.
+
+If viewing from the browser, we suggest using Google Chrome Canary, and using their emulation feature (Developer Tools > Sources > Emulation), which will fix the aspect for you.
+
 
 Version
 -------
