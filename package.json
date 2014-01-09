@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node app/main.js",
     "test": "mocha $(find spec -name '*js')",
-    "postinstall": "echo \"{}\" > app/db/riderList.json; cd app; node db/schema.js; cd .."
+    "postinstall": "echo \"{}\" > app/db/riderList.json",
+    "migrate": "node app/db/schema.js"
   },
   "dependencies": {
     "express": "3.4.7",

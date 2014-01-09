@@ -4,7 +4,7 @@ if(process.env.NODE_ENV == 'development' || process.env.NODE_ENV == 'test'){
   module.exports = require('bookshelf').initialize({
     client: 'sqlite3',
     connection: {
-      filename: './db/' + process.env.NODE_ENV + '.sqlite'
+      filename: './' + process.env.NODE_ENV + '.sqlite'
     }
   });
 }
