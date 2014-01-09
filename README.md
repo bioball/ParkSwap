@@ -6,17 +6,17 @@ Give a ride, get a spot! This is a work in progress, currently being built as a 
 Usage
 -----
 
-In any busy city, there are people spending too much time driving around looking for a parking spot. At the same time, there are people who walk too far to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. By virtue of this, it's our hope that the riders would give the parker a ride back to the original location.
+In any busy city, there are people spending too much time driving around looking for a parking spot. At the same time, there are people who walk too far to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. We hope that those who get rides will also bring the parker back to the original location.
 
-###Parkers###
-Select "I want a ride", and wait for the list to populate with people. The list will show you the parking spot location, distance from you, and the rider's current location.
+###If you are parking###
+Select "I want a spot", and wait for the list to populate with people with parking spots. The list will show you the parking spot address, distance from you, and the rider's current address.
 
-Click a rider, and you will be brought to a page showing the rider's picture, as well as buttons to call and navigate.
+Clicking an entry will show you the person's, as well as buttons to call and navigate.
 
-###Riders###
-Select "I want a spot", then enter your car's parking location. Enable location tracking if the browser requests it. Upon submit, your information will be sent to our servers, and we will try to connect you to a parker. 
+###If you want a ride to your car###
+Select "I want a ride", then enter your car's parking location. Enable location tracking if the browser requests it. Upon submit, your information will be sent to our servers, and we will try to connect you to a parker. 
 
-If a parker is coming to pick you up, you will recieve a text from us, including a link to go back to view the parker's profile picture, as well as a button to call them.
+If somebody is coming to pick you up, you will recieve a text from us, including a link to go back to view that person's profile picture, as well as a button to call them.
 
 *Note: Your search will time out after 10 minutes.*
 
