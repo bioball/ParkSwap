@@ -20,7 +20,8 @@ if(process.env.NODE_ENV == 'production'){
       user: 'qsddvxtrreopjl',
       password: 'mGV_-AWD1zJ8p-uKZ-TK0entmP',
       port: '5432',
-      database: 'd93ur6m14kckv1'
+      database: 'd93ur6m14kckv1',
+      charset: 'utf8'
     }
   });
 }
