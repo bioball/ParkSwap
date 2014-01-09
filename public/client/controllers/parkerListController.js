@@ -58,10 +58,13 @@ angular.module('appModule')
   };
 
   $scope.selectRider = function(rider) {
+    $scope.pending = true;
     parkerServices.pickRider(rider).then(function(){
       stop();
+      $scope.pending = false;
       $location.path('/parker/pickuprider');
     }, function(){
+      $scope.pending = false;
       $scope.err = {
         reason: "Something broke! Try another person."
       };

@@ -25,9 +25,7 @@
     "angular-route": "~1.2.4",
     "jquery": "~2.0.3",
     "angular-ui-utils": "~0.1.0",
-    "angular-ui-map": "~0.5.0"
-  },
-  "resolutions": {
-    "angular": "~1.2.4"
+    "angular-ui-map": "~0.5.0",
+    "fastclick": "~0.6.10"
   }
 }

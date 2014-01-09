@@ -1,6 +1,7 @@
 <div slide-down="err" class="flash-error">{{ err.reason }}<i class="icon-cancel-circle"></i></div>
 <div class="list-container">
   <div class="list-rider" ng-repeat="rider in riders | orderBy: rider.carDistance" ng-click="selectRider(rider)">
+    <button class="list-element-spinner" ng-if="pending"><i class="icon-spin2 animate-spin"></i></button>
     <div class="list-rider-caraddress"><span>{{ rider.carAddress }}</span></div>
     <div class="list-rider-cardistance"><span><span class="list-rider-mi">{{ rider.carDistance }}</span>mi</span></div>
     <div class="list-rider-rideraddress"><i class="icon-adult"></i> {{ rider.riderAddress }}</div>

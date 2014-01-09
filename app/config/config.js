@@ -11,7 +11,7 @@ module.exports = function(app){
   app.use(express.urlencoded());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'keyboardcat' }));
+  app.use(express.session({ secret: process.env.SESSION_SECRET || 'keyboardcat' }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(sessionsController.checkStatus);
