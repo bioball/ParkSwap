@@ -29,7 +29,7 @@ Version
 Deployment
 ----------
 
-This app is currently deployed on park-swap.herokuapp.com. 
+This app is currently deployed on [park-swap.herokuapp.com](http://park-swap.herokuapp.com/). 
 
 **NOTE**: The site is designed for mobile phones in portrait view. When viewed from a landscape mode, the pages will be distorted out of proportion.
 
