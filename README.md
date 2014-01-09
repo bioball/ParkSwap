@@ -11,7 +11,7 @@ In any busy city, there are people spending too much time driving around looking
 ###If you are parking###
 Select "I want a spot", and wait for the list to populate with people with parking spots. The list will show you the parking spot address, distance from you, and the rider's current address.
 
-Clicking an entry will show you the person's, as well as buttons to call and navigate.
+Clicking an entry will show you the person's picture, as well as buttons to call and navigate.
 
 ###If you want a ride to your car###
 Select "I want a ride", then enter your car's parking location. Enable location tracking if the browser requests it. Upon submit, your information will be sent to our servers, and we will try to connect you to a parker. 
