@@ -11,7 +11,7 @@ The app is built on a SEAN stack (SQL, Express, Angular, Node). The back-end dat
 The front-end libraries are frameworked by Angular, includes the ui-map and ui-utils libraries for Google Map integration, and jQuery for certain animations.
 
 
-Set-up
+Set up & installation
 ------
 
 1. `git clone https://github.com/bioball/ParkSwap`
