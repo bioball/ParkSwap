@@ -19,7 +19,7 @@ Usage
 -----
 
 ####If you are parking####
-Select "I want a spot", and wait for the list to populate with people with parking spots. The list will show you the parking spot address, distance from you, and the rider's current address.
+Select "I want a spot", and wait for the list to populate with people with parking spots within a mile radius of you. The list will show you the parking spot address, distance from you, and the rider's current address.
 
 Clicking an entry will show you the person's picture, as well as buttons to call and navigate.
 
