@@ -22,8 +22,8 @@ module.exports.findOrCreate = function(profile){
     console.log('failed to find user', profile.displayName);
     create(profile).then(function(user){
       deferred.resolve(user);
-    }, function(){
-      deferred.reject('some sort of error?');
+    }, function(err){
+      deferred.reject(err);
     });
   });
   return deferred.promise;

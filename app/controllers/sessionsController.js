@@ -23,7 +23,7 @@ module.exports.login = passport.authenticate('facebook');
 
 module.exports.loginSuccess = passport.authenticate('facebook', {
   successRedirect: global.root,
-  failureRedirect: global.root + 'login'
+  failureRedirect: global.root
 });
 
 module.exports.loginFailure = function(req, res) {
