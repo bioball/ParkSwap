@@ -67,4 +67,4 @@ Deployment
 Credits
 -------
 
-Shoutout to Emma Tzeng for the idea
+Shoutouts to Emma Tzeng for the idea!
