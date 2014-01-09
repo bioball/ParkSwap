@@ -26,7 +26,9 @@ The front-end libraries are frameworked by Angular, includes the ui-map and ui-u
 
 
 Setup & installation
-------
+--------------------
+
+If you would like to fork this branch and set it up on your own environment, follow these instructions:
 
 1. `git clone https://github.com/bioball/ParkSwap`
 2. `cd ParkSwap`
@@ -44,4 +46,4 @@ Version
 Deployment
 ----------
 
-This app is currently deployed on [park-swap.herokuapp.com](http://park-swap.herokuapp.com/).
+[park-swap.herokuapp.com](http://park-swap.herokuapp.com/).
