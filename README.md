@@ -24,3 +24,12 @@ Version
 -------
 
 1.0.1
+
+Deployment
+----------
+
+This app is currently deployed on park-swap.herokuapp.com. 
+
+**NOTE**: The site is designed for mobile phones in portrait view. When viewed from a landscape mode, the pages will be distorted out of proportion.
+
+If viewing from the browser, we suggest using Google Chrome Canary, and using their emulation feature (Developer Tools > Sources > Emulation), which will fix the aspect for you.
