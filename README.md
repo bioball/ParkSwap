@@ -62,3 +62,9 @@ Deployment
 ----------
 
 [park-swap.herokuapp.com](http://park-swap.herokuapp.com/)
+
+
+Credits
+-------
+
+Shoutout to Emma Tzeng for the idea
