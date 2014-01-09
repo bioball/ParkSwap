@@ -10,20 +10,4 @@ angular.module('appModule')
       }
     });
   };
-
-  // var repeatFn = function() {
-    $http({
-      method: 'GET',
-      url: 'rider/checkparker'
-    }).success(function(data){
-    	console.log(data);
-      // if (data.parker[uid]) {
-      //   $location.path('rider/coming');
-      // }
-    });
-  // }
-
-  $scope.pingServer = function() {
-    $interval(repeatFn, 2000);
-  };
 });

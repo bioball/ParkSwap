@@ -96,7 +96,12 @@
       .then(function(carLocation) {
         $scope.createMarker(carLocation.lat, carLocation.lng);
       })    
-    }
+    };
+
+    $scope.home = function(){
+      $location.path('/');
+    };
+
     
   });
 

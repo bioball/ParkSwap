@@ -26,14 +26,6 @@ module.exports.new = function(req, res) {
   res.send(201);
 };
 
-module.exports.checkParker = function(req, res) {
-  var riderUid = req.user.get('uid');
-
-  if (riderUid) {
-    res.send(201);
-  }
-};
-
 module.exports.cancel = function(req, res) {
   Rider.destroy(req.user.get('uid'));
   res.send(201);
