@@ -1,5 +1,5 @@
 angular.module('appModule')
-.controller('riderWaitController', function($scope, $location, $cookies, riderServices){
+.controller('riderWaitController', function($scope, $location, $http, $cookies, $interval, riderServices){
   $scope.cancel = function(){
     riderServices.cancel().then(function(){
       $cookies.status = 'OK';
@@ -9,5 +9,5 @@ angular.module('appModule')
         reason: "The server fubar'd, please try again"
       }
     });
-  }
+  };
 });
