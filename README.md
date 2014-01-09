@@ -6,7 +6,22 @@ Give a ride, get a spot! This is a work in progress, currently being built as a 
 Usage
 -----
 
-Too often, people spend their time circling around city blocks looking for a parking spot. At the same time, there are people who have parked quite far away from where they are, and need to walk a considerable distance to get back to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. By virtue of this, it's our hope that the riders would give the parker a ride back to the original location.
+Too often, people spend their time circling around city blocks looking for a parking spot. At the same time, there are people are driving off, and need to walk a considerable distance to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. By virtue of this, it's our hope that the riders would give the parker a ride back to the original location.
+
+###Parkers###
+Select "I want a ride", and wait for the list to populate with people. The list will show you the parking spot location, distance from you, and the rider's current location.
+
+Click a rider, and you will be brought to a page showing the rider's picture, as well as buttons to call and navigate.
+
+###Riders###
+Select "I want a spot", then enter your car's parking location. Enable location tracking if the browser requests it. Upon submit, your information will be sent to our servers, and we will try to connect you to a parker. 
+
+If a parker is coming to pick you up, you will recieve a text from us, including a link to go back to view the parker's profile picture, as well as a button to call them.
+
+NOTE: Your search will time out after 10 minutes.
+
+Aspect ratio
+------------
 
 The site is designed for mobile phones in portrait view. When viewed from a landscape mode, the pages will be distorted out of proportion.
 
