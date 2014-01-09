@@ -19,8 +19,11 @@ module.exports.findOrCreate = function(profile){
   module.exports.find(profile.id).then(function(user){
     deferred.resolve(user);
   }, function(){
+    console.log('failed to find user', profile.displayName);
     create(profile).then(function(user){
       deferred.resolve(user);
+    }, function(){
+      deferred.reject('some sort of error?');
     });
   });
   return deferred.promise;
