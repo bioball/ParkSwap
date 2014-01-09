@@ -18,7 +18,7 @@ Select "I want a spot", then enter your car's parking location. Enable location 
 
 If a parker is coming to pick you up, you will recieve a text from us, including a link to go back to view the parker's profile picture, as well as a button to call them.
 
-NOTE: Your search will time out after 10 minutes.
+*Note: Your search will time out after 10 minutes.*
 
 Aspect ratio
 ------------
