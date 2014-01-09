@@ -164,7 +164,7 @@ input:focus {
   right: 0;
   background-color: #edd989;
   color: #66230c;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 400;
   padding: 2%;
   text-align: center;
@@ -297,6 +297,28 @@ input:focus {
   text-align: center;
   font-size: 3em;
   color: #e0e3b7;
+}
+
+.list-element-spinner {
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  z-index: 99;
+  text-align: center;
+}
+.list-element-spinner i {
+  display: inline-block;
+  padding: 0.9em;
+  font-size: 1em;
+  color: #adb361;
 }
 
 .list-head {
