@@ -176,6 +176,13 @@ input:focus {
   top: 20%;
 }
 
+.back-icon {
+  position: fixed;
+  font-size: 1.3em;
+  color: #6b7515;
+  z-index: 99;
+}
+
 .top {
   height: 70%;
   position: relative;

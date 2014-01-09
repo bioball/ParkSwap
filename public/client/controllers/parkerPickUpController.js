@@ -1,5 +1,5 @@
 angular.module('appModule')
-.controller('parkerPickUpController', function($scope, $http, parkerServices){;
+.controller('parkerPickUpController', function($scope, $location, $http, parkerServices){;
   parkerServices.getRider().then(function(rider){
     $scope.rider = rider;
     $http({
@@ -13,6 +13,10 @@ angular.module('appModule')
   $scope.callRider = function() {
     var hrefLocation = 'tel:' + $scope.rider.phone;
     location.href = hrefLocation;
+  };
+
+  $scope.home = function(){
+    $location.path('/');
   };
 
   $scope.navigate = function() {
