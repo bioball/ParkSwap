@@ -8,6 +8,9 @@ var facebook = new FacebookStrategy({
 }, function(accessToken, refreshToken, profile, done){
   User.findOrCreate(profile).then(function(user){
     done(null, user);
+  }, function(err){
+    console.log(err);
+    done(null, false);
   });
 });
 
