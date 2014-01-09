@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node app/main.js",
     "test": "mocha $(find spec -name '*js')",
-    "postinstall": "echo \"{}\" > app/db/riderList.json; bower install",
+    "postinstall": "echo \"{}\" > app/db/riderList.json",
     "migrate": "node app/db/schema.js"
   },
   "dependencies": {
@@ -20,8 +20,7 @@
     "passport-facebook": "~1.0.2",
     "twilio": "~1.5.0",
     "q": "~0.9.7",
-    "pg": "~2.11.0",
-    "bower"
+    "pg": "~2.11.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
