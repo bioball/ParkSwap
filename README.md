@@ -46,4 +46,4 @@ Version
 Deployment
 ----------
 
-[park-swap.herokuapp.com](http://park-swap.herokuapp.com/).
+[park-swap.herokuapp.com](http://park-swap.herokuapp.com/)
