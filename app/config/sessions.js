@@ -6,6 +6,7 @@ var facebook = new FacebookStrategy({
   clientSecret: '07b50d80033a1112837e85c4ff144ff3',
   callbackURL: global.root + 'loginsuccess'
 }, function(accessToken, refreshToken, profile, done){
+  console.log(profile);
   User.findOrCreate(profile).then(function(user){
     done(null, user);
   }, function(err){
