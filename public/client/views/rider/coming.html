@@ -5,7 +5,7 @@
       <strong>{{ parker.name }}</strong> is giving you a ride!
     </div>
   </div>
-  <img ng-if="profileUrl" ng-src="{{ profileUrl }}" class="profile-picture"></img>
+    <img src="http://graph.facebook.com/{{ parker.uid }}/picture?height=300&type=normal&width=480" class="profile-picture"></img>
 </div>
 <div class="bottom">
   <button class="pill pill-active" ng-click="callParker()">call {{ parker.first_name.toLowerCase() }}</button>

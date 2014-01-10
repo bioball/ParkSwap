@@ -251,6 +251,28 @@ input:focus {
   border-top: 1px solid #a3af3e;
 }
 
+.mapView {
+  bottom: 3.2em;
+  height: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  top: 40%;
+}
+.mapView i {
+  font-size: 40px;
+  color: #ba3e13;
+  line-height: 0;
+  z-index: 99;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  margin-left: -28px;
+  margin-top: -20px;
+}
+
 .map-canvas {
   position: fixed !important;
   bottom: 3.2em;
