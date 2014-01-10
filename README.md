@@ -65,7 +65,7 @@ If viewing from the browser, we suggest using Google Chrome Canary, and using th
 Version
 -------
 
-### 1.0.2 ###
+### 1.1.0 ###
 
 
 Deployment
