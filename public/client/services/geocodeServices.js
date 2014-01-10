@@ -17,7 +17,7 @@ angular.module('appModule')
           if(data.error_message){
             deferred.reject(data.error_message);
           } else {
-            deferred.reject("bad location");
+            deferred.reject("We don't recognize that location!");
           }
         }
       }).error(function(err){
