@@ -14,10 +14,13 @@ angular.module('appModule')
         if(data.results.length){
           deferred.resolve(data.results[0].geometry.location);
         } else {
-          deferred.reject("bad location");
+          if(data.error_message){
+            deferred.reject(data.error_message);
+          } else {
+            deferred.reject("bad location");
+          }
         }
       }).error(function(err){
-        console.log(err);
         deferred.reject("google maps API is messing up :(");
       })
       return deferred.promise;
