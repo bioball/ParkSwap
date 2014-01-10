@@ -1,11 +1,11 @@
 angular.module('appModule')
-.controller('riderWhereController', function($scope, $http, $location, geocodeServices){
+.controller('riderWhereController', function($scope, $http, $location, detectDeviceServices, geocodeServices){
   navigator.geolocation.getCurrentPosition(function(position){
     $scope.riderLocation = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    google.maps.event.addListener($scope.myMap, 'dragend', function() {
+    google.maps.event.addListener($scope.myMap, 'idle', function() {
       geocodeServices.getAddress({ 
         lat: $scope.myMap.getCenter().b,
         lng: $scope.myMap.getCenter().d
@@ -34,9 +34,9 @@ angular.module('appModule')
         }
       })
     },
-    function(){
+    function(err){
       $scope.err = {
-        reason: "We don't recognize that location!"
+        reason: err
       }
     });
   }
@@ -50,7 +50,19 @@ angular.module('appModule')
     center: new google.maps.LatLng(37.783648, -122.409173799999),
     zoom: 15,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: true,
+    zoomControl: true,
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [{ visibility: "off" }]
+      }
+    ]
   };
+
+  if(detectDeviceServices.any()){
+    $scope.mapOptions.zoomControl = false;
+  }
 
   $scope.findMarkerAddress = function(evt) {
      var coord = {};
