@@ -5,7 +5,7 @@
       Please pick up {{ rider.name }} at <strong>{{ rider.riderAddress }}</strong>
     </div>
   </div>
-  <img ng-if="profileUrl" ng-src="{{ profileUrl }}" class="profile-picture"></img>
+  <img src="http://graph.facebook.com/{{ rider.uid }}/picture?height=300&type=normal&width=480" class="profile-picture"></img>
 </div>
 <div class="bottom">
   <input type="button" class="pill pill-active" value="call" ng-click="callRider()">
