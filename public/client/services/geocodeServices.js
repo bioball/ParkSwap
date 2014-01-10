@@ -17,7 +17,8 @@ angular.module('appModule')
           deferred.reject("bad location");
         }
       }).error(function(err){
-        deferred.reject(err);
+        console.log(err);
+        deferred.reject("google maps API is messing up :(");
       })
       return deferred.promise;
     },
