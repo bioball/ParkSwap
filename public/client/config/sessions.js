@@ -20,6 +20,6 @@ angular.module('appModule')
     }
   });
 
-  detectDeviceServices.iOS() && FastClick.attach(document.body);
+  // detectDeviceServices.iOS() && FastClick.attach(document.body);
 
 });

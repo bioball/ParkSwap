@@ -1,0 +1,27 @@
+html, body, .wrapper
+  height: 100%
+
+body
+  +background-gradient($darkGreen, #dbd87d)
+  // fallback property
+  font-size: 23px
+  font-size: 6vw
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif
+  color: $darkGrey
+  font-weight: 200
+  position: relative
+
+.top
+  height: 70%
+  position: relative
+  width: 100%
+
+.bottom
+  height: 30%
+  position: relative
+
+.message-container
+  position: absolute
+  text-align: center
+  top: 30%
+  +absolute-center(80%)
