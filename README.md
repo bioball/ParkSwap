@@ -1,9 +1,10 @@
 ParkSwap
 ========
 
-**Give a ride, get a spot!** In any busy city, there are people spending too much time driving around looking for a parking spot. At the same time, there are people who walk too far to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards. We hope that those who get rides will also bring the parker back to the original location.
+####Give a ride, get a spot!####
+In any busy city, there are people spending too much time driving around looking for a parking spot. At the same time, there are people who walk too far to get to their car. This app aims to connect these people, so the parkers can give people rides back to their car, and take their parking spot afterwards.
 
-This is a work in progress, currently being built as a student project at [Hack Reactor](http://www.hackreactor.com). Team members are [Dan Chao](http://www.github.com/bioball), [Joseph Toney](http://www.github.com/chip2int) and [Yong-Soo Chung](http://www.github.com/yongsoo).
+This project is maintained by [Dan Chao](http://www.github.com/bioball), [Joseph Toney](http://www.github.com/chip2int) and [Yong-Soo Chung](http://www.github.com/yongsoo), and was built as a student project at [Hack Reactor](http://www.hackreactor.com/).
 
 ####Contents####
 
@@ -19,7 +20,7 @@ Usage
 -----
 
 ####If you are parking####
-Select "I want a spot", and wait for the list to populate with people with parking spots within a mile radius of you. The list will show you the parking spot address, distance from you, and the rider's current address.
+Select "I want a spot", and you will be shown a list of parking spots. This list will only show people within a mile radius of you, and will provide their parking spot address, distance from you, plus the person's current address.
 
 Clicking an entry will show you the person's picture, as well as buttons to call and navigate.
 
@@ -38,7 +39,7 @@ This app is Android homescreen capable. If you would like this app to appear on 
 Tech stack
 ----------
 
-The app is built on a SEAN stack (SQL, Express, Angular, Node). The back-end database is handled through the Bookshelf.js ORM, and authentication is handled through Passport.js.
+The app is built on a SEAN stack (PostgreSQL/SQLite3, Express, Angular, Node). The back-end database is handled through the Bookshelf.js ORM, and authentication is handled through Passport.js.
 
 The front-end libraries are frameworked by Angular, includes the ui-map and ui-utils libraries for Google Map integration, and jQuery for certain animations.
 
@@ -57,15 +58,13 @@ If you would like to fork this branch and set it up on your own environment, fol
 Aspect ratio
 ------------
 
-The site is designed for mobile phones in portrait view. When viewed from a landscape mode, the pages will be distorted out of proportion.
-
-If viewing from the browser, we suggest using Google Chrome Canary, and using their emulation feature (Developer Tools > Sources > Emulation), which will fix the aspect for you.
+The site is designed for mobile phones in portrait view. If viewing from the browser, make sure your window is roughly the same aspect ratio as a portrait a mobile phone (e.g. 9 units wide x 16 units high).
 
 
 Version
 -------
 
-### 1.0.1 ###
+### 1.1.1 ###
 
 
 Deployment
