@@ -7,8 +7,8 @@ angular.module('appModule')
     };
     google.maps.event.addListener($scope.myMap, 'idle', function() {
       geocodeServices.getAddress({ 
-        lat: $scope.myMap.getCenter().b,
-        lng: $scope.myMap.getCenter().d
+        lat: $scope.myMap.getCenter().d,
+        lng: $scope.myMap.getCenter().e
       }).then(function(address){
         $scope.carLocation = address;
       });
