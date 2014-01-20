@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.1
+-----
+
+* Fixed an issue where the map wasn't fetching a new address on map idle
+
 1.1.0
 -----
 
