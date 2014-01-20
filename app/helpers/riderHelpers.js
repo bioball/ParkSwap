@@ -13,6 +13,7 @@ module.exports.readFromJSON = function(riderList) {
   if(JSON.stringify(riderList) === '{}'){
     return JSON.parse(fs.readFileSync(jsonPath));
   }
+
   return riderList;
 };
 

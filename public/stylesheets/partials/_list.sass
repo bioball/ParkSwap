@@ -1,0 +1,72 @@
+.list-container
+  position: absolute
+  top: 0.6em
+  left: 0.6em
+  right: 0.6em
+  bottom: 0
+  > div:nth-child(2n-1)
+    background-color: #d7dc92
+  > div:nth-child(2n)
+    background-color: #e3e8a3
+
+.list-spinner
+  position: relative
+  top: 35vh
+  text-align: center
+  font-size: 3em
+  color: #e0e3b7
+
+.list-element-spinner
+  +border-radius(0.2em)
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 100%
+  background-color: inherit
+  z-index: 99
+  border: none
+  i
+    font-size: 1.3em
+    color: #adb361
+
+.list-head
+  font-weight: 300
+  padding: 0.3em 0.6em
+
+.list-rider
+  position: relative
+  margin-bottom: 0.6em
+  +border-radius(0.2em)
+
+.list-rider-caraddress
+  display: inline-block
+  height: 100%
+  width: 70%
+  > span
+    display: inline-block
+    padding: 1.2em
+    font-weight: 400
+    font-size: 0.8em
+    color: $darkGrey
+
+.list-rider-cardistance
+  position: absolute
+  bottom: 0.8em
+  right: 0.5em
+
+.list-rider-mi
+  font-weight: 700
+  font-size: 1em
+  color: $lightBlue
+
+.list-rider-rideraddress
+  position: absolute
+  color: $red
+  bottom: 0.4em
+  left: 1.7em
+  font-size: 0.5em
+  font-weight: 400
+  span
+    font-family: "Muli"
+    color: $red
+    padding-right: 0.3em

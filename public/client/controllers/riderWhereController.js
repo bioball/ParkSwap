@@ -1,5 +1,5 @@
 angular.module('appModule')
-.controller('riderWhereController', function($scope, $http, $location, detectDeviceServices, geocodeServices){
+.controller('riderWhereController', function($scope, $http, $location, detectDeviceServices, riderServices, geocodeServices){
   navigator.geolocation.getCurrentPosition(function(position){
     $scope.riderLocation = {
       lat: position.coords.latitude,
@@ -19,25 +19,19 @@ angular.module('appModule')
   $scope.submitRider = function(){
     geocodeServices.getCoords($scope.carLocation)
     .then(function(carLocation){
-      $http({
-        method: "POST",
-        url: "/rider/new",
-        data: {
-          riderLocation: $scope.riderLocation,
-          carLocation: carLocation
-        }
-      }).success(function(){
+      riderServices.create($scope.riderLocation, carLocation)
+      .then(function(){
         $location.path('/rider/wait');
-      }).error(function(err){
+      }, function(err){
         $scope.err = {
           reason: err
-        }
+        };
       })
     },
     function(err){
       $scope.err = {
         reason: err
-      }
+      };
     });
   }
   $scope.focused = false;
