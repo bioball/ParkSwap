@@ -14,6 +14,7 @@ This project is maintained by [Dan Chao](http://www.github.com/bioball), [Joseph
 * [Aspect ratio](#aspect-ratio)
 * [Version](#version)
 * [Deployment](#deployment)
+* [Screenshots](#screenshots)
 * [Credits](#credits)
 
 Usage
