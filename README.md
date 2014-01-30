@@ -75,7 +75,7 @@ Deployment
 Screenshots
 -----------
 
-<img src="/screens/login.png" height="33%" width="33%" style="padding: 3px;"></img>
+<img src="/screens/login.png" height="33%" width="33%"></img>
 <img src="/screens/main.png" height="33%" width="33%" style=""></img>
 <img src="/screens/where.png" height="33%" width="33%" style=""></img>
 <img src="/screens/wait.png" height="33%" width="33%" style=""></img>
