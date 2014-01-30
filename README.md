@@ -75,7 +75,7 @@ Deployment
 Screenshots
 -----------
 
-![Login](/screens/login.png)
+<img src="/screens/login.png" height="25%" width="25%"></img>
 ![Main](/screens/main.png)
 ![Where](/screens/where.png)
 ![Wait](/screens/wait.png)
