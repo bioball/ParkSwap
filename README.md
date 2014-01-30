@@ -75,12 +75,18 @@ Deployment
 Screenshots
 -----------
 
+<style>
+img {
+  display: inline-block;
+}
+</style>
+
 <img src="/screens/login.png" height="25%" width="25%"></img>
-![Main](/screens/main.png)
-![Where](/screens/where.png)
-![Wait](/screens/wait.png)
-![List](/screens/list.png)
-![Pickups](/screens/pickup.png)
+<img src="/screens/main.png" height="25%" width="25%"></img>
+<img src="/screens/where.png" height="25%" width="25%"></img>
+<img src="/screens/wait.png" height="25%" width="25%"></img>
+<img src="/screens/list.png" height="25%" width="25%"></img>
+<img src="/screens/pickup.png" height="25%" width="25%"></img>
 
 Credits
 -------
