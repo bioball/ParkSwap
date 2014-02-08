@@ -2,7 +2,9 @@ angular.module('appModule')
 .run(function($rootScope, $cookies, $location, $interval, detectDeviceServices){
   
   $rootScope.isDesktop = !detectDeviceServices.any() && !localStorage.hasDisplayedDesktopFlash;
-  localStorage.hasDisplayedDesktopFlash = true;
+  if($rootScope.isDesktop){
+    localStorage.hasDisplayedDesktopFlash = true;
+  }
 
   $rootScope.$on('$routeChangeStart', function(evt, nextUrl, currentUrl){
     if(nextUrl.$$route && nextUrl.$$route.originalPath !== '/login'){

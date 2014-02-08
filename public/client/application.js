@@ -42,7 +42,9 @@ angular.module('appModule')
 .run(function($rootScope, $cookies, $location, $interval, detectDeviceServices){
   
   $rootScope.isDesktop = !detectDeviceServices.any() && !localStorage.hasDisplayedDesktopFlash;
-  localStorage.hasDisplayedDesktopFlash = true;
+  if($rootScope.isDesktop){
+    localStorage.hasDisplayedDesktopFlash = true;
+  }
 
   $rootScope.$on('$routeChangeStart', function(evt, nextUrl, currentUrl){
     if(nextUrl.$$route && nextUrl.$$route.originalPath !== '/login'){
@@ -342,30 +344,30 @@ angular.module('appModule')
 
 });
 
-angular.module('appModule')
-.directive("ngTap", function() {
-  return function($scope, $element, $attributes) {
-    var tapped;
-    tapped = false;
-    $element.bind("click", function() {
-      if (!tapped) {
-        return $scope.$apply($attributes["ngTap"]);
-      }
-    });
-    $element.bind("touchstart", function(event) {
-      return tapped = true;
-    });
-    $element.bind("touchmove", function(event) {
-      tapped = false;
-      return event.stopImmediatePropagation();
-    });
-    return $element.bind("touchend", function() {
-      if (tapped) {
-        return $scope.$apply($attributes["ngTap"]);
-      }
-    });
-  };
-});
+// angular.module('appModule')
+// .directive("ngTap", function() {
+//   return function($scope, $element, $attributes) {
+//     var tapped;
+//     tapped = false;
+//     $element.bind("click", function() {
+//       if (!tapped) {
+//         return $scope.$apply($attributes["ngTap"]);
+//       }
+//     });
+//     $element.bind("touchstart", function(event) {
+//       return tapped = true;
+//     });
+//     $element.bind("touchmove", function(event) {
+//       tapped = false;
+//       return event.stopImmediatePropagation();
+//     });
+//     return $element.bind("touchend", function() {
+//       if (tapped) {
+//         return $scope.$apply($attributes["ngTap"]);
+//       }
+//     });
+//   };
+// });
 angular.module('appModule')
 .directive("slideDown", function() {
   return {
