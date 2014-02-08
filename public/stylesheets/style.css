@@ -22,6 +22,25 @@ body {
   position: relative;
 }
 
+.top {
+  height: 70%;
+  position: relative;
+  width: 100%;
+}
+
+.bottom {
+  height: 30%;
+  position: relative;
+}
+
+.message-container {
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  width: 80%;
+  left: 10%;
+}
+
 strong {
   font-weight: 700;
 }
@@ -181,25 +200,6 @@ input:focus {
   font-size: 1.3em;
   color: #6b7515;
   z-index: 99;
-}
-
-.top {
-  height: 70%;
-  position: relative;
-  width: 100%;
-}
-
-.bottom {
-  height: 30%;
-  position: relative;
-}
-
-.message-container {
-  position: absolute;
-  text-align: center;
-  top: 30%;
-  width: 80%;
-  left: 10%;
 }
 
 .logo-login {

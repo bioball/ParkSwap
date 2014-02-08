@@ -5,8 +5,15 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-node-inspector');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.initConfig({
+    'concat': {
+      'dist': {
+        'src': ['public/client/main.js', 'public/client/**/*.js'],
+        'dest': 'public/client/application.js'
+      }
+    },
     'sass': {
       'dist': {
         'options': {
@@ -34,7 +41,7 @@ module.exports = function(grunt){
       }
     },
     'node-inspector': {
-      default: {}
+      'default': {}
     },
     'concurrent': {
       'dev': {
@@ -43,8 +50,12 @@ module.exports = function(grunt){
     },
     'watch': {
       'css': {
-        'files': ['public/stylesheets/*.scss', 'public/stylesheets/*.sass'],
+        'files': ['public/stylesheets/*.scss', 'public/stylesheets/*.sass', 'public/stylesheets/partials/*.sass'],
         'tasks': ['sass']
+      },
+      'js': {
+        'files': ['public/client/config/*.js', 'public/client/controllers/*.js', 'public/client/directives/*.js', 'public/client/services/*.js', 'public/client/views/*.js'],
+        'tasks': ['concat']
       }
     }
   });

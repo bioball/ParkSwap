@@ -1,5 +1,9 @@
 angular.module('appModule')
 .run(function($rootScope, $cookies, $location, $interval, detectDeviceServices){
+  
+  $rootScope.isDesktop = !detectDeviceServices.any() && !localStorage.hasDisplayedDesktopFlash;
+  localStorage.hasDisplayedDesktopFlash = true;
+
   $rootScope.$on('$routeChangeStart', function(evt, nextUrl, currentUrl){
     if(nextUrl.$$route && nextUrl.$$route.originalPath !== '/login'){
       switch($cookies.status){
@@ -20,6 +24,5 @@ angular.module('appModule')
     }
   });
 
-  detectDeviceServices.iOS() && FastClick.attach(document.body);
-
+  // detectDeviceServices.iOS() && FastClick.attach(document.body);
 });

@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "express": "3.4.7",
-    "jade": "*",
     "knex": "~0.5.2",
     "bookshelf": "~0.6.2",
     "passport": "~0.1.17",
@@ -32,6 +31,7 @@
     "sqlite3": "~2.1.19",
     "request": "2.30.0",
     "grunt-contrib-sass": "~0.6.0",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0"
   }
 }
