@@ -1,11 +1,27 @@
 angular.module('appModule')
 .factory('riderServices', function($q, $http, $cookies, userServices){
   return {
+    create: function(riderLocation, carLocation){
+      var deferred = $q.defer();
+      $http({
+        method: "POST",
+        url: "/rider",
+        data: {
+          riderLocation: riderLocation,
+          carLocation: carLocation
+        }
+      }).success(function(){
+        deferred.resolve();
+      }).error(function(err){
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    },
     cancel: function(){
       var deferred = $q.defer();
       $http({
-        method: 'POST',
-        url: 'rider/cancel',
+        method: 'DELETE',
+        url: '/rider',
       }).success(function(data){
         $cookies.status = 'OK';
         deferred.resolve(data);
