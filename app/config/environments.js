@@ -8,7 +8,7 @@ module.exports = function(app){
   });
 
   app.configure('production', function(){
-    global.root = 'http://park-swap.herokuapp.com/'
+    global.root = 'http://parkswap.co/'
   });
 
   app.configure('test', function(){

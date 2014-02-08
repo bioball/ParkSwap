@@ -41,7 +41,7 @@ module.exports = function(grunt){
       }
     },
     'node-inspector': {
-      default: {}
+      'default': {}
     },
     'concurrent': {
       'dev': {
@@ -50,8 +50,12 @@ module.exports = function(grunt){
     },
     'watch': {
       'css': {
-        'files': ['public/stylesheets/*.scss', 'public/stylesheets/*.sass'],
+        'files': ['public/stylesheets/*.scss', 'public/stylesheets/*.sass', 'public/stylesheets/partials/*.sass'],
         'tasks': ['sass']
+      },
+      'js': {
+        'files': ['public/client/config/*.js', 'public/client/controllers/*.js', 'public/client/directives/*.js', 'public/client/services/*.js', 'public/client/views/*.js'],
+        'tasks': ['concat']
       }
     }
   });

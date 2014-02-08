@@ -41,6 +41,9 @@ angular.module('appModule')
 })
 angular.module('appModule')
 .run(function($rootScope, $cookies, $location, $interval, detectDeviceServices){
+  
+  $rootScope.isDesktop = !detectDeviceServices.any();
+
   $rootScope.$on('$routeChangeStart', function(evt, nextUrl, currentUrl){
     if(nextUrl.$$route && nextUrl.$$route.originalPath !== '/login'){
       switch($cookies.status){
@@ -62,7 +65,6 @@ angular.module('appModule')
   });
 
   // detectDeviceServices.iOS() && FastClick.attach(document.body);
-
 });
 angular.module('appModule')
 .controller('getPhoneController', function($scope, $http, $location, $cookieStore){
@@ -265,8 +267,8 @@ angular.module('appModule')
     };
     google.maps.event.addListener($scope.myMap, 'idle', function() {
       geocodeServices.getAddress({ 
-        lat: $scope.myMap.getCenter().b,
-        lng: $scope.myMap.getCenter().d
+        lat: $scope.myMap.getCenter().d,
+        lng: $scope.myMap.getCenter().e
       }).then(function(address){
         $scope.carLocation = address;
       });
