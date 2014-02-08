@@ -3,7 +3,7 @@ var app = require('express')();
 var port = process.env.PORT || 3000;
 
 if(process.env.NODE_ENV == 'production'){
-  global.root = 'http://park-swap.herokuapp.com/'
+  global.root = 'http://parkswap.co/'
 } else {
   global.root = 'http://localhost:' + port + '/';
 }
