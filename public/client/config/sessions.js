@@ -2,7 +2,7 @@ angular.module('appModule')
 .run(function($rootScope, $cookies, $location, $interval, detectDeviceServices){
   
   $rootScope.isDesktop = !detectDeviceServices.any() && !localStorage.hasDisplayedDesktopFlash;
-  if($rootScope.isDesktop){
+  if(!detectDeviceServices.any()){
     localStorage.hasDisplayedDesktopFlash = true;
   }
 
