@@ -12,7 +12,8 @@
 </head>
 <body>
   <div ng-app="appModule" class="wrapper">
-    <div ng-view="" class="wrapper" ng-class="{'desktop': isDesktop}">
+    <div class="flash-error" slide-down="isDesktop" ng-cloak><strong>Hi, desktop user!</strong> <br /> This app is designed for portrait mobile phone browsers. For the best experience, make sure your browser window is roughly 9 units wide x 16 units tall, and refresh the page.</div>
+    <div ng-view="" class="wrapper">
     </div>
   </div>
 
