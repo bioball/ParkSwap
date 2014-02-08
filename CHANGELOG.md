@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.1.2
+-----
+
+* Concatenated all front-end Angular components into one file for faster loading
+* Split up .sass sections into their own files
+* Added a flash notice if a desktop user comes to the site for the first time
+
 1.1.1
 -----
 

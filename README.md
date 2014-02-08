@@ -65,7 +65,7 @@ The site is designed for mobile phones in portrait view. If viewing from the bro
 Version
 -------
 
-### 1.1.1 ###
+### 1.1.2 ###
 
 Deployment
 ----------
