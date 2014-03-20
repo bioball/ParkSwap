@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.1.3
+-----
+
+* Fixed issue where map wasn't fetching a new address upon idle (again). Note: Using `lat()` and `lng()` on the object returned from `getCenter()`.
+* Added a grunt clean task to cooperate with grunt concat.
+* Fixed an issue where the desktop flash would briefly appear for users that have already seen it.
+* More error handling for geolocation.
+
 1.1.2
 -----
 

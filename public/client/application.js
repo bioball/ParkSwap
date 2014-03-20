@@ -267,15 +267,19 @@ angular.module('appModule')
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
+    $scope.myMap.setCenter(new google.maps.LatLng($scope.riderLocation.lat, $scope.riderLocation.lng));
     google.maps.event.addListener($scope.myMap, 'idle', function() {
       geocodeServices.getAddress({ 
-        lat: $scope.myMap.getCenter().d,
-        lng: $scope.myMap.getCenter().e
+        lat: $scope.myMap.getCenter().lat(),
+        lng: $scope.myMap.getCenter().lng()
       }).then(function(address){
         $scope.carLocation = address;
+      }, function(err){
+        $scope.err = {
+          reason: err
+        };
       });
     });
-    $scope.myMap.setCenter(new google.maps.LatLng($scope.riderLocation.lat, $scope.riderLocation.lng));
   });
 
   $scope.submitRider = function(){
